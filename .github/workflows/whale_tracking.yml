@@ -51,7 +51,7 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             # Manual run with input
             if [ "${{ inputs.scan_type }}" = "daily" ]; then
-              python agent/agent.py "run daily_scan and format the report nicely"
+                            python agent/agent.py "run daily_scan and save results to reports/daily_scan_$(date +%Y%m%d_%H%M%S).md"
             elif [ "${{ inputs.scan_type }}" = "find_pumps" ]; then
               python agent/agent.py "find_pumps and show top 10 potential pump tokens"
             fi
