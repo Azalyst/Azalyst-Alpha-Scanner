@@ -1,12 +1,15 @@
 name: NIM Qwen Agent
 
 on:
+  schedule:
+    - cron: '*/15 * * * *'
   workflow_dispatch:
     inputs:
       task:
         description: 'Task for the agent to perform'
         required: true
         type: string
+        default: 'run daily_scan and save results to reports/daily_scan.md'
   
   issue_comment:
     types: [created]
@@ -38,7 +41,9 @@ jobs:
           NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
           BIRDEYE_API_KEY: ${{ secrets.BIRDEYE_API_KEY }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python agent/agent.py "run daily_scan and save results to reports/daily_scan.md"
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             python agent/agent.py "${{ inputs.task }}"
           elif [ "${{ github.event_name }}" = "issue_comment" ]; then
             COMMENT="${{ github.event.comment.body }}"
