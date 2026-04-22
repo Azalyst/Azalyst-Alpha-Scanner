@@ -141,12 +141,24 @@ python example_whale_tracking.py analyze <TOKEN> <CHAIN>
 
 All Birdeye tools accept an optional `chain` parameter. Default is `solana`.
 
-| Tool | Key Args | Output |
-|---|---|---|
-| `find_pumps` | `chain` | Top 10 scored candidates (0-100) |
-| `analyze_token` | `token_address`, `chain` | Signal type, confidence %, indicators |
-| `track_whale` | `wallet_address`, `chain` | Portfolio breakdown, top holdings |
-| `daily_scan` | `chains` (list, optional) | Full report across all specified chains |
+| Tool | Key Args | Output | Endpoint |
+|---|---|---|---|
+| `find_pumps` | `chain` | Top 10 scored candidates (0-100) | `/defi/trending_tokens` |
+| `analyze_token` | `token_address`, `chain` | Signal type, confidence %, indicators | `/defi/token_overview` |
+| `track_whale` | `wallet_address`, `chain` | Portfolio breakdown, top holdings | `/v1/wallet/token_list` |
+| `daily_scan` | `chains` (list, optional) | Full report across all specified chains | Multiple |
+| `get_profitable_traders` | `chain`, `time_frame` | Top 20 traders by PnL, volume, trades | `/trader/gainers-losers` |
+| `get_wallet_pnl` | `wallet_address`, `chain` | Realized/unrealized PnL, win rate | `/wallet/v2/pnl/summary` |
+| `get_top_traders` | `token_address`, `chain` | Top 10 traders per token by volume | `/defi/v2/tokens/top_traders` |
+| `check_token_security` | `token_address`, `chain` | Rug risk score, mint/freeze flags | `/defi/token_security` |
+| `get_new_listings` | `chain`, `limit` | Freshly listed tokens with age | `/defi/v2/tokens/new_listing` |
+| `get_token_creation_info` | `token_address`, `chain` | Deployer, creation time, initial supply | `/defi/token_creation_info` |
+| `get_holder_list` | `token_address`, `chain` | Top holders with balance % | `/defi/v3/token/holder` |
+| `get_wallet_pnl_details` | `wallet_address`, `chain` | Token-by-token PnL breakdown | `/wallet/v2/pnl/details` |
+| `get_trader_txs` | `wallet_address`, `chain` | Trade history with time filtering | `/trader/txs/seek_by_time` |
+| `get_ohlcv` | `token_address`, `timeframe` | Candle data (1s-1d intervals) | `/defi/v3/ohlcv` |
+| `get_wallet_token_list` | `wallet_address`, `chain` | Current holdings with USD values | `/v1/wallet/token_list` |
+| `get_wallet_tx_list` | `wallet_address`, `chain` | Full transaction history | `/v1/wallet/tx_list` |
 
 `daily_scan` with no `chains` argument scans all 9 supported chains.
 
