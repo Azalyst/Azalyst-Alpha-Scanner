@@ -778,13 +778,24 @@ def daily_scan(api_key: Optional[str] = None, chains: List[str] = None, save_jso
     return tracker.format_report(results)
 
 
-def get_profitable_traders(chain: str = "solana", time_frame: str = "7D", api_key: Optional[str] = None) -> str:
-    """Get profitable traders leaderboard"""
+def get_profitable_traders(chain: str = "solana", time_frame: str = "7D", api_key: Optional[str] = None, save_report: bool = True) -> str:
+    """Get profitable traders leaderboard and save to reports folder"""
     tracker = WhaleTracker(api_key)
     traders = tracker.api.get_profitable_traders(chain=chain, time_frame=time_frame)
     
     if not traders or "error" in traders[0]:
         return f"Error fetching profitable traders: {traders}"
+    
+    # Save to reports folder (TASK 1)
+    if save_report:
+        try:
+            os.makedirs("reports", exist_ok=True)
+            timestamp = datetime.now().strftime("%Y%m%d")
+            json_path = f"reports/profitable_traders_{timestamp}.json"
+            with open(json_path, "w") as f:
+                json.dump({"chain": chain, "time_frame": time_frame, "traders": traders}, f, indent=2)
+        except Exception as e:
+            pass  # Silently fail if can't write
     
     result = [f"🏆 TOP PROFITABLE TRADERS ({chain.upper()}, {time_frame})\n"]
     for i, t in enumerate(traders[:20], 1):
