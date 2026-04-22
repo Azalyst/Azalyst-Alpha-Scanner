@@ -6,6 +6,7 @@ Implements the complete whale tracking workflow for Birdeye.so
 import requests
 import json
 import time
+import os
 from datetime import datetime, timedelta
 from typing import Dict, List, Optional, Tuple
 from dataclasses import dataclass, asdict
@@ -118,6 +119,78 @@ class BirdeyeAPI:
             return {}
         except Exception as e:
             return {"error": str(e)}
+    
+    def get_profitable_traders(self, chain: str = "solana", time_frame: str = "7D", limit: int = 20) -> List[Dict]:
+        """Get profitable traders leaderboard (gainers)"""
+        endpoint = f"{self.BASE_URL}/trader/gainers-losers"
+        params = {
+            "type": "gainers",
+            "sort_by": "PnL",
+            "time_frame": time_frame,
+            "limit": limit
+        }
+        
+        # Add chain header
+        headers = self.headers.copy()
+        headers["x-chain"] = chain
+        
+        try:
+            response = requests.get(endpoint, headers=headers, params=params, timeout=15)
+            if response.status_code == 200:
+                data = response.json().get("data", [])
+                # Enrich with chain info
+                for trader in data:
+                    trader["chain"] = chain
+                return data
+            return []
+        except Exception as e:
+            return [{"error": str(e)}]
+    
+    def get_wallet_pnl(self, wallet_address: str, chain: str = "solana") -> Dict:
+        """Get wallet PnL summary"""
+        endpoint = f"{self.BASE_URL}/wallet/v2/pnl/summary"
+        
+        # Add chain header
+        headers = self.headers.copy()
+        headers["x-chain"] = chain
+        headers["Content-Type"] = "application/json"
+        
+        body = {"wallet": wallet_address}
+        
+        try:
+            response = requests.post(endpoint, headers=headers, json=body, timeout=15)
+            if response.status_code == 200:
+                return response.json().get("data", {})
+            return {}
+        except Exception as e:
+            return {"error": str(e)}
+    
+    def get_top_traders(self, token_address: str, chain: str = "solana", time_frame: str = "24h", limit: int = 10) -> List[Dict]:
+        """Get top traders for a specific token"""
+        endpoint = f"{self.BASE_URL}/defi/v2/tokens/top_traders"
+        params = {
+            "address": token_address,
+            "time_frame": time_frame,
+            "sort_by": "volume",
+            "limit": limit
+        }
+        
+        # Add chain header
+        headers = self.headers.copy()
+        headers["x-chain"] = chain
+        
+        try:
+            response = requests.get(endpoint, headers=headers, params=params, timeout=15)
+            if response.status_code == 200:
+                data = response.json().get("data", [])
+                # Enrich with token and chain info
+                for trader in data:
+                    trader["token_address"] = token_address
+                    trader["chain"] = chain
+                return data
+            return []
+        except Exception as e:
+            return [{"error": str(e)}]
 
 
 class WhaleTracker:
@@ -251,6 +324,7 @@ class WhaleTracker:
         Filter tokens for early pump potential
         Step 4: Hidden gem filter (pump prediction)
         Filters: token age <24h, LP >2K, volume growth >10K in 1H
+        Uses check_token_security to pre-filter risky tokens
         """
         trending = self.api.get_trending_tokens(time_frame="1h")
         gems = []
@@ -270,9 +344,24 @@ class WhaleTracker:
             
             age_hours = (time.time() - created_at) / 3600 if created_at else 999
             
-            # Security checks
+            # Security checks - pre-filter risky tokens
             is_mintable = security.get("is_mintable", True)
             top_holders = security.get("top_10_holder_percent", 100)
+            freeze_authority = security.get("freeze_authority", False)
+            
+            # Skip high-risk tokens (rug risk score >= 50)
+            rug_risk = 0
+            if is_mintable:
+                rug_risk += 30
+            if freeze_authority:
+                rug_risk += 25
+            if top_holders > 50:
+                rug_risk += 25
+            if top_holders > 80:
+                rug_risk += 20
+            
+            if rug_risk >= 50:
+                continue  # Skip high-risk tokens
             
             if (liquidity >= min_lp_size and 
                 volume_1h >= min_volume_1h and 
@@ -288,7 +377,8 @@ class WhaleTracker:
                     "age_hours": round(age_hours, 2),
                     "holder_count": overview.get("holder", 0),
                     "price": overview.get("price", 0),
-                    "score": self._calculate_gem_score(overview, security)
+                    "score": self._calculate_gem_score(overview, security),
+                    "rug_risk_score": rug_risk
                 })
         
         return sorted(gems, key=lambda x: x["score"], reverse=True)
@@ -452,20 +542,35 @@ class WhaleTracker:
     
     # Practical Workflow Implementation
     
-    def run_daily_scan(self) -> Dict:
+    def run_daily_scan(self, chains: List[str] = None) -> Dict:
         """
         Complete daily scan workflow as described in requirements
         Practical Workflow: aaj pump pakdna hai toh
+        Enhanced to include profitable traders, wallet PnL, and security checks
         """
+        if chains is None:
+            chains = ["solana"]  # Default to solana
+        
         results = {
             "timestamp": datetime.now().isoformat(),
             "trending_analysis": [],
             "whale_trades": [],
             "hidden_gems": [],
-            "watchlist_updates": []
+            "watchlist_updates": [],
+            "profitable_traders": {},
+            "security_alerts": []
         }
         
-        # 1. Check trending tokens (24H)
+        # 1. Get profitable traders for each chain
+        for chain in chains:
+            try:
+                traders = self.api.get_profitable_traders(chain=chain, time_frame="7D", limit=20)
+                if traders and "error" not in traders[0]:
+                    results["profitable_traders"][chain] = traders
+            except Exception as e:
+                results["profitable_traders"][chain] = {"error": str(e)}
+        
+        # 2. Check trending tokens (24H)
         trending = self.api.get_trending_tokens(time_frame="24h")
         
         for token in trending[:20]:
@@ -473,30 +578,87 @@ class WhaleTracker:
             if not token_address:
                 continue
             
+            # Security check BEFORE scoring (TASK 4)
+            security = self.api.get_token_security(token_address)
+            rug_risk = 0
+            risk_factors = []
+            
+            is_mintable = security.get("is_mintable", False)
+            freeze_authority = security.get("freeze_authority", False)
+            top10_holder_pct = security.get("top_10_holder_percent", 0)
+            
+            if is_mintable:
+                rug_risk += 30
+                risk_factors.append("mintable")
+            if freeze_authority:
+                rug_risk += 25
+                risk_factors.append("freeze_authority")
+            if top10_holder_pct > 50:
+                rug_risk += 25
+            if top10_holder_pct > 80:
+                rug_risk += 20
+            
+            # Add security alert for high-risk tokens
+            if rug_risk >= 50:
+                results["security_alerts"].append({
+                    "token": token.get("symbol", "Unknown"),
+                    "address": token_address,
+                    "rug_risk_score": rug_risk,
+                    "risk_factors": risk_factors,
+                    "risk_level": "HIGH"
+                })
+            
             # Analyze for unusual activity
             signal = self.analyze_pump_dump_signals(token_address)
+            signal_dict = signal.to_dict()
+            signal_dict["rug_risk_score"] = rug_risk
             
             results["trending_analysis"].append({
                 "token": token.get("symbol"),
                 "address": token_address,
-                "signal": signal.to_dict()
+                "signal": signal_dict
             })
         
-        # 2. Find whale trades
+        # 3. Find whale trades with PnL enrichment (TASK 2)
         whale_trades = self.find_whale_trades(min_value_usd=10000)
+        for trade in whale_trades[:10]:
+            wallet = trade.get("wallet", "")
+            if wallet:
+                try:
+                    pnl_data = self.api.get_wallet_pnl(wallet)
+                    trade["pnl_summary"] = {
+                        "realized_profit": pnl_data.get("realized_profit", 0),
+                        "unrealized_profit": pnl_data.get("unrealized_profit", 0),
+                        "win_rate": pnl_data.get("win_rate", 0),
+                        "total_trades": pnl_data.get("total_trades", 0)
+                    }
+                except:
+                    pass
         results["whale_trades"] = whale_trades[:10]
         
-        # 3. Scan for hidden gems
+        # 4. Scan for hidden gems (already includes security filtering)
         gems = self.find_hidden_gems()
         results["hidden_gems"] = gems[:10]
         
-        # 4. Update watchlist wallets
+        # 5. Update watchlist wallets with PnL
         for wallet_addr in self.watchlist:
             wallet_data = self.analyze_wallet(wallet_addr)
+            try:
+                pnl_data = self.api.get_wallet_pnl(wallet_addr)
+                pnl_summary = {
+                    "realized_profit": pnl_data.get("realized_profit", 0),
+                    "unrealized_profit": pnl_data.get("unrealized_profit", 0),
+                    "win_rate": pnl_data.get("win_rate", 0),
+                    "total_trades": pnl_data.get("total_trades", 0)
+                }
+            except:
+                pnl_summary = {}
+            
             results["watchlist_updates"].append({
                 "wallet": wallet_addr,
                 "total_holdings": wallet_data.total_holdings,
-                "top_tokens": wallet_data.most_held_tokens[:5]
+                "top_tokens": wallet_data.most_held_tokens[:5],
+                "pnl_summary": pnl_summary
             })
         
         return results
@@ -591,8 +753,142 @@ def analyze_token(token_address: str, api_key: Optional[str] = None) -> str:
     return "\n".join(result)
 
 
-def daily_scan(api_key: Optional[str] = None) -> str:
-    """Run complete daily whale tracking scan"""
+def daily_scan(api_key: Optional[str] = None, chains: List[str] = None, save_json: bool = True) -> str:
+    """Run complete daily whale tracking scan and save JSON report"""
     tracker = WhaleTracker(api_key)
-    results = tracker.run_daily_scan()
+    
+    if chains is None:
+        chains = ["solana"]  # Default to solana
+    
+    results = tracker.run_daily_scan(chains=chains)
+    
+    # Save structured JSON report (TASK 6)
+    if save_json:
+        from datetime import datetime
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        json_path = f"reports/daily_scan_{timestamp}.json"
+        
+        try:
+            os.makedirs("reports", exist_ok=True)
+            with open(json_path, "w") as f:
+                json.dump(results, f, indent=2, default=str)
+        except Exception as e:
+            pass  # Silently fail if can't write
+    
     return tracker.format_report(results)
+
+
+def get_profitable_traders(chain: str = "solana", time_frame: str = "7D", api_key: Optional[str] = None) -> str:
+    """Get profitable traders leaderboard"""
+    tracker = WhaleTracker(api_key)
+    traders = tracker.api.get_profitable_traders(chain=chain, time_frame=time_frame)
+    
+    if not traders or "error" in traders[0]:
+        return f"Error fetching profitable traders: {traders}"
+    
+    result = [f"🏆 TOP PROFITABLE TRADERS ({chain.upper()}, {time_frame})\n"]
+    for i, t in enumerate(traders[:20], 1):
+        pnl = t.get("pnl", 0)
+        volume = t.get("volume", 0)
+        wallet = t.get("wallet_address", t.get("address", "unknown"))
+        trades = t.get("trade_count", t.get("trades", 0))
+        result.append(f"{i}. {wallet[:8]}...{wallet[-6:]}")
+        result.append(f"   PnL: ${pnl:,.2f} | Volume: ${volume:,.2f} | Trades: {trades}")
+    
+    return "\n".join(result)
+
+
+def get_wallet_pnl(wallet_address: str, chain: str = "solana", api_key: Optional[str] = None) -> str:
+    """Get wallet PnL summary"""
+    tracker = WhaleTracker(api_key)
+    pnl_data = tracker.api.get_wallet_pnl(wallet_address, chain=chain)
+    
+    if not pnl_data or "error" in pnl_data:
+        return f"Error fetching wallet PnL: {pnl_data}"
+    
+    realized = pnl_data.get("realized_profit", 0)
+    unrealized = pnl_data.get("unrealized_profit", 0)
+    win_rate = pnl_data.get("win_rate", 0) * 100
+    total_trades = pnl_data.get("total_trades", 0)
+    
+    result = [
+        f"💰 WALLET PnL SUMMARY ({chain.upper()})",
+        f"Wallet: {wallet_address[:8]}...{wallet_address[-6:]}",
+        "",
+        f"Realized Profit: ${realized:,.2f}",
+        f"Unrealized Profit: ${unrealized:,.2f}",
+        f"Total PnL: ${realized + unrealized:,.2f}",
+        f"Win Rate: {win_rate:.1f}%",
+        f"Total Trades: {total_trades}"
+    ]
+    
+    return "\n".join(result)
+
+
+def get_top_traders(token_address: str, chain: str = "solana", time_frame: str = "24h", api_key: Optional[str] = None) -> str:
+    """Get top traders for a token"""
+    tracker = WhaleTracker(api_key)
+    traders = tracker.api.get_top_traders(token_address, chain=chain, time_frame=time_frame)
+    
+    if not traders or "error" in traders[0]:
+        return f"Error fetching top traders: {traders}"
+    
+    result = [f"📊 TOP TRADERS FOR TOKEN ({chain.upper()}, {time_frame})\n"]
+    for i, t in enumerate(traders[:10], 1):
+        wallet = t.get("wallet_address", t.get("address", "unknown"))
+        volume = t.get("volume", 0)
+        pnl = t.get("pnl", 0)
+        buys = t.get("buy_count", 0)
+        sells = t.get("sell_count", 0)
+        result.append(f"{i}. {wallet[:8]}...{wallet[-6:]}")
+        result.append(f"   Volume: ${volume:,.2f} | PnL: ${pnl:,.2f} | Buys: {buys} | Sells: {sells}")
+    
+    return "\n".join(result)
+
+
+def check_token_security(token_address: str, chain: str = "solana", api_key: Optional[str] = None) -> str:
+    """Check token security and return risk assessment"""
+    tracker = WhaleTracker(api_key)
+    security = tracker.api.get_token_security(token_address)
+    
+    if not security or "error" in security:
+        return f"Error fetching token security: {security}"
+    
+    is_mintable = security.get("is_mintable", False)
+    freeze_authority = security.get("freeze_authority", False)
+    top10_holder_pct = security.get("top_10_holder_percent", 0)
+    
+    # Calculate rug risk score
+    rug_risk = 0
+    risk_factors = []
+    
+    if is_mintable:
+        rug_risk += 30
+        risk_factors.append("Mintable supply")
+    if freeze_authority:
+        rug_risk += 25
+        risk_factors.append("Freeze authority enabled")
+    if top10_holder_pct > 50:
+        rug_risk += 25
+        risk_factors.append(f"Top 10 holders: {top10_holder_pct}%")
+    if top10_holder_pct > 80:
+        rug_risk += 20
+        risk_factors.append("Extremely concentrated holdings")
+    
+    risk_level = "HIGH" if rug_risk >= 50 else "MEDIUM" if rug_risk >= 25 else "LOW"
+    emoji = "🔴" if risk_level == "HIGH" else "🟡" if risk_level == "MEDIUM" else "🟢"
+    
+    result = [
+        f"{emoji} TOKEN SECURITY CHECK ({chain.upper()})",
+        f"Token: {token_address[:8]}...{token_address[-6:]}",
+        "",
+        f"Risk Level: {risk_level} (Score: {rug_risk}/100)",
+        "",
+        f"Is Mintable: {'Yes ⚠️' if is_mintable else 'No ✅'}",
+        f"Freeze Authority: {'Yes ⚠️' if freeze_authority else 'No ✅'}",
+        f"Top 10 Holder %: {top10_holder_pct}%",
+        "",
+        f"Risk Factors: {', '.join(risk_factors) if risk_factors else 'None detected'}"
+    ]
+    
+    return "\n".join(result)

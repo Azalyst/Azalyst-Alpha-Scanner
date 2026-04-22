@@ -103,13 +103,21 @@ You have access to the following tools. Call them using this exact JSON format i
 
 - **track_whale(wallet_address: str, api_key: str = None)** — Add whale wallet to tracking list and analyze holdings. Returns total portfolio value, top held tokens, and recent activity.
 
-- **find_pumps(api_key: str = None)** — Scan for potential pump tokens using hidden gem filters. Returns top 10 tokens scored 0-100 based on volume spike, holder growth, liquidity, and security.
+- **find_pumps(api_key: str = None)** — Scan for potential pump tokens using hidden gem filters. Returns top 10 tokens scored 0-100 based on volume spike, holder growth, liquidity, and security. Pre-filters high-risk tokens (rug risk >= 50).
 
 - **analyze_token(token_address: str, api_key: str = None)** — Deep analysis for pump/dump signals. Returns signal type ("pump" or "dump"), confidence (0-100%), and list of indicators (green/red flags).
 
-- **daily_scan(api_key: str = None)** — Run complete daily whale tracking workflow. Returns comprehensive report with trending analysis, whale trades, hidden gems, and watchlist updates.
+- **daily_scan(api_key: str = None, chains: List[str] = None)** — Run complete daily whale tracking workflow. Returns comprehensive report with trending analysis, whale trades, hidden gems, watchlist updates, profitable traders per chain, and security alerts. Saves structured JSON to `reports/daily_scan_YYYYMMDD_HHMMSS.json`.
 
-**Note:** Birdeye tools require `BIRDEYE_API_KEY` environment variable or pass api_key parameter.
+- **get_profitable_traders(chain: str = "solana", time_frame: str = "7D", api_key: str = None)** — Get leaderboard of most profitable traders (gainers). Returns top 20 traders sorted by PnL with wallet address, PnL, volume, and trade count. Calls `/trader/gainers-losers`.
+
+- **get_wallet_pnl(wallet_address: str, chain: str = "solana", api_key: str = None)** — Get detailed PnL summary for a wallet. Returns realized_profit, unrealized_profit, win_rate, and total_trades. Calls `/wallet/v2/pnl/summary`.
+
+- **get_top_traders(token_address: str, chain: str = "solana", time_frame: str = "24h", api_key: str = None)** — Get top traders for a specific token. Returns top 10 traders sorted by volume with wallet, volume, PnL, buy/sell counts. Calls `/defi/v2/tokens/top_traders`.
+
+- **check_token_security(token_address: str, chain: str = "solana", api_key: str = None)** — Check token security and calculate rug risk score. Returns risk level (LOW/MEDIUM/HIGH), is_mintable, freeze_authority, top_10_holder_percent, and list of risk factors. Calls `/defi/token_security`.
+
+**Note:** Birdeye tools require `BIRDEYE_API_KEY` environment variable or pass api_key parameter. All functions accept optional `chain` parameter (default: "solana"). Supported chains: solana, ethereum, base, arbitrum, bsc, avalanche, polygon, optimism, zksync.
 
 ---
 
@@ -132,7 +140,29 @@ You have access to the following tools. Call them using this exact JSON format i
 
 ### Daily Report
 ```tool_call
-{"tool": "daily_scan", "args": {}}
+{"tool": "daily_scan", "args": {"chains": ["solana", "ethereum", "base"]}}
+```
+
+### New Tool Examples
+
+#### Get Profitable Traders Leaderboard
+```tool_call
+{"tool": "get_profitable_traders", "args": {"chain": "ethereum", "time_frame": "7D"}}
+```
+
+#### Get Wallet PnL Summary
+```tool_call
+{"tool": "get_wallet_pnl", "args": {"wallet_address": "0x1234567890abcdef1234567890abcdef12345678", "chain": "ethereum"}}
+```
+
+#### Get Top Traders for Token
+```tool_call
+{"tool": "get_top_traders", "args": {"token_address": "0xabc...def", "chain": "base", "time_frame": "24h"}}
+```
+
+#### Check Token Security
+```tool_call
+{"tool": "check_token_security", "args": {"token_address": "0xabc...def", "chain": "solana"}}
 ```
 
 Always think before calling a tool. After the observation, think again.

@@ -203,9 +203,53 @@ Each scan saves to `reports/` using the naming convention:
 ```
 reports/whale_scan_YYYYMMDD_HHMMSS.txt
 reports/daily_scan_YYYYMMDD_HHMMSS.md
+reports/daily_scan_YYYYMMDD_HHMMSS.json    — Structured JSON with full data
+reports/profitable_traders_YYYYMMDD.json   — Trader leaderboard
 ```
 
 Committed automatically by `github-actions[bot]` after every successful run. Readable in the dashboard report browser without leaving the page.
+
+---
+
+## New Features (Latest Update)
+
+### Trader Leaderboard
+Get top profitable traders across chains with PnL, volume, and trade counts.
+
+```tool_call
+{"tool": "get_profitable_traders", "args": {"chain": "ethereum", "time_frame": "7D"}}
+```
+
+### Wallet PnL Tracking
+Track realized and unrealized profits for any wallet.
+
+```tool_call
+{"tool": "get_wallet_pnl", "args": {"wallet_address": "0x...", "chain": "ethereum"}}
+```
+
+### Top Traders Per Token
+Find the most active traders for specific tokens.
+
+```tool_call
+{"tool": "get_top_traders", "args": {"token_address": "0x...", "chain": "base", "time_frame": "24h"}}
+```
+
+### Token Security Checks
+Pre-filter risky tokens before scoring. Flags mintable supply, freeze authority, and holder concentration.
+
+```tool_call
+{"tool": "check_token_security", "args": {"token_address": "0x...", "chain": "solana"}}
+```
+
+### Enhanced Daily Scan
+Now includes profitable traders per chain, security alerts, and wallet PnL enrichment. Saves structured JSON reports.
+
+```tool_call
+{"tool": "daily_scan", "args": {"chains": ["solana", "ethereum", "base"]}}
+```
+
+### Improved Dashboard
+New tabs: **Traders** (leaderboard), **Security** (rug risk alerts), **Whales** (PnL panel). Dark theme with green (#00ff88) profits and red (#ff4466) losses.
 
 ---
 

@@ -11,7 +11,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 try:
-    from birdeye_tracker import track_whale, find_pumps, analyze_token, daily_scan
+    from birdeye_tracker import track_whale, find_pumps, analyze_token, daily_scan, get_profitable_traders, get_wallet_pnl, get_top_traders, check_token_security
     BIRDEYE_AVAILABLE = True
 except ImportError:
     BIRDEYE_AVAILABLE = False
@@ -20,7 +20,7 @@ TOOLS = ["bash", "read_file", "write_file", "list_dir", "search"]
 
 # Add Birdeye tools if module is available
 if BIRDEYE_AVAILABLE:
-    TOOLS.extend(["track_whale", "find_pumps", "analyze_token", "daily_scan"])
+    TOOLS.extend(["track_whale", "find_pumps", "analyze_token", "daily_scan", "get_profitable_traders", "get_wallet_pnl", "get_top_traders", "check_token_security"])
 
 MAX_OUTPUT = 8000  # chars
 
@@ -128,6 +128,32 @@ def execute_tool(tool_name: str, args: dict) -> str:
     elif tool_name == "daily_scan" and BIRDEYE_AVAILABLE:
         api_key = args.get("api_key", os.environ.get("BIRDEYE_API_KEY"))
         return daily_scan(api_key)
+    
+    # New Birdeye tools
+    elif tool_name == "get_profitable_traders" and BIRDEYE_AVAILABLE:
+        chain = args.get("chain", "solana")
+        time_frame = args.get("time_frame", "7D")
+        api_key = args.get("api_key", os.environ.get("BIRDEYE_API_KEY"))
+        return get_profitable_traders(chain=chain, time_frame=time_frame, api_key=api_key)
+    
+    elif tool_name == "get_wallet_pnl" and BIRDEYE_AVAILABLE:
+        wallet = args.get("wallet_address", "")
+        chain = args.get("chain", "solana")
+        api_key = args.get("api_key", os.environ.get("BIRDEYE_API_KEY"))
+        return get_wallet_pnl(wallet_address=wallet, chain=chain, api_key=api_key)
+    
+    elif tool_name == "get_top_traders" and BIRDEYE_AVAILABLE:
+        token = args.get("token_address", "")
+        chain = args.get("chain", "solana")
+        time_frame = args.get("time_frame", "24h")
+        api_key = args.get("api_key", os.environ.get("BIRDEYE_API_KEY"))
+        return get_top_traders(token_address=token, chain=chain, time_frame=time_frame, api_key=api_key)
+    
+    elif tool_name == "check_token_security" and BIRDEYE_AVAILABLE:
+        token = args.get("token_address", "")
+        chain = args.get("chain", "solana")
+        api_key = args.get("api_key", os.environ.get("BIRDEYE_API_KEY"))
+        return check_token_security(token_address=token, chain=chain, api_key=api_key)
     
     else:
         return f"Unknown tool: {tool_name}. Available: {TOOLS}"
