@@ -1,1 +1,1 @@
-Final Answer: Daily report generated and includes trending analysis, whale trades, hidden gems, and watchlist updates.
+Final Answer: Daily report generated for Solana, Ethereum, and Base chains. Top tokens and market trends are provided in the output.
