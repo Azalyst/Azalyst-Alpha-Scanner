@@ -18,9 +18,9 @@
   --dim: #1e2f42;
   --accent: #f0b429;
   --accent2: #e07b00;
-  --green: #00e5a0;
-  --green2: #00b87a;
-  --red: #ff4d6a;
+  --green: #00ff88;
+  --green2: #00cc6a;
+  --red: #ff4466;
   --red2: #cc2244;
   --blue: #3b9eff;
   --purple: #9b6dff;
@@ -35,13 +35,13 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:13
 body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,0.06) 2px,rgba(0,0,0,0.06) 4px);pointer-events:none;z-index:9998}
 
 /* top glow */
-body::after{content:'';position:fixed;top:0;left:50%;transform:translateX(-50%);width:600px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);z-index:100}
+body::after{content:'';position:fixed;top:0;left:50%;transform:translateX(-50%);width:600px;height:1px;background:linear-gradient(90deg,transparent,var(--green),transparent);z-index:100}
 
 /* ── HEADER ── */
 header{background:var(--s1);border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200}
-.logo{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.3em;color:var(--accent);display:flex;align-items:center;gap:12px}
-.logo-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(240,180,41,.4)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(240,180,41,0)}}
+.logo{font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.3em;color:var(--green);display:flex;align-items:center;gap:12px}
+.logo-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,255,136,.4)}50%{opacity:.6;box-shadow:0 0 0 6px rgba(0,255,136,0)}}
 .logo-sub{font-family:var(--sans);font-size:10px;font-weight:300;letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
 .header-center{display:flex;align-items:center;gap:8px}
 .live-badge{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.15em;padding:4px 10px;border:1px solid var(--border2);color:var(--muted)}
@@ -50,16 +50,16 @@ header{background:var(--s1);border-bottom:1px solid var(--border);padding:0 24px
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 .header-right{display:flex;align-items:center;gap:10px}
 input.repo-in{background:var(--bg);border:1px solid var(--border2);color:var(--bright);font-family:var(--mono);font-size:11px;padding:6px 12px;outline:none;width:220px;transition:.15s}
-input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180,41,.1)}
+input.repo-in:focus{border-color:var(--green);box-shadow:0 0 0 2px rgba(0,255,136,.1)}
 .btn{background:transparent;border:1px solid var(--border2);color:var(--muted);font-family:var(--mono);font-size:9px;letter-spacing:.12em;padding:6px 16px;cursor:pointer;text-transform:uppercase;transition:.15s}
-.btn:hover{border-color:var(--accent);color:var(--accent)}
-.btn.go{border-color:var(--accent);color:var(--accent)}
-.btn.go:hover{background:var(--accent);color:var(--bg)}
+.btn:hover{border-color:var(--green);color:var(--green)}
+.btn.go{border-color:var(--green);color:var(--green)}
+.btn.go:hover{background:var(--green);color:var(--bg)}
 #countdown{font-family:var(--mono);font-size:10px;color:var(--muted);min-width:60px;text-align:right}
 
 /* ── TICKER ── */
 .ticker{background:var(--s1);border-bottom:1px solid var(--border);height:28px;overflow:hidden;display:flex;align-items:center}
-.ticker-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--accent);padding:0 16px;border-right:1px solid var(--border);white-space:nowrap;height:100%;display:flex;align-items:center}
+.ticker-label{font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--green);padding:0 16px;border-right:1px solid var(--border);white-space:nowrap;height:100%;display:flex;align-items:center}
 .ticker-track{flex:1;overflow:hidden;position:relative;height:100%}
 .ticker-inner{display:flex;gap:40px;white-space:nowrap;animation:ticker 40s linear infinite;height:100%;align-items:center}
 .ticker-inner:hover{animation-play-state:paused}
@@ -73,10 +73,10 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 .tabbar{background:var(--s1);border-bottom:1px solid var(--border);display:flex;padding:0 24px;gap:2px}
 .tab{font-family:var(--mono);font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);padding:13px 18px;cursor:pointer;border-bottom:2px solid transparent;transition:.15s;white-space:nowrap}
 .tab:hover{color:var(--text)}
-.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab.active{color:var(--green);border-bottom-color:var(--green)}
 .badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;font-size:8px;border-radius:2px;margin-left:7px;background:var(--dim);color:var(--muted)}
-.badge.live{background:rgba(0,229,160,.15);color:var(--green)}
-.badge.warn{background:rgba(255,77,106,.15);color:var(--red)}
+.badge.live{background:rgba(0,255,136,.15);color:var(--green)}
+.badge.warn{background:rgba(255,68,102,.15);color:var(--red)}
 
 /* ── PAGES ── */
 .page{display:none;padding:20px 24px;animation:fadein .2s ease}
@@ -116,6 +116,8 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 .r-whale{grid-template-columns:60px 90px 60px 1fr 80px}
 .r-gem{grid-template-columns:60px 90px 48px 1fr 60px}
 .r-run{grid-template-columns:1fr 80px 70px 60px}
+.r-trader{grid-template-columns:50px 1fr 100px 100px 70px}
+.r-security{grid-template-columns:1fr 80px 100px 1fr 80px}
 
 .chain-tag{font-family:var(--mono);font-size:8px;padding:2px 5px;letter-spacing:.05em;font-weight:700;text-align:center;text-transform:uppercase}
 .c-solana{background:rgba(153,69,255,.15);color:#c09aff}
@@ -135,6 +137,8 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 .sig-p{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--green);letter-spacing:.1em}
 .sig-d{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--red);letter-spacing:.1em}
 .val{font-family:var(--mono);font-size:11px;color:var(--accent);text-align:right}
+.val-green{font-family:var(--mono);font-size:11px;color:var(--green);text-align:right}
+.val-red{font-family:var(--mono);font-size:11px;color:var(--red);text-align:right}
 
 .conf{text-align:right}
 .conf-n{font-family:var(--mono);font-size:11px;color:var(--bright)}
@@ -146,15 +150,16 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 .feed{max-height:380px;overflow-y:auto}
 .feed-item{padding:9px 14px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:flex-start}
 .feed-item.new{animation:flash .6s ease}
-@keyframes flash{0%{background:rgba(240,180,41,.1)}100%{background:transparent}}
+@keyframes flash{0%{background:rgba(0,255,136,.1)}100%{background:transparent}}
 .feed-time{font-family:var(--mono);font-size:9px;color:var(--muted);white-space:nowrap;padding-top:1px}
 .feed-body{flex:1;font-size:11px;line-height:1.5}
 .feed-tag{font-family:var(--mono);font-size:8px;padding:2px 6px;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}
-.ft-pump{background:rgba(0,229,160,.15);color:var(--green)}
-.ft-dump{background:rgba(255,77,106,.15);color:var(--red)}
+.ft-pump{background:rgba(0,255,136,.15);color:var(--green)}
+.ft-dump{background:rgba(255,68,102,.15);color:var(--red)}
 .ft-whale{background:rgba(59,158,255,.15);color:var(--blue)}
 .ft-gem{background:rgba(240,180,41,.15);color:var(--accent)}
 .ft-scan{background:rgba(50,80,100,.2);color:var(--muted)}
+.ft-security{background:rgba(255,68,102,.15);color:var(--red)}
 
 /* ── CHAIN HEATMAP ── */
 .heatmap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
@@ -177,7 +182,7 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 .rpt-list{border:1px solid var(--border);max-height:420px;overflow-y:auto}
 .rpt-row{padding:9px 16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .1s;font-size:11px}
 .rpt-row:hover{background:rgba(255,255,255,.02)}
-.rpt-row.sel{background:rgba(240,180,41,.06);border-left:2px solid var(--accent)}
+.rpt-row.sel{background:rgba(0,255,136,.06);border-left:2px solid var(--green)}
 .rpt-row:last-child{border-bottom:none}
 .rpt-name{font-family:var(--mono);font-size:10px;color:var(--text)}
 .rpt-meta{font-family:var(--mono);font-size:9px;color:var(--muted)}
@@ -185,14 +190,17 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 
 /* ── PILLS ── */
 .pill{font-family:var(--mono);font-size:8px;padding:2px 7px;letter-spacing:.08em;text-transform:uppercase;border-radius:1px}
-.p-ok{background:rgba(0,229,160,.15);color:var(--green)}
-.p-fail{background:rgba(255,77,106,.15);color:var(--red)}
+.p-ok{background:rgba(0,255,136,.15);color:var(--green)}
+.p-fail{background:rgba(255,68,102,.15);color:var(--red)}
 .p-run{background:rgba(59,158,255,.15);color:var(--blue)}
+.p-risk-high{background:rgba(255,68,102,.2);color:var(--red);border:1px solid var(--red)}
+.p-risk-med{background:rgba(240,180,41,.15);color:var(--accent)}
+.p-risk-low{background:rgba(0,255,136,.15);color:var(--green)}
 
 /* ── SECTION HEADS ── */
 .sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
 .sl{font-family:var(--mono);font-size:8px;letter-spacing:.2em;color:var(--muted);text-transform:uppercase;display:flex;align-items:center;gap:8px}
-.sl::before{content:'';width:2px;height:10px;background:var(--accent);display:inline-block}
+.sl::before{content:'';width:2px;height:10px;background:var(--green);display:inline-block}
 .sm{font-family:var(--mono);font-size:9px;color:var(--muted)}
 .mb{margin-bottom:20px}
 
@@ -200,6 +208,22 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 .score-ring{width:36px;height:36px;position:relative;display:flex;align-items:center;justify-content:center}
 .score-ring svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
 .score-n{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--accent)}
+
+/* ── SECURITY BADGE ── */
+.security-badge{font-family:var(--mono);font-size:8px;padding:3px 8px;border-radius:2px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.sec-high{background:var(--red);color:#000}
+.sec-med{background:var(--accent);color:#000}
+.sec-low{background:var(--green);color:#000}
+
+/* ── PNL PANEL ── */
+.pnl-card{background:var(--s1);border:1px solid var(--border);padding:14px;margin-bottom:10px;border-radius:4px}
+.pnl-wallet{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:8px}
+.pnl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pnl-item{display:flex;flex-direction:column;gap:4px}
+.pnl-label{font-family:var(--mono);font-size:8px;color:var(--muted);text-transform:uppercase}
+.pnl-value{font-family:var(--mono);font-size:14px;font-weight:700}
+.pnl-positive{color:var(--green)}
+.pnl-negative{color:var(--red)}
 
 /* scrollbar */
 ::-webkit-scrollbar{width:3px;height:3px}
@@ -242,8 +266,10 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
 <!-- TABS -->
 <div class="tabbar">
   <div class="tab active" onclick="tab('intel',this)">Intelligence <span class="badge live" id="bIntel">—</span></div>
+  <div class="tab" onclick="tab('traders',this)">Traders <span class="badge" id="bTraders">—</span></div>
   <div class="tab" onclick="tab('whales',this)">Whales <span class="badge" id="bWhale">—</span></div>
   <div class="tab" onclick="tab('gems',this)">Gems <span class="badge" id="bGem">—</span></div>
+  <div class="tab" onclick="tab('security',this)">Security <span class="badge warn" id="bSecurity">—</span></div>
   <div class="tab" onclick="tab('chains',this)">Chain Map</div>
   <div class="tab" onclick="tab('feed',this)">Live Feed <span class="badge live" id="bFeed">—</span></div>
   <div class="tab" onclick="tab('reports',this)">Reports <span class="badge" id="bReports">—</span></div>
@@ -284,6 +310,24 @@ input.repo-in:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(240,180
   <div class="panel">
     <div class="ph"><span>Chain — Token — Type — Wallet — Value</span><span class="ph-count" id="whaleCount">0</span></div>
     <div id="whaleList"><div class="empty">No data yet.</div></div>
+  </div>
+</div>
+
+<!-- TRADERS -->
+<div class="page" id="tab-traders">
+  <div class="sh mb"><div class="sl">🏆 Top Traders Leaderboard</div><span class="sm">most profitable traders by PnL — last 7 days</span></div>
+  <div class="panel">
+    <div class="ph"><span># — Wallet — PnL — Volume — Trades</span><span class="ph-count" id="traderCount">0</span></div>
+    <div id="tradersList"><div class="empty">Load a report to see traders.</div></div>
+  </div>
+</div>
+
+<!-- SECURITY -->
+<div class="page" id="tab-security">
+  <div class="sh mb"><div class="sl">⚠️ Security Alerts</div><span class="sm">rug risk assessment — mintable, freeze authority, holder concentration</span></div>
+  <div class="panel">
+    <div class="ph"><span>Token — Risk Level — Score — Factors — Status</span><span class="ph-count" id="securityCount">0</span></div>
+    <div id="securityList"><div class="empty">No security alerts.</div></div>
   </div>
 </div>
 

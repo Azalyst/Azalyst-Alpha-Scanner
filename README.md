@@ -141,12 +141,24 @@ python example_whale_tracking.py analyze <TOKEN> <CHAIN>
 
 All Birdeye tools accept an optional `chain` parameter. Default is `solana`.
 
-| Tool | Key Args | Output |
-|---|---|---|
-| `find_pumps` | `chain` | Top 10 scored candidates (0-100) |
-| `analyze_token` | `token_address`, `chain` | Signal type, confidence %, indicators |
-| `track_whale` | `wallet_address`, `chain` | Portfolio breakdown, top holdings |
-| `daily_scan` | `chains` (list, optional) | Full report across all specified chains |
+| Tool | Key Args | Output | Endpoint |
+|---|---|---|---|
+| `find_pumps` | `chain` | Top 10 scored candidates (0-100) | `/defi/trending_tokens` |
+| `analyze_token` | `token_address`, `chain` | Signal type, confidence %, indicators | `/defi/token_overview` |
+| `track_whale` | `wallet_address`, `chain` | Portfolio breakdown, top holdings | `/v1/wallet/token_list` |
+| `daily_scan` | `chains` (list, optional) | Full report across all specified chains | Multiple |
+| `get_profitable_traders` | `chain`, `time_frame` | Top 20 traders by PnL, volume, trades | `/trader/gainers-losers` |
+| `get_wallet_pnl` | `wallet_address`, `chain` | Realized/unrealized PnL, win rate | `/wallet/v2/pnl/summary` |
+| `get_top_traders` | `token_address`, `chain` | Top 10 traders per token by volume | `/defi/v2/tokens/top_traders` |
+| `check_token_security` | `token_address`, `chain` | Rug risk score, mint/freeze flags | `/defi/token_security` |
+| `get_new_listings` | `chain`, `limit` | Freshly listed tokens with age | `/defi/v2/tokens/new_listing` |
+| `get_token_creation_info` | `token_address`, `chain` | Deployer, creation time, initial supply | `/defi/token_creation_info` |
+| `get_holder_list` | `token_address`, `chain` | Top holders with balance % | `/defi/v3/token/holder` |
+| `get_wallet_pnl_details` | `wallet_address`, `chain` | Token-by-token PnL breakdown | `/wallet/v2/pnl/details` |
+| `get_trader_txs` | `wallet_address`, `chain` | Trade history with time filtering | `/trader/txs/seek_by_time` |
+| `get_ohlcv` | `token_address`, `timeframe` | Candle data (1s-1d intervals) | `/defi/v3/ohlcv` |
+| `get_wallet_token_list` | `wallet_address`, `chain` | Current holdings with USD values | `/v1/wallet/token_list` |
+| `get_wallet_tx_list` | `wallet_address`, `chain` | Full transaction history | `/v1/wallet/tx_list` |
 
 `daily_scan` with no `chains` argument scans all 9 supported chains.
 
@@ -203,9 +215,53 @@ Each scan saves to `reports/` using the naming convention:
 ```
 reports/whale_scan_YYYYMMDD_HHMMSS.txt
 reports/daily_scan_YYYYMMDD_HHMMSS.md
+reports/daily_scan_YYYYMMDD_HHMMSS.json    — Structured JSON with full data
+reports/profitable_traders_YYYYMMDD.json   — Trader leaderboard
 ```
 
 Committed automatically by `github-actions[bot]` after every successful run. Readable in the dashboard report browser without leaving the page.
+
+---
+
+## New Features (Latest Update)
+
+### Trader Leaderboard
+Get top profitable traders across chains with PnL, volume, and trade counts.
+
+```tool_call
+{"tool": "get_profitable_traders", "args": {"chain": "ethereum", "time_frame": "7D"}}
+```
+
+### Wallet PnL Tracking
+Track realized and unrealized profits for any wallet.
+
+```tool_call
+{"tool": "get_wallet_pnl", "args": {"wallet_address": "0x...", "chain": "ethereum"}}
+```
+
+### Top Traders Per Token
+Find the most active traders for specific tokens.
+
+```tool_call
+{"tool": "get_top_traders", "args": {"token_address": "0x...", "chain": "base", "time_frame": "24h"}}
+```
+
+### Token Security Checks
+Pre-filter risky tokens before scoring. Flags mintable supply, freeze authority, and holder concentration.
+
+```tool_call
+{"tool": "check_token_security", "args": {"token_address": "0x...", "chain": "solana"}}
+```
+
+### Enhanced Daily Scan
+Now includes profitable traders per chain, security alerts, and wallet PnL enrichment. Saves structured JSON reports.
+
+```tool_call
+{"tool": "daily_scan", "args": {"chains": ["solana", "ethereum", "base"]}}
+```
+
+### Improved Dashboard
+New tabs: **Traders** (leaderboard), **Security** (rug risk alerts), **Whales** (PnL panel). Dark theme with green (#00ff88) profits and red (#ff4466) losses.
 
 ---
 
