@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-04-23T20:15:08.650478+00:00",
+  "model_metrics": {
+    "status": "insufficient_data",
+    "labeled_rows": 30,
+    "required": 50,
+    "trained_ts": "2026-04-23T20:15:08.633829+00:00"
+  },
+  "cluster_counts": {
+    "anonymous": 71
+  },
+  "totals": {
+    "snapshots": 260,
+    "wallet_events": 377,
+    "labeled_outcomes": 30
+  },
+  "top_signals": [],
+  "top_patterns": [
+    {
+      "pattern_id": 1,
+      "length": 2,
+      "support": 13,
+      "lift": 1.2,
+      "positive_rate": 1.0,
+      "horizon_min": 60,
+      "prefix": [
+        "anonymous_sell",
+        "anonymous_buy"
+      ]
+    },
+    {
+      "pattern_id": 2,
+      "length": 2,
+      "support": 20,
+      "lift": 1.0,
+      "positive_rate": 0.8333333333333334,
+      "horizon_min": 60,
+      "prefix": [
+        "anonymous_buy",
+        "anonymous_buy"
+      ]
+    },
+    {
+      "pattern_id": 3,
+      "length": 2,
+      "support": 17,
+      "lift": 1.0,
+      "positive_rate": 0.8333333333333334,
+      "horizon_min": 60,
+      "prefix": [
+        "anonymous_buy",
+        "anonymous_sell"
+      ]
+    },
+    {
+      "pattern_id": 4,
+      "length": 2,
+      "support": 12,
+      "lift": 1.0,
+      "positive_rate": 0.8333333333333334,
+      "horizon_min": 60,
+      "prefix": [
+        "anonymous_sell",
+        "anonymous_sell"
+      ]
+    }
+  ]
+}

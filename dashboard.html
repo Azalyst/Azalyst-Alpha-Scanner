@@ -270,6 +270,7 @@ input.repo-in:focus{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(255,10
   <div class="tab" onclick="tab('whales',this)">Whales <span class="badge" id="bWhale">—</span></div>
   <div class="tab" onclick="tab('gems',this)">Gems <span class="badge" id="bGem">—</span></div>
   <div class="tab" onclick="tab('security',this)">Security <span class="badge warn" id="bSecurity">—</span></div>
+  <div class="tab" onclick="tab('ml',this)">ML <span class="badge" id="bML">—</span></div>
   <div class="tab" onclick="tab('chains',this)">Chain Map</div>
   <div class="tab" onclick="tab('feed',this)">Live Feed <span class="badge live" id="bFeed">—</span></div>
   <div class="tab" onclick="tab('reports',this)">Reports <span class="badge" id="bReports">—</span></div>
@@ -328,6 +329,35 @@ input.repo-in:focus{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(255,10
   <div class="panel">
     <div class="ph"><span>Token — Risk Level — Score — Factors — Status</span><span class="ph-count" id="securityCount">0</span></div>
     <div id="securityList"><div class="empty">No security alerts.</div></div>
+  </div>
+</div>
+
+<!-- ML -->
+<div class="page" id="tab-ml">
+  <div class="sh mb"><div class="sl">Behavioral ML</div><span class="sm" id="mlMeta">model status + mined patterns</span></div>
+  <div class="statbar">
+    <div class="stat"><div class="stat-lbl">Model Status</div><div class="stat-val" id="mlStatus" style="font-size:14px;padding-top:8px">—</div><div class="stat-sub" id="mlTrained">—</div></div>
+    <div class="stat"><div class="stat-lbl">ROC AUC</div><div class="stat-val" id="mlAuc">—</div><div class="stat-sub" id="mlF1">f1: —</div></div>
+    <div class="stat"><div class="stat-lbl">Labeled Rows</div><div class="stat-val" id="mlLabeled">—</div><div class="stat-sub" id="mlPosRate">pos rate: —</div></div>
+    <div class="stat"><div class="stat-lbl">Wallet Events</div><div class="stat-val" id="mlEvents">—</div><div class="stat-sub" id="mlSnaps">snaps: —</div></div>
+    <div class="stat"><div class="stat-lbl">Clusters</div><div class="stat-val" id="mlClusters" style="font-size:12px;padding-top:8px">—</div><div class="stat-sub">wallet groups</div></div>
+    <div class="stat"><div class="stat-lbl">Patterns</div><div class="stat-val" id="mlPatCount">—</div><div class="stat-sub">mined sequences</div></div>
+  </div>
+  <div class="g2w">
+    <div>
+      <div class="sh mb"><div class="sl">Top ML Signals</div><span class="sm" id="mlSigMeta">last 24h</span></div>
+      <div class="panel">
+        <div class="ph"><span>Chain — Token — Prob — Dir — Label</span><span class="ph-count" id="mlSigCount">0</span></div>
+        <div id="mlSigList"><div class="empty">No ML scores yet.</div></div>
+      </div>
+    </div>
+    <div>
+      <div class="sh mb"><div class="sl">Top Patterns by Lift</div><span class="sm">frequent subsequence → positive outcome</span></div>
+      <div class="panel">
+        <div class="ph"><span>Sequence — Lift — Support — Pos Rate</span><span class="ph-count" id="mlPatListCount">0</span></div>
+        <div id="mlPatList"><div class="empty">No patterns yet.</div></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -410,7 +440,7 @@ input.repo-in:focus{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(255,10
 const S = {
   repo: 'Azalyst/birdeye.so', token: '',
   runs: [], reports: [], parsed: null,
-  feed: [], outcomes: [], refreshTimer: null, countdown: 60
+  feed: [], outcomes: [], ml: null, refreshTimer: null, countdown: 60
 };
 
 // ── API helpers ──────────────────────────────────────────────
@@ -752,6 +782,59 @@ function renderAll(intel) {
   renderFeed();
 }
 
+function renderML() {
+  const ml = S.ml;
+  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+  if (!ml) {
+    set('bML', '—'); set('mlStatus', 'no data');
+    document.getElementById('mlSigList').innerHTML = '<div class="empty">ML pipeline has not run yet.</div>';
+    document.getElementById('mlPatList').innerHTML = '<div class="empty">No patterns mined.</div>';
+    return;
+  }
+  const mm = ml.model_metrics || {};
+  const tot = ml.totals || {};
+  const clusters = ml.cluster_counts || {};
+  const sigs = ml.top_signals || [];
+  const pats = ml.top_patterns || [];
+
+  set('bML', sigs.length || pats.length || '0');
+  set('mlStatus', (mm.status || 'unknown').toUpperCase());
+  set('mlTrained', mm.trained_ts ? rel(mm.trained_ts) : '—');
+  set('mlAuc', mm.roc_auc != null ? (Number(mm.roc_auc).toFixed(3)) : '—');
+  set('mlF1', 'f1: ' + (mm.f1 != null ? Number(mm.f1).toFixed(3) : '—'));
+  set('mlLabeled', mm.labeled_rows != null ? mm.labeled_rows : (tot.labeled_outcomes || 0));
+  set('mlPosRate', 'pos rate: ' + (mm.positive_rate != null ? (Number(mm.positive_rate) * 100).toFixed(1) + '%' : '—'));
+  set('mlEvents', (tot.wallet_events || 0).toLocaleString());
+  set('mlSnaps', 'snaps: ' + ((tot.snapshots || 0).toLocaleString()));
+  set('mlClusters', Object.entries(clusters).map(([k, v]) => `${k}:${v}`).join(' · ') || '—');
+  set('mlPatCount', pats.length);
+  set('mlSigCount', sigs.length);
+  set('mlPatListCount', pats.length);
+
+  document.getElementById('mlSigList').innerHTML = sigs.length ? sigs.map(s => {
+    const prob = (Number(s.ml_prob) * 100).toFixed(1);
+    const dirCls = s.ml_direction === 'up' ? 'p-ok' : s.ml_direction === 'down' ? 'p-fail' : 'p-run';
+    return `<div class="row r-run">
+      <span class="addr">${(s.chain || '').toUpperCase()} — ${s.symbol || '?'}</span>
+      <span class="addr">${prob}%</span>
+      <span class="pill ${dirCls}">${(s.ml_direction || '—').toUpperCase()}</span>
+      <span class="addr">${s.label || ''}</span>
+    </div>`;
+  }).join('') : '<div class="empty">No ML scores in the last 24h.</div>';
+
+  document.getElementById('mlPatList').innerHTML = pats.length ? pats.map(p => {
+    const seq = (p.prefix || []).join(' → ');
+    const lift = Number(p.lift || 0).toFixed(2);
+    const pr = (Number(p.positive_rate || 0) * 100).toFixed(1);
+    return `<div class="row r-run">
+      <span class="addr">${seq}</span>
+      <span class="addr">lift ${lift}×</span>
+      <span class="addr">sup ${p.support}</span>
+      <span class="pill p-ok">${pr}%</span>
+    </div>`;
+  }).join('') : '<div class="empty">Need more data to mine patterns.</div>';
+}
+
 function renderReports() {
   document.getElementById('bReports').textContent = S.reports.length;
   document.getElementById('rptMeta').textContent = `${S.reports.length} files`;
@@ -811,6 +894,7 @@ async function init() {
         || S.reports[0];
       const outcomeReport = S.reports.find(f => f.path.endsWith('latest_quant_outcomes.json'))
         || S.reports.find(f => /quant_outcomes_.*\.json$/.test(f.path));
+      const mlReport = S.reports.find(f => f.path.endsWith('latest_ml_scores.json'));
       const r = await ghRaw(signalReport.path);
       const text = await r.text();
       S.parsed = parseReport(text);
@@ -821,12 +905,19 @@ async function init() {
         S.outcomes = parsedOutcome.outcomes || [];
         S.parsed.outcomes = S.outcomes;
       }
+      if (mlReport) {
+        try {
+          const mr = await ghRaw(mlReport.path);
+          S.ml = JSON.parse(await mr.text());
+        } catch (e) { S.ml = null; }
+      }
     } else {
       S.parsed = emptyIntel();
     }
 
     renderAll(S.parsed);
     renderReports();
+    renderML();
     setStatus('live');
   } catch (e) {
     setStatus('error');

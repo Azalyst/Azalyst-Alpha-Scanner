@@ -1,0 +1,77 @@
+name: Birdeye ML Pipeline
+
+on:
+  schedule:
+    # Cheap refresh every 2h: cluster → events → mine → score(recent)
+    - cron: '17 */2 * * *'
+    # Full retrain once per day at 03:13 UTC
+    - cron: '13 3 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Pipeline mode'
+        required: true
+        default: 'refresh'
+        type: choice
+        options:
+          - refresh
+          - all
+
+permissions:
+  contents: write
+
+concurrency:
+  group: birdeye-quant-signal-engine
+  cancel-in-progress: false
+
+jobs:
+  ml:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Decide mode
+        id: mode
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ inputs.mode }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ github.event.schedule }}" = "13 3 * * *" ]; then
+            echo "mode=all" >> "$GITHUB_OUTPUT"
+          else
+            echo "mode=refresh" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run ML pipeline (${{ steps.mode.outputs.mode }})
+        run: |
+          if [ ! -f data/birdeye_quant.db ]; then
+            echo "No quant DB yet — skipping."
+            exit 0
+          fi
+          python -m ml ${{ steps.mode.outputs.mode }}
+
+      - name: Commit ML artifacts
+        run: |
+          git config user.name "Birdeye ML Bot"
+          git config user.email "actions@github.com"
+          git add -f data/birdeye_quant.db || true
+          git add -f ml/model.pkl ml/metrics.json reports/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No ML artifacts changed."
+            exit 0
+          fi
+          git commit -m "ML pipeline: ${{ steps.mode.outputs.mode }} run"
+          git pull --rebase origin main
+          git push
