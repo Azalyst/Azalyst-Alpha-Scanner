@@ -10,7 +10,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from tools import execute_tool, TOOLS
 
 NIM_API_KEY = os.environ.get("NIM_API_KEY")
-MODEL = "qwen/qwen2.5-coder-7b-instruct"   # 7B — 4x faster than 32B on NIM
+MODEL = "qwen/qwen2.5-coder-32b-instruct"
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 
 client = OpenAI(api_key=NIM_API_KEY, base_url=BASE_URL)
@@ -74,7 +74,7 @@ def run_agent(task: str) -> str:
         {"role": "user", "content": task},
     ]
 
-    max_iterations = 5   # whale scans need 2-3 tool calls max; 5 gives headroom
+    max_iterations = 15
 
     for i in range(max_iterations):
         print(f"\n--- Iteration {i + 1} ---")
@@ -87,9 +87,9 @@ def run_agent(task: str) -> str:
 
         content = response.choices[0].message.content
         messages.append({"role": "assistant", "content": content})
-        print(f"Agent: {content[:300]}...")
+        print(f"Agent: {content[:500]}...")
 
-        # ── PRIORITY 1: execute tool call if present ──────────────────────────
+        # ── PRIORITY 1: execute tool call if present ──────────────────────
         tool_name, args = parse_tool_call(content)
         if tool_name:
             print(f"Executing tool: {tool_name}  args: {args}")
@@ -97,19 +97,19 @@ def run_agent(task: str) -> str:
                 observation = execute_tool(tool_name, args)
             except Exception as e:
                 observation = f"Tool execution error: {e}"
-            print(f"Observation: {str(observation)[:300]}...")
+            print(f"Observation: {str(observation)[:500]}...")
             messages.append({"role": "user", "content": f"Observation: {observation}"})
-            continue   # go back to top — check for next tool call or final answer
+            continue  # go back to top — check for next tool call or final answer
 
-        # ── PRIORITY 2: final answer — task complete ──────────────────────────
+        # ── PRIORITY 2: final answer ──────────────────────────────────────
         if "Final Answer:" in content:
             output_path = extract_output_path(task)
             save_output(output_path, content)
             return content
 
-        # ── Neither tool call nor final answer ───────────────────────────────
-        if i >= 3:
-            msg = "Agent produced no tool call or final answer after 3+ iterations. Aborting."
+        # ── Neither tool call nor final answer ────────────────────────────
+        if i >= 4:
+            msg = f"Agent produced no tool call or final answer after {i + 1} iterations. Aborting."
             print(msg)
             return msg
 
