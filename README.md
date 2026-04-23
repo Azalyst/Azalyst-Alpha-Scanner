@@ -1,4 +1,4 @@
-# Azalyst Birdeye Alpha Signal Engine — v1.0
+# Azalyst Birdeye Scanner
 
 An institutional-style on-chain signal platform for discovering and validating pump/dump, whale-accumulation, and smart-money patterns across 9 EVM and Solana chains. Runs entirely on GitHub Actions — no servers, no backend. Built as a personal project. Not a hedge fund. Not a financial product. Just systematic on-chain research.
 
