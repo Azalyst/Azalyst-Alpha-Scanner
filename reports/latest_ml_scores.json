@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T19:14:08.361523+00:00",
+  "generated_at": "2026-04-24T21:08:02.077932+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -102,154 +102,10 @@
     "wallet_events": 377,
     "labeled_outcomes": 30
   },
-  "top_signals": [
-    {
-      "snapshot_id": 250,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
-      "symbol": "USDC",
-      "ml_prob": 0.015716395589184147,
-      "ml_direction": "down",
-      "pump_score": 7.01,
-      "dump_score": 0.0,
-      "anomaly_score": 7.89,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 251,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619",
-      "symbol": "WETH",
-      "ml_prob": 0.015716395589184147,
-      "ml_direction": "down",
-      "pump_score": 5.41,
-      "dump_score": 0.16,
-      "anomaly_score": 6.34,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 259,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "optimism",
-      "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
-      "symbol": "USDC",
-      "ml_prob": 0.015716395589184147,
-      "ml_direction": "down",
-      "pump_score": 6.44,
-      "dump_score": 0.0,
-      "anomaly_score": 7.25,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 252,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
-      "symbol": "USDC",
-      "ml_prob": 0.014620727650717636,
-      "ml_direction": "down",
-      "pump_score": 4.57,
-      "dump_score": 0.0,
-      "anomaly_score": 5.14,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 253,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x1BFD67037B42Cf73acF2047067bd4F2C47D9BfD6",
-      "symbol": "WBTC",
-      "ml_prob": 0.014620727650717636,
-      "ml_direction": "down",
-      "pump_score": 4.88,
-      "dump_score": 0.32,
-      "anomaly_score": 5.98,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 256,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0xD6DF932A45C0f255f85145f286eA0b292B21C90B",
-      "symbol": "AAVE",
-      "ml_prob": 0.014620727650717636,
-      "ml_direction": "down",
-      "pump_score": 5.68,
-      "dump_score": 0.0,
-      "anomaly_score": 6.57,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 257,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x6631eE651DA438Db2BE611B5A44dFE2Ca04590C5",
-      "symbol": "A",
-      "ml_prob": 0.014620727650717636,
-      "ml_direction": "down",
-      "pump_score": 1.4,
-      "dump_score": 0.59,
-      "anomaly_score": 2.49,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 258,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000006",
-      "symbol": "WETH",
-      "ml_prob": 0.014620727650717636,
-      "ml_direction": "down",
-      "pump_score": 7.29,
-      "dump_score": 0.17,
-      "anomaly_score": 8.47,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 260,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "optimism",
-      "address": "0x68f180fcCe6836688e9084f035309E29Bf0A2095",
-      "symbol": "WBTC",
-      "ml_prob": 0.014620727650717636,
-      "ml_direction": "down",
-      "pump_score": 12.82,
-      "dump_score": 0.46,
-      "anomaly_score": 15.14,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 254,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39",
-      "symbol": "LINK",
-      "ml_prob": 0.005673063164308871,
-      "ml_direction": "down",
-      "pump_score": 3.52,
-      "dump_score": 0.0,
-      "anomaly_score": 4.03,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 255,
-      "ts": "2026-04-23T19:39:12+00:00",
-      "chain": "polygon",
-      "address": "0x714DB550b574b3E927af3D93E26127D15721D4C2",
-      "symbol": "GMT",
-      "ml_prob": 0.005673063164308871,
-      "ml_direction": "down",
-      "pump_score": 0.25,
-      "dump_score": 1.79,
-      "anomaly_score": 3.07,
-      "label": "watch"
-    }
-  ],
+  "top_signals": [],
   "top_patterns": [
     {
-      "pattern_id": 277,
+      "pattern_id": 305,
       "length": 4,
       "support": 15,
       "lift": 1.2,
@@ -263,7 +119,7 @@
       ]
     },
     {
-      "pattern_id": 278,
+      "pattern_id": 306,
       "length": 4,
       "support": 13,
       "lift": 1.2,
@@ -277,7 +133,7 @@
       ]
     },
     {
-      "pattern_id": 279,
+      "pattern_id": 307,
       "length": 3,
       "support": 13,
       "lift": 1.2,
@@ -290,7 +146,7 @@
       ]
     },
     {
-      "pattern_id": 280,
+      "pattern_id": 308,
       "length": 2,
       "support": 13,
       "lift": 1.2,
@@ -302,7 +158,7 @@
       ]
     },
     {
-      "pattern_id": 281,
+      "pattern_id": 309,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -316,7 +172,7 @@
       ]
     },
     {
-      "pattern_id": 282,
+      "pattern_id": 310,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -330,7 +186,7 @@
       ]
     },
     {
-      "pattern_id": 283,
+      "pattern_id": 311,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -344,7 +200,7 @@
       ]
     },
     {
-      "pattern_id": 284,
+      "pattern_id": 312,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -358,7 +214,7 @@
       ]
     },
     {
-      "pattern_id": 285,
+      "pattern_id": 313,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -371,7 +227,7 @@
       ]
     },
     {
-      "pattern_id": 286,
+      "pattern_id": 314,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -385,7 +241,7 @@
       ]
     },
     {
-      "pattern_id": 287,
+      "pattern_id": 315,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -398,7 +254,7 @@
       ]
     },
     {
-      "pattern_id": 288,
+      "pattern_id": 316,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -412,7 +268,7 @@
       ]
     },
     {
-      "pattern_id": 289,
+      "pattern_id": 317,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -425,7 +281,7 @@
       ]
     },
     {
-      "pattern_id": 290,
+      "pattern_id": 318,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -438,7 +294,7 @@
       ]
     },
     {
-      "pattern_id": 291,
+      "pattern_id": 319,
       "length": 4,
       "support": 12,
       "lift": 1.2,
