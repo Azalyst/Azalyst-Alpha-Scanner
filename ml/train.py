@@ -17,7 +17,7 @@ from typing import Any, Dict
 
 from ml.features import build_matrix
 
-MIN_SAMPLES = 50
+MIN_SAMPLES = 20
 MODEL_PATH = Path("ml/model.pkl")
 METRICS_PATH = Path("ml/metrics.json")
 

@@ -1,6 +1,94 @@
 {
-  "status": "insufficient_data",
+  "status": "ok",
+  "model": "sklearn_gbt",
+  "trained_ts": "2026-04-24T04:23:02.100684+00:00",
   "labeled_rows": 30,
-  "required": 50,
-  "trained_ts": "2026-04-23T20:15:08.633829+00:00"
+  "positive_rate": 0.2,
+  "roc_auc": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1": 1.0,
+  "feature_count": 46,
+  "top_features": [
+    {
+      "name": "win_anonymous_sell",
+      "importance": 0.2963629853345484
+    },
+    {
+      "name": "pat_17",
+      "importance": 0.2524765537560948
+    },
+    {
+      "name": "win_anonymous_buy",
+      "importance": 0.21116046090935683
+    },
+    {
+      "name": "price_change_1h_pct",
+      "importance": 0.04480510343776466
+    },
+    {
+      "name": "volume_24h_usd",
+      "importance": 0.037151781841688596
+    },
+    {
+      "name": "price_change_24h_pct",
+      "importance": 0.023912475710737246
+    },
+    {
+      "name": "sell_count",
+      "importance": 0.01821248304112087
+    },
+    {
+      "name": "pump_score",
+      "importance": 0.016890960559064316
+    },
+    {
+      "name": "holder_count",
+      "importance": 0.014502512649030496
+    },
+    {
+      "name": "volume_5m_usd",
+      "importance": 0.014262114657115379
+    },
+    {
+      "name": "market_cap",
+      "importance": 0.014117075232501566
+    },
+    {
+      "name": "buy_count",
+      "importance": 0.013232520710899288
+    },
+    {
+      "name": "volume_1h_usd",
+      "importance": 0.012737350518583785
+    },
+    {
+      "name": "price",
+      "importance": 0.012615776859946139
+    },
+    {
+      "name": "liquidity_usd",
+      "importance": 0.011503147935788969
+    },
+    {
+      "name": "anomaly_score",
+      "importance": 0.0032422899863461196
+    },
+    {
+      "name": "unique_wallets",
+      "importance": 0.00272555156903193
+    },
+    {
+      "name": "price_change_5m_pct",
+      "importance": 8.885529038063049e-05
+    },
+    {
+      "name": "holder_change_24h",
+      "importance": 0.0
+    },
+    {
+      "name": "top10_holder_pct",
+      "importance": 0.0
+    }
+  ]
 }
