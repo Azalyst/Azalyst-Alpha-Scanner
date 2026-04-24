@@ -54,6 +54,15 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Test Birdeye API key
+        run: |
+          echo "=== Birdeye API key test ==="
+          STATUS=$(curl -s -o /tmp/be_test.json -w "%{http_code}" \
+            -H "X-API-KEY: $BIRDEYE_API_KEY" \
+            "https://public-api.birdeye.so/defi/tokenlist?sort_by=v24hUSD&sort_type=desc&offset=0&limit=3&min_liquidity=100&chain=solana")
+          echo "HTTP status: $STATUS"
+          echo "Response: $(cat /tmp/be_test.json)"
+
       - name: Run quant scan and evaluate old calls
         run: |
           if [ -z "$BIRDEYE_API_KEY" ]; then
