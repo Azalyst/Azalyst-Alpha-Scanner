@@ -247,7 +247,7 @@ input.repo-in:focus{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(255,10
     <span id="countdown" title="Next auto-refresh">—</span>
   </div>
   <div class="header-right">
-    <input class="repo-in" id="repoIn" placeholder="owner/repository" value="Azalyst/birdeye.so"/>
+    <input class="repo-in" id="repoIn" placeholder="owner/repository" value="Azalyst/Azalyst-Birdeye-Scanner"/>
     <input class="repo-in" id="tokenIn" placeholder="GitHub PAT (private repos)" style="width:180px" type="password"/>
     <button class="btn go" onclick="init()">LOAD</button>
   </div>
@@ -438,7 +438,7 @@ input.repo-in:focus{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(255,10
 
 <script>
 const S = {
-  repo: 'Azalyst/birdeye.so', token: '',
+  repo: 'Azalyst/Azalyst-Birdeye-Scanner', token: '',
   runs: [], reports: [], parsed: null,
   feed: [], outcomes: [], ml: null, refreshTimer: null, countdown: 60
 };
@@ -873,7 +873,7 @@ async function init() {
   try {
     const [wh, wt, qt] = await Promise.all([
       gh('/actions/workflows/agent.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
-      gh('/actions/workflows/whale_tracking.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
+      gh('/actions/workflows/ml_pipeline.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
       gh('/actions/workflows/quant_signal_engine.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
     ]);
     S.runs = [
