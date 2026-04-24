@@ -4,959 +4,500 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AZALYST | Birdeye Scanner</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #000000;
-  --s1: #0a0a0a;
-  --s2: #050505;
-  --border: #333333;
-  --border2: #1a1a1a;
-  --text: #bbbbbb;
-  --bright: #ffffff;
-  --muted: #555555;
-  --dim: #111111;
-  --accent: #ff9900;
-  --accent2: #ff6600;
-  --green: #00dd33;
-  --green2: #00aa2a;
-  --red: #ff3333;
-  --red2: #cc2200;
-  --blue: #0ea5e9;
-  --purple: #a855f7;
-  --mono: 'Courier New', monospace;
-  --sans: 'Courier New', monospace;
-}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--accent);font-family:var(--sans);font-size:13px;line-height:1.5;min-height:100vh;overflow-x:hidden;min-width:1220px}
-
-/* scanline overlay */
-body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,102,0,0.03) 3px,rgba(255,102,0,0.03) 4px);pointer-events:none;z-index:9998}
-
-/* top glow */
-body::after{content:'';position:fixed;top:0;left:50%;transform:translateX(-50%);width:760px;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent);z-index:100}
-
-/* ── HEADER ── */
-header{background:var(--accent2);border-bottom:1px solid var(--accent2);padding:0 12px;height:42px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:200;color:#000}
-.logo{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.18em;color:var(--accent2);display:flex;align-items:center;gap:12px;background:#000;padding:4px 12px}
-.logo-dot{width:8px;height:8px;border-radius:50%;background:#00ff41;animation:pulse 1.5s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.logo-sub{font-family:var(--sans);font-size:10px;font-weight:400;letter-spacing:.12em;color:#fff;text-transform:uppercase}
-.header-center{display:flex;align-items:center;gap:8px}
-.live-badge{display:flex;align-items:center;gap:6px;font-family:var(--mono);font-size:9px;letter-spacing:.12em;padding:4px 10px;border:1px solid #000;background:#111;color:#ffb366}
-.live-dot{width:6px;height:6px;border-radius:50%;background:var(--muted)}
-.live-dot.active{background:var(--green);animation:blink 1.5s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.header-right{display:flex;align-items:center;gap:10px}
-input.repo-in{background:#000;border:1px solid #553300;color:#fff;font-family:var(--mono);font-size:11px;padding:6px 12px;outline:none;width:240px;transition:.15s}
-input.repo-in:focus{border-color:var(--accent2);box-shadow:0 0 0 1px rgba(255,102,0,.25)}
-.btn{background:#1a0a00;border:1px solid var(--accent2);color:var(--accent);font-family:var(--mono);font-size:9px;letter-spacing:.12em;padding:6px 16px;cursor:pointer;text-transform:uppercase;transition:.15s;font-weight:700}
-.btn:hover{background:var(--accent2);color:#000}
-.btn.go{background:#000;border-color:#000;color:#00ff41}
-.btn.go:hover{background:#111;color:#00ff41}
-#countdown{font-family:var(--mono);font-size:10px;color:#000;min-width:60px;text-align:right;font-weight:700}
-
-/* ── TICKER ── */
-.ticker{background:#111;border-bottom:1px solid #222;height:24px;overflow:hidden;display:flex;align-items:center}
-.ticker-label{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--accent2);padding:0 16px;border-right:1px solid var(--border);white-space:nowrap;height:100%;display:flex;align-items:center;font-weight:700}
-.ticker-track{flex:1;overflow:hidden;position:relative;height:100%}
-.ticker-inner{display:flex;gap:40px;white-space:nowrap;animation:ticker 40s linear infinite;height:100%;align-items:center}
-.ticker-inner:hover{animation-play-state:paused}
-@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.tick-item{font-family:var(--mono);font-size:9px;letter-spacing:.06em;display:flex;align-items:center;gap:6px;white-space:nowrap}
-.tick-pump{color:var(--green)}
-.tick-dump{color:var(--red)}
-.tick-sep{color:#444}
-
-/* ── TABS ── */
-.tabbar{background:var(--accent2);border-bottom:1px solid #222;display:flex;padding:0 12px;gap:1px}
-.tab{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#000;padding:8px 16px;cursor:pointer;border:none;transition:.15s;white-space:nowrap;background:#cc5200;font-weight:700}
-.tab:hover{background:#e06000}
-.tab.active{background:#fff;color:#000}
-.badge{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;font-size:8px;border-radius:2px;margin-left:7px;background:#111;color:var(--accent)}
-.badge.live{background:#0a1a0a;color:#00ff41}
-.badge.warn{background:#1a0000;color:#ff4444}
-
-/* ── PAGES ── */
-.page{display:none;padding:14px 16px;animation:fadein .2s ease}
+html{font-size:13px}
+body{background:#000;color:#ff6600;font-family:'Courier New',monospace;min-height:100vh;overflow-x:hidden;min-width:1100px}
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(255,102,0,0.02) 3px,rgba(255,102,0,0.02) 4px);pointer-events:none;z-index:9998}
+.topbar{background:#000;border-bottom:1px solid #1a1a1a;padding:0 12px;height:38px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{font-size:13px;font-weight:700;letter-spacing:.18em;color:#ff6600;display:flex;align-items:center;gap:8px}
+.logo span{color:#666;font-weight:400;font-size:10px;letter-spacing:.12em}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#333;display:inline-block}
+.live-dot.on{background:#00dd33;animation:blink 1s step-end infinite}
+@keyframes blink{50%{opacity:0}}
+.tabs{display:flex;gap:1px;margin-left:16px}
+.tab{background:transparent;border:none;color:#555;font-family:'Courier New',monospace;font-size:10px;font-weight:700;letter-spacing:.06em;padding:5px 12px;cursor:pointer;text-transform:uppercase;transition:.1s}
+.tab:hover{color:#ff9900}
+.tab.active{color:#000;background:#ff6600}
+.topbar-right{display:flex;align-items:center;gap:8px}
+#clock{font-size:10px;color:#444;letter-spacing:.06em}
+.offline-badge{font-size:9px;color:#553300;letter-spacing:.1em}
+.live-badge{font-size:9px;color:#00dd33;letter-spacing:.1em}
+.stale-badge{font-size:9px;color:#cc7700;letter-spacing:.1em}
+input.repo-in{background:#000;border:1px solid #333;color:#ff9900;font-family:'Courier New',monospace;font-size:10px;padding:4px 8px;outline:none}
+input.repo-in:focus{border-color:#ff6600}
+.btn{background:#0a0a0a;border:1px solid #ff6600;color:#ff6600;font-family:'Courier New',monospace;font-size:9px;letter-spacing:.1em;padding:4px 12px;cursor:pointer;text-transform:uppercase;font-weight:700}
+.btn:hover{background:#ff6600;color:#000}
+#countdown{font-size:9px;color:#333}
+.tape{background:#050505;border-bottom:1px solid #111;height:22px;display:flex;align-items:center;overflow:hidden}
+.tape-label{font-size:9px;color:#ff6600;font-weight:700;letter-spacing:.15em;padding:0 14px;border-right:1px solid #1a1a1a;white-space:nowrap;height:100%;display:flex;align-items:center}
+.tape-track{flex:1;overflow:hidden}
+.tape-inner{display:flex;gap:32px;white-space:nowrap;animation:scroll 50s linear infinite}
+.tape-inner:hover{animation-play-state:paused}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tape-item{font-size:9px;letter-spacing:.04em}
+.tape-pump{color:#00dd33}
+.tape-dump{color:#cc2200}
+.tape-sep{color:#333}
+.page{display:none;padding:10px 14px}
 .page.active{display:block}
-@keyframes fadein{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
-
-/* ── STAT BAR ── */
-.statbar{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;background:#333;border:1px solid #333;margin-bottom:16px}
-.stat{background:#0a0a0a;padding:12px 16px;position:relative;overflow:hidden}
-.stat::after{content:'';position:absolute;top:0;left:0;right:0;height:2px}
-.stat.pump::after{background:linear-gradient(90deg,var(--green2),var(--green))}
-.stat.dump::after{background:linear-gradient(90deg,var(--red2),var(--red))}
-.stat.whale::after{background:linear-gradient(90deg,#2266cc,var(--blue))}
-.stat.gem::after{background:linear-gradient(90deg,var(--accent2),var(--accent))}
-.stat.chain::after{background:linear-gradient(90deg,var(--purple),#c0a0ff)}
-.stat.ops::after{background:var(--dim)}
-.stat-lbl{font-family:var(--mono);font-size:8px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:7px}
-.stat-val{font-family:var(--mono);font-size:26px;font-weight:700;color:var(--bright);line-height:1}
-.stat-sub{font-size:10px;color:var(--muted);margin-top:4px}
-
-/* ── GRID LAYOUTS ── */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.g2w{display:grid;grid-template-columns:3fr 2fr;gap:20px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
-
-/* ── PANEL ── */
-.panel{border:1px solid #1a1a1a;background:#0a0a0a}
-.ph{background:#050505;padding:8px 12px;border-bottom:1px solid #222;display:flex;align-items:center;justify-content:space-between;font-family:var(--mono);font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent2);font-weight:700}
-.ph-count{font-size:10px;color:var(--accent)}
-.empty{padding:28px;text-align:center;color:var(--muted);font-family:var(--mono);font-size:10px}
-
-/* ── SIGNAL ROWS ── */
-.row{padding:10px 14px;border-bottom:1px solid #0d0d0d;display:grid;align-items:center;gap:10px;transition:background .1s;cursor:default}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.g32{display:grid;grid-template-columns:3fr 2fr;gap:8px}
+.panel{background:#0a0a0a;border:1px solid #1a1a1a}
+.ph{color:#ff6600;font-weight:700;font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid #111;padding:6px 10px;display:flex;justify-content:space-between;align-items:center}
+.empty{padding:20px;text-align:center;color:#333;font-size:10px}
+.mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-bottom:10px}
+.stat-box{background:#050505;border:1px solid #1a1a1a;padding:6px 10px}
+.stat-label{color:#444;font-size:8px;text-transform:uppercase;letter-spacing:.1em}
+.stat-val{font-size:20px;font-weight:700;color:#fff;margin:3px 0 2px;line-height:1}
+.stat-val.up{color:#00dd33}
+.stat-val.dn{color:#cc2200}
+.stat-sub{font-size:9px;color:#333}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.sh-label{font-size:9px;font-weight:700;letter-spacing:.1em;color:#ff6600;text-transform:uppercase}
+.sh-meta{font-size:9px;color:#333}
+.row{display:flex;align-items:center;gap:8px;padding:4px 10px;border-bottom:1px solid #0d0d0d;font-size:10px}
 .row:last-child{border-bottom:none}
-.row:hover{background:#111}
-.r-sig{grid-template-columns:60px 90px 1fr 60px 55px}
-.r-whale{grid-template-columns:60px 90px 60px 1fr 80px}
-.r-gem{grid-template-columns:60px 90px 48px 1fr 60px}
-.r-run{grid-template-columns:1fr 80px 70px 60px}
-.r-trader{grid-template-columns:50px 1fr 100px 100px 70px}
-.r-security{grid-template-columns:1fr 80px 100px 1fr 80px}
-
-.chain-tag{font-family:var(--mono);font-size:8px;padding:2px 5px;letter-spacing:.05em;font-weight:700;text-align:center;text-transform:uppercase}
-.c-solana{background:rgba(153,69,255,.15);color:#c09aff}
-.c-ethereum{background:rgba(98,126,234,.15);color:#9aaeff}
-.c-base{background:rgba(0,82,255,.12);color:#6699ff}
-.c-arbitrum{background:rgba(40,160,240,.12);color:#60c0f0}
-.c-bnb{background:rgba(240,185,11,.12);color:#f0d060}
-.c-avalanche{background:rgba(232,65,66,.12);color:#f07070}
-.c-polygon{background:rgba(130,71,229,.12);color:#b090f0}
-.c-optimism{background:rgba(255,4,32,.12);color:#ff7080}
-.c-zksync{background:rgba(54,103,246,.12);color:#80a0ff}
-.c-unknown{background:rgba(50,80,100,.2);color:var(--muted)}
-
-.tok{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent);letter-spacing:.04em}
-.ind{font-size:11px;color:#888;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.addr{font-family:var(--mono);font-size:10px;color:var(--muted)}
-.sig-p{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--green);letter-spacing:.1em}
-.sig-d{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--red);letter-spacing:.1em}
-.val{font-family:var(--mono);font-size:11px;color:var(--bright);text-align:right}
-.val-green{font-family:var(--mono);font-size:11px;color:var(--green);text-align:right}
-.val-red{font-family:var(--mono);font-size:11px;color:var(--red);text-align:right}
-
-.conf{text-align:right}
-.conf-n{font-family:var(--mono);font-size:11px;color:var(--bright)}
-.conf-bar{height:2px;background:#111;margin-top:3px;border-radius:1px;overflow:hidden}
-.cf-p{height:100%;background:linear-gradient(90deg,var(--green2),var(--green));border-radius:1px}
-.cf-d{height:100%;background:linear-gradient(90deg,var(--red2),var(--red));border-radius:1px}
-
-/* ── LIVE FEED ── */
-.feed{max-height:380px;overflow-y:auto}
-.feed-item{padding:9px 14px;border-bottom:1px solid #0d0d0d;display:flex;gap:10px;align-items:flex-start}
-.feed-item.new{animation:flash .6s ease}
-@keyframes flash{0%{background:rgba(0,255,136,.1)}100%{background:transparent}}
-.feed-time{font-family:var(--mono);font-size:9px;color:var(--muted);white-space:nowrap;padding-top:1px}
-.feed-body{flex:1;font-size:11px;line-height:1.5}
-.feed-tag{font-family:var(--mono);font-size:8px;padding:2px 6px;letter-spacing:.08em;text-transform:uppercase;margin-right:6px}
-.ft-pump{background:rgba(0,255,136,.15);color:var(--green)}
-.ft-dump{background:rgba(255,68,102,.15);color:var(--red)}
-.ft-whale{background:rgba(59,158,255,.15);color:var(--blue)}
-.ft-gem{background:rgba(240,180,41,.15);color:var(--accent)}
-.ft-scan{background:rgba(50,80,100,.2);color:var(--muted)}
-.ft-security{background:rgba(255,68,102,.15);color:var(--red)}
-
-/* ── CHAIN HEATMAP ── */
-.heatmap{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
-.hm-cell{background:var(--s2);padding:14px 16px;position:relative;transition:background .2s}
-.hm-cell:hover{background:var(--s1)}
-.hm-cell::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--dim);transition:all .3s}
-.hm-cell.hot-pump::before{background:linear-gradient(90deg,var(--green2),var(--green))}
-.hm-cell.hot-dump::before{background:linear-gradient(90deg,var(--red2),var(--red))}
-.hm-cell.hot-both::before{background:linear-gradient(90deg,var(--green) 40%,var(--red) 60%)}
-.hm-name{font-family:var(--mono);font-size:10px;font-weight:700;color:var(--bright);letter-spacing:.08em;margin-bottom:8px}
-.hm-nums{display:flex;gap:16px}
-.hm-p{font-size:18px;font-family:var(--mono);font-weight:700;color:var(--green);line-height:1}
-.hm-d{font-size:18px;font-family:var(--mono);font-weight:700;color:var(--red);line-height:1}
-.hm-sub{font-size:9px;color:var(--muted);margin-top:2px}
-.hm-bar{margin-top:8px;height:3px;background:var(--dim);border-radius:2px;overflow:hidden;display:flex;gap:1px}
-.hm-bp{height:100%;background:var(--green2);border-radius:2px;transition:width .5s}
-.hm-bd{height:100%;background:var(--red2);border-radius:2px;transition:width .5s}
-
-/* ── REPORTS ── */
-.rpt-list{border:1px solid #1a1a1a;max-height:420px;overflow-y:auto}
-.rpt-row{padding:9px 16px;border-bottom:1px solid #0d0d0d;display:flex;justify-content:space-between;align-items:center;cursor:pointer;transition:background .1s;font-size:11px}
-.rpt-row:hover{background:#111}
-.rpt-row.sel{background:#1a0a00;border-left:2px solid var(--accent2)}
-.rpt-row:last-child{border-bottom:none}
-.rpt-name{font-family:var(--mono);font-size:10px;color:#bbb}
-.rpt-meta{font-family:var(--mono);font-size:9px;color:var(--muted)}
-.rpt-content{border:1px solid #1a1a1a;background:#000;padding:16px;font-family:var(--mono);font-size:10px;line-height:1.8;white-space:pre-wrap;max-height:500px;overflow-y:auto;color:#bbb}
-
-/* ── PILLS ── */
-.pill{font-family:var(--mono);font-size:8px;padding:2px 7px;letter-spacing:.08em;text-transform:uppercase;border-radius:1px}
-.p-ok{background:rgba(0,255,136,.15);color:var(--green)}
-.p-fail{background:rgba(255,68,102,.15);color:var(--red)}
-.p-run{background:rgba(59,158,255,.15);color:var(--blue)}
-.p-risk-high{background:rgba(255,68,102,.2);color:var(--red);border:1px solid var(--red)}
-.p-risk-med{background:rgba(240,180,41,.15);color:var(--accent)}
-.p-risk-low{background:rgba(0,255,136,.15);color:var(--green)}
-
-/* ── SECTION HEADS ── */
-.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.sl{font-family:var(--mono);font-size:9px;letter-spacing:.12em;color:var(--accent2);text-transform:uppercase;display:flex;align-items:center;gap:8px;font-weight:700}
-.sl::before{content:'';width:2px;height:10px;background:var(--accent2);display:inline-block}
-.sm{font-family:var(--mono);font-size:9px;color:var(--muted)}
-.mb{margin-bottom:20px}
-
-/* ── SCORE RING ── */
-.score-ring{width:36px;height:36px;position:relative;display:flex;align-items:center;justify-content:center}
-.score-ring svg{position:absolute;top:0;left:0;transform:rotate(-90deg)}
-.score-n{font-family:var(--mono);font-size:9px;font-weight:700;color:var(--accent)}
-
-/* ── SECURITY BADGE ── */
-.security-badge{font-family:var(--mono);font-size:8px;padding:3px 8px;border-radius:2px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
-.sec-high{background:var(--red);color:#000}
-.sec-med{background:var(--accent);color:#000}
-.sec-low{background:var(--green);color:#000}
-
-/* ── PNL PANEL ── */
-.pnl-card{background:var(--s1);border:1px solid var(--border);padding:14px;margin-bottom:10px;border-radius:4px}
-.pnl-wallet{font-family:var(--mono);font-size:10px;color:var(--muted);margin-bottom:8px}
-.pnl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.pnl-item{display:flex;flex-direction:column;gap:4px}
-.pnl-label{font-family:var(--mono);font-size:8px;color:var(--muted);text-transform:uppercase}
-.pnl-value{font-family:var(--mono);font-size:14px;font-weight:700}
-.pnl-positive{color:var(--green)}
-.pnl-negative{color:var(--red)}
-
-/* scrollbar */
+.row:hover{background:#0d0d0d}
+.chain-tag{font-size:8px;font-weight:700;padding:2px 4px;text-transform:uppercase;flex-shrink:0}
+.c-solana{color:#c09aff;background:rgba(153,69,255,.12)}
+.c-ethereum{color:#9aaeff;background:rgba(98,126,234,.12)}
+.c-base{color:#6699ff;background:rgba(0,82,255,.1)}
+.c-arbitrum{color:#60c0f0;background:rgba(40,160,240,.1)}
+.c-bnb{color:#f0d060;background:rgba(240,185,11,.1)}
+.c-avalanche{color:#f07070;background:rgba(232,65,66,.1)}
+.c-polygon{color:#b090f0;background:rgba(130,71,229,.1)}
+.c-optimism{color:#ff7080;background:rgba(255,4,32,.1)}
+.c-zksync{color:#80a0ff;background:rgba(54,103,246,.1)}
+.c-unknown{color:#444;background:rgba(50,80,100,.15)}
+.tok{font-weight:700;color:#ff9900;font-size:11px;flex-shrink:0}
+.ind{color:#555;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1;font-size:10px}
+.addr{color:#444;font-size:9px}
+.val{color:#fff;font-size:11px;text-align:right;flex-shrink:0}
+.sig-p{color:#00dd33;font-size:9px;font-weight:700;flex-shrink:0}
+.sig-d{color:#cc2200;font-size:9px;font-weight:700;flex-shrink:0}
+.conf-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:2px;flex-shrink:0;width:48px}
+.conf-n{font-size:10px;color:#fff}
+.conf-bar{height:2px;width:100%;background:#111}
+.cf-p{height:100%;background:#00aa2a}
+.cf-d{height:100%;background:#cc2200}
+.pill{font-size:8px;font-weight:700;padding:2px 6px;letter-spacing:.06em;text-transform:uppercase;flex-shrink:0}
+.p-ok{background:rgba(0,221,51,.12);color:#00dd33}
+.p-fail{background:rgba(204,34,0,.12);color:#cc2200}
+.p-run{background:rgba(59,158,255,.1);color:#60a0ff}
+.p-nu{background:rgba(204,119,0,.1);color:#cc7700}
+.badge{display:inline-flex;align-items:center;justify-content:center;min-width:14px;height:14px;padding:0 3px;font-size:8px;background:#111;color:#555;margin-left:4px}
+.badge.live{background:#0a1a0a;color:#00dd33}
+.badge.warn{background:#1a0000;color:#ff4444}
+.heatmap{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:6px}
+.hm-cell{background:#050505;border:1px solid #1a1a1a;padding:10px 12px;position:relative}
+.hm-cell::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:#111}
+.hm-cell.hot-pump::after{background:#00aa2a}
+.hm-cell.hot-dump::after{background:#cc2200}
+.hm-cell.hot-both::after{background:linear-gradient(90deg,#00aa2a 50%,#cc2200 50%)}
+.hm-name{font-size:9px;font-weight:700;color:#ff9900;letter-spacing:.08em;margin-bottom:6px}
+.hm-nums{display:flex;gap:14px}
+.hm-p{font-size:15px;font-weight:700;color:#00dd33;line-height:1}
+.hm-d{font-size:15px;font-weight:700;color:#cc2200;line-height:1}
+.hm-sub{font-size:8px;color:#333;margin-top:2px}
+.hm-bar{margin-top:6px;height:2px;background:#0d0d0d;display:flex}
+.hm-bp{background:#00aa2a}
+.hm-bd{background:#cc2200}
+.feed{max-height:360px;overflow-y:auto}
+.feed-row{display:flex;gap:8px;align-items:flex-start;padding:4px 10px;border-bottom:1px solid #0d0d0d;font-size:10px}
+.feed-time{color:#333;white-space:nowrap;font-size:9px;padding-top:1px;flex-shrink:0;min-width:55px}
+.feed-tag{font-size:8px;font-weight:700;padding:1px 5px;text-transform:uppercase;flex-shrink:0}
+.ft-pump{color:#00dd33;background:rgba(0,221,51,.08)}
+.ft-dump{color:#cc2200;background:rgba(204,34,0,.08)}
+.ft-whale{color:#60a0ff;background:rgba(59,158,255,.08)}
+.ft-gem{color:#ff9900;background:rgba(255,153,0,.08)}
+.ft-scan{color:#444;background:rgba(50,80,100,.12)}
+.rpt-list{max-height:400px;overflow-y:auto;border:1px solid #1a1a1a}
+.rpt-row{display:flex;justify-content:space-between;padding:6px 10px;border-bottom:1px solid #0d0d0d;cursor:pointer;font-size:10px}
+.rpt-row:hover{background:#0d0d0d}
+.rpt-row.sel{background:#1a0800;border-left:2px solid #ff6600}
+.rpt-name{color:#888}
+.rpt-meta{color:#333;font-size:9px}
+.rpt-content{background:#000;border:1px solid #1a1a1a;padding:12px;font-size:10px;line-height:1.8;white-space:pre-wrap;max-height:480px;overflow-y:auto;color:#888}
+.statusbar{background:#000;border-top:1px solid #111;padding:3px 14px;display:flex;gap:20px;align-items:center;position:sticky;bottom:0;z-index:100}
+.sb-item{font-size:9px;color:#333;letter-spacing:.06em}
+.sb-val{color:#555}
 ::-webkit-scrollbar{width:3px;height:3px}
-::-webkit-scrollbar-thumb{background:var(--dim);border-radius:2px}
+::-webkit-scrollbar-thumb{background:#1a1a1a}
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">
-    <div class="logo-dot" id="liveDot"></div>
-    AZALYST
-    <span class="logo-sub">Birdeye Scanner</span>
-  </div>
-  <div class="header-center">
-    <div class="live-badge">
-      <div class="live-dot" id="streamDot"></div>
-      <span id="streamLabel">OFFLINE</span>
+<div class="topbar">
+  <div style="display:flex;align-items:center">
+    <div class="logo"><span class="live-dot" id="liveDot"></span>AZALYST<span>BIRDEYE SCANNER</span></div>
+    <div class="tabs">
+      <button class="tab active" onclick="tab('intel',this)">Intelligence<span class="badge live" id="bIntel">—</span></button>
+      <button class="tab" onclick="tab('traders',this)">Traders<span class="badge" id="bTraders">—</span></button>
+      <button class="tab" onclick="tab('whales',this)">Whales<span class="badge" id="bWhale">—</span></button>
+      <button class="tab" onclick="tab('gems',this)">Gems<span class="badge" id="bGem">—</span></button>
+      <button class="tab" onclick="tab('security',this)">Security<span class="badge warn" id="bSecurity">—</span></button>
+      <button class="tab" onclick="tab('ml',this)">ML<span class="badge" id="bML">—</span></button>
+      <button class="tab" onclick="tab('chains',this)">Chain Map</button>
+      <button class="tab" onclick="tab('feed',this)">Live Feed<span class="badge live" id="bFeed">—</span></button>
+      <button class="tab" onclick="tab('reports',this)">Reports<span class="badge" id="bReports">—</span></button>
+      <button class="tab" onclick="tab('ops',this)">System</button>
     </div>
-    <span id="countdown" title="Next auto-refresh">—</span>
   </div>
-  <div class="header-right">
+  <div class="topbar-right">
+    <span id="clock">--:--:-- IST</span>
+    <span id="dataStatus" class="offline-badge">● OFFLINE</span>
+    <span id="countdown">—</span>
     <input class="repo-in" id="repoIn" placeholder="owner/repository" value="Azalyst/Azalyst-Birdeye-Scanner"/>
-    <input class="repo-in" id="tokenIn" placeholder="GitHub PAT (private repos)" style="width:180px" type="password"/>
-    <button class="btn go" onclick="init()">LOAD</button>
-  </div>
-</header>
-
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-label">BIRDEYE</div>
-  <div class="ticker-track">
-    <div class="ticker-inner" id="tickerInner">
-      <span class="tick-item tick-sep">· awaiting scan data ·</span>
-    </div>
+    <input class="repo-in" id="tokenIn" placeholder="PAT (private)" type="password" style="width:130px"/>
+    <button class="btn" onclick="init()">LOAD</button>
   </div>
 </div>
 
-<!-- TABS -->
-<div class="tabbar">
-  <div class="tab active" onclick="tab('intel',this)">Intelligence <span class="badge live" id="bIntel">—</span></div>
-  <div class="tab" onclick="tab('traders',this)">Traders <span class="badge" id="bTraders">—</span></div>
-  <div class="tab" onclick="tab('whales',this)">Whales <span class="badge" id="bWhale">—</span></div>
-  <div class="tab" onclick="tab('gems',this)">Gems <span class="badge" id="bGem">—</span></div>
-  <div class="tab" onclick="tab('security',this)">Security <span class="badge warn" id="bSecurity">—</span></div>
-  <div class="tab" onclick="tab('ml',this)">ML <span class="badge" id="bML">—</span></div>
-  <div class="tab" onclick="tab('chains',this)">Chain Map</div>
-  <div class="tab" onclick="tab('feed',this)">Live Feed <span class="badge live" id="bFeed">—</span></div>
-  <div class="tab" onclick="tab('reports',this)">Reports <span class="badge" id="bReports">—</span></div>
-  <div class="tab" onclick="tab('ops',this)">System</div>
+<div class="tape">
+  <div class="tape-label">BIRDEYE</div>
+  <div class="tape-track">
+    <div class="tape-inner" id="tapeInner"><span class="tape-item tape-sep">· awaiting scan data ·</span></div>
+  </div>
 </div>
 
-<!-- INTELLIGENCE -->
 <div class="page active" id="tab-intel">
-  <div class="statbar">
-    <div class="stat pump"><div class="stat-lbl">Pump Signals</div><div class="stat-val" id="sPump">—</div><div class="stat-sub">this scan</div></div>
-    <div class="stat dump"><div class="stat-lbl">Dump Warnings</div><div class="stat-val" id="sDump">—</div><div class="stat-sub">this scan</div></div>
-    <div class="stat whale"><div class="stat-lbl">Whale Moves</div><div class="stat-val" id="sWhale">—</div><div class="stat-sub">&gt;$10K</div></div>
-    <div class="stat gem"><div class="stat-lbl">Gems Found</div><div class="stat-val" id="sGem">—</div><div class="stat-sub">score&gt;50</div></div>
-    <div class="stat chain"><div class="stat-lbl">Chains Active</div><div class="stat-val" id="sChain">—</div><div class="stat-sub">this scan</div></div>
-    <div class="stat ops"><div class="stat-lbl">Last Scan</div><div class="stat-val" id="sLast" style="font-size:14px;padding-top:8px">—</div><div class="stat-sub" id="sNext">next: —</div></div>
+  <div class="mgrid">
+    <div class="stat-box"><div class="stat-label">Pump Signals</div><div class="stat-val up" id="sPump">—</div><div class="stat-sub">this scan</div></div>
+    <div class="stat-box"><div class="stat-label">Dump Warnings</div><div class="stat-val dn" id="sDump">—</div><div class="stat-sub">this scan</div></div>
+    <div class="stat-box"><div class="stat-label">Whale Moves</div><div class="stat-val" id="sWhale">—</div><div class="stat-sub">&gt;$10K</div></div>
+    <div class="stat-box"><div class="stat-label">Gems Found</div><div class="stat-val" id="sGem">—</div><div class="stat-sub">score&gt;50</div></div>
+    <div class="stat-box"><div class="stat-label">Chains Active</div><div class="stat-val" id="sChain">—</div><div class="stat-sub">this scan</div></div>
+    <div class="stat-box"><div class="stat-label">Last Scan</div><div class="stat-val" id="sLast" style="font-size:12px;padding-top:4px">—</div><div class="stat-sub" id="sNext">next: —</div></div>
   </div>
-  <div class="g2w">
+  <div class="g32">
     <div>
-      <div class="sh mb"><div class="sl">Pump Signals</div><span class="sm" id="pumpMeta">binance usdt futures only</span></div>
-      <div class="panel">
-        <div class="ph"><span>Chain — Token — Indicators — Conf — Signal</span><span class="ph-count" id="pumpCount">0</span></div>
-        <div id="pumpList"><div class="empty">Load a repository to see signals.</div></div>
-      </div>
+      <div class="sh"><span class="sh-label">Pump Signals</span><span class="sh-meta" id="pumpMeta">binance usdt futures only</span></div>
+      <div class="panel"><div class="ph"><span>Chain / Token / Indicators / Conf / Signal</span><span id="pumpCount">0</span></div><div id="pumpList"><div class="empty">Load a repository to see signals.</div></div></div>
     </div>
     <div>
-      <div class="sh mb"><div class="sl">Dump Warnings</div></div>
-      <div class="panel">
-        <div class="ph"><span>Chain — Token — Conf — Signal</span><span class="ph-count" id="dumpCount">0</span></div>
-        <div id="dumpList"><div class="empty">—</div></div>
-      </div>
+      <div class="sh"><span class="sh-label">Dump Warnings</span></div>
+      <div class="panel"><div class="ph"><span>Chain / Token / Conf / Signal</span><span id="dumpCount">0</span></div><div id="dumpList"><div class="empty">—</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- WHALES -->
 <div class="page" id="tab-whales">
-  <div class="sh mb"><div class="sl">Whale Transactions</div><span class="sm">above $10,000 — latest scan</span></div>
-  <div class="panel">
-    <div class="ph"><span>Chain — Token — Type — Wallet — Value</span><span class="ph-count" id="whaleCount">0</span></div>
-    <div id="whaleList"><div class="empty">No data yet.</div></div>
-  </div>
+  <div class="sh"><span class="sh-label">Whale Transactions</span><span class="sh-meta">above $10,000 — latest scan</span></div>
+  <div class="panel"><div class="ph"><span>Chain / Token / Type / Wallet / Value</span><span id="whaleCount">0</span></div><div id="whaleList"><div class="empty">No data yet.</div></div></div>
 </div>
 
-<!-- TRADERS -->
 <div class="page" id="tab-traders">
-  <div class="sh mb"><div class="sl">Top Traders Leaderboard</div><span class="sm">most profitable traders by PnL — last 7 days</span></div>
-  <div class="panel">
-    <div class="ph"><span># — Wallet — PnL — Volume — Trades</span><span class="ph-count" id="traderCount">0</span></div>
-    <div id="tradersList"><div class="empty">Load a report to see traders.</div></div>
-  </div>
+  <div class="sh"><span class="sh-label">Top Traders Leaderboard</span><span class="sh-meta">most profitable — last 7 days</span></div>
+  <div class="panel"><div class="ph"><span># / Wallet / PnL / Volume / Win Rate</span><span id="traderCount">0</span></div><div id="tradersList"><div class="empty">No top trader data in latest scan.</div></div></div>
 </div>
 
-<!-- SECURITY -->
 <div class="page" id="tab-security">
-  <div class="sh mb"><div class="sl">Security Alerts</div><span class="sm">rug risk assessment — mintable, freeze authority, holder concentration</span></div>
-  <div class="panel">
-    <div class="ph"><span>Token — Risk Level — Score — Factors — Status</span><span class="ph-count" id="securityCount">0</span></div>
-    <div id="securityList"><div class="empty">No security alerts.</div></div>
-  </div>
+  <div class="sh"><span class="sh-label">Security Alerts</span><span class="sh-meta">rug risk — mintable / freeze / holder concentration</span></div>
+  <div class="panel"><div class="ph"><span>Token / Risk / Score / Factors / Chain</span><span id="securityCount">0</span></div><div id="securityList"><div class="empty">No high-risk tokens detected.</div></div></div>
 </div>
 
-<!-- ML -->
 <div class="page" id="tab-ml">
-  <div class="sh mb"><div class="sl">Behavioral ML</div><span class="sm" id="mlMeta">model status + mined patterns</span></div>
-  <div class="statbar">
-    <div class="stat"><div class="stat-lbl">Model Status</div><div class="stat-val" id="mlStatus" style="font-size:14px;padding-top:8px">—</div><div class="stat-sub" id="mlTrained">—</div></div>
-    <div class="stat"><div class="stat-lbl">ROC AUC</div><div class="stat-val" id="mlAuc">—</div><div class="stat-sub" id="mlF1">f1: —</div></div>
-    <div class="stat"><div class="stat-lbl">Labeled Rows</div><div class="stat-val" id="mlLabeled">—</div><div class="stat-sub" id="mlPosRate">pos rate: —</div></div>
-    <div class="stat"><div class="stat-lbl">Wallet Events</div><div class="stat-val" id="mlEvents">—</div><div class="stat-sub" id="mlSnaps">snaps: —</div></div>
-    <div class="stat"><div class="stat-lbl">Clusters</div><div class="stat-val" id="mlClusters" style="font-size:12px;padding-top:8px">—</div><div class="stat-sub">wallet groups</div></div>
-    <div class="stat"><div class="stat-lbl">Patterns</div><div class="stat-val" id="mlPatCount">—</div><div class="stat-sub">mined sequences</div></div>
+  <div class="sh"><span class="sh-label">Behavioral ML</span><span class="sh-meta" id="mlMeta">model status + mined patterns</span></div>
+  <div class="mgrid">
+    <div class="stat-box"><div class="stat-label">Model Status</div><div class="stat-val" id="mlStatus" style="font-size:12px;padding-top:4px">—</div><div class="stat-sub" id="mlTrained">—</div></div>
+    <div class="stat-box"><div class="stat-label">ROC AUC</div><div class="stat-val" id="mlAuc">—</div><div class="stat-sub" id="mlF1">f1: —</div></div>
+    <div class="stat-box"><div class="stat-label">Labeled Rows</div><div class="stat-val" id="mlLabeled">—</div><div class="stat-sub" id="mlPosRate">pos rate: —</div></div>
+    <div class="stat-box"><div class="stat-label">Wallet Events</div><div class="stat-val" id="mlEvents">—</div><div class="stat-sub" id="mlSnaps">snaps: —</div></div>
+    <div class="stat-box"><div class="stat-label">Clusters</div><div class="stat-val" id="mlClusters" style="font-size:10px;padding-top:4px">—</div><div class="stat-sub">wallet groups</div></div>
+    <div class="stat-box"><div class="stat-label">Patterns</div><div class="stat-val" id="mlPatCount">—</div><div class="stat-sub">mined sequences</div></div>
   </div>
-  <div class="g2w">
+  <div class="g32">
     <div>
-      <div class="sh mb"><div class="sl">Top ML Signals</div><span class="sm" id="mlSigMeta">last 24h</span></div>
-      <div class="panel">
-        <div class="ph"><span>Chain — Token — Prob — Dir — Label</span><span class="ph-count" id="mlSigCount">0</span></div>
-        <div id="mlSigList"><div class="empty">No ML scores yet.</div></div>
-      </div>
+      <div class="sh"><span class="sh-label">Top ML Signals</span><span class="sh-meta" id="mlSigMeta">last 24h</span></div>
+      <div class="panel"><div class="ph"><span>Chain / Token / Prob / Dir / Label</span><span id="mlSigCount">0</span></div><div id="mlSigList"><div class="empty">No ML scores yet.</div></div></div>
     </div>
     <div>
-      <div class="sh mb"><div class="sl">Top Patterns by Lift</div><span class="sm">frequent subsequence → positive outcome</span></div>
-      <div class="panel">
-        <div class="ph"><span>Sequence — Lift — Support — Pos Rate</span><span class="ph-count" id="mlPatListCount">0</span></div>
-        <div id="mlPatList"><div class="empty">No patterns yet.</div></div>
-      </div>
+      <div class="sh"><span class="sh-label">Top Patterns by Lift</span><span class="sh-meta">sequence → positive outcome</span></div>
+      <div class="panel"><div class="ph"><span>Sequence / Lift / Support / Pos Rate</span><span id="mlPatListCount">0</span></div><div id="mlPatList"><div class="empty">No patterns yet.</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- GEMS -->
 <div class="page" id="tab-gems">
-  <div class="sh mb"><div class="sl">Hidden Gems</div><span class="sm">age &lt;24h · LP &gt;$2K · vol1H &gt;$10K · not mintable</span></div>
-  <div class="panel">
-    <div class="ph"><span>Chain — Token — Score — Metrics — Rating</span><span class="ph-count" id="gemCount">0</span></div>
-    <div id="gemList"><div class="empty">No data yet.</div></div>
-  </div>
+  <div class="sh"><span class="sh-label">Hidden Gems</span><span class="sh-meta">age &lt;24h · LP &gt;$2K · vol1H &gt;$10K</span></div>
+  <div class="panel"><div class="ph"><span>Chain / Token / Score / Metrics / Rating</span><span id="gemCount">0</span></div><div id="gemList"><div class="empty">No data yet.</div></div></div>
 </div>
 
-<!-- CHAIN MAP -->
 <div class="page" id="tab-chains">
-  <div class="sh mb"><div class="sl">Chain Activity Heatmap</div><span class="sm">pump/dump distribution per chain</span></div>
-  <div class="panel">
-    <div class="ph"><span>Signal activity across all scanned chains</span></div>
-    <div class="heatmap" id="chainMap"><div class="empty" style="grid-column:1/-1">Load a repository first.</div></div>
-  </div>
+  <div class="sh"><span class="sh-label">Chain Activity Heatmap</span><span class="sh-meta">pump/dump distribution per chain</span></div>
+  <div class="panel"><div class="ph">Signal activity across all scanned chains</div><div class="heatmap" id="chainMap"><div class="empty" style="grid-column:1/-1">Load a repository first.</div></div></div>
 </div>
 
-<!-- LIVE FEED -->
 <div class="page" id="tab-feed">
   <div class="g2">
     <div>
-      <div class="sh mb"><div class="sl">Signal Feed</div><span class="sm" id="feedMeta">—</span></div>
-      <div class="panel">
-        <div class="ph"><span>Type — Time — Event</span></div>
-        <div class="feed" id="liveFeed"><div class="empty">No events yet.</div></div>
-      </div>
+      <div class="sh"><span class="sh-label">Signal Feed</span><span class="sh-meta" id="feedMeta">—</span></div>
+      <div class="panel"><div class="ph">Type / Time / Event</div><div class="feed" id="liveFeed"><div class="empty">No events yet.</div></div></div>
     </div>
     <div>
-      <div class="sh mb"><div class="sl">Scan History</div></div>
-      <div class="panel">
-        <div class="ph"><span>Run — Status — Duration</span></div>
-        <div id="runList"><div class="empty">—</div></div>
-      </div>
+      <div class="sh"><span class="sh-label">Scan History</span></div>
+      <div class="panel"><div class="ph">Workflow / Status / Duration</div><div id="runList"><div class="empty">—</div></div></div>
     </div>
   </div>
 </div>
 
-<!-- REPORTS -->
 <div class="page" id="tab-reports">
-  <div class="g2w">
+  <div class="g32">
     <div>
-      <div class="sh mb"><div class="sl">Scan Reports</div><span class="sm" id="rptMeta">—</span></div>
+      <div class="sh"><span class="sh-label">Scan Reports</span><span class="sh-meta" id="rptMeta">—</span></div>
       <div class="rpt-list" id="rptList"><div class="empty">—</div></div>
     </div>
     <div>
-      <div class="sh mb"><div class="sl">Content</div></div>
+      <div class="sh"><span class="sh-label">Content</span></div>
       <div class="rpt-content" id="rptContent">Select a report.</div>
     </div>
   </div>
 </div>
 
-<!-- OPS -->
 <div class="page" id="tab-ops">
   <div class="g2">
     <div>
-      <div class="sh mb"><div class="sl">Workflow Runs</div></div>
-      <div class="panel"><div id="opsList"><div class="empty">—</div></div></div>
+      <div class="sh"><span class="sh-label">Workflow Runs</span></div>
+      <div class="panel"><div class="ph">Workflow / Status / Duration</div><div id="opsList"><div class="empty">—</div></div></div>
     </div>
     <div>
-      <div class="sh mb"><div class="sl">Configuration</div></div>
+      <div class="sh"><span class="sh-label">Configuration</span></div>
       <div class="panel">
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">SCAN SCHEDULE</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)">Every 15 min</span></div>
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">OUTCOME CHECK</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)">60m / 10%</span></div>
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">CHAINS</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)" id="opsChains">all supported Birdeye chains</span></div>
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">UNIVERSE</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)" id="opsUniverse">Binance USDT futures</span></div>
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">NEXT SCAN</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)" id="opsNext">—</span></div>
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">SUCCESS RATE</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)" id="opsRate">—</span></div>
-        <div style="padding:12px 14px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">DASHBOARD REFRESH</span><span style="font-family:var(--mono);font-size:10px;color:var(--text)">Every 60s</span></div>
-        <div style="padding:12px 14px;display:flex;justify-content:space-between;align-items:center"><span style="font-family:var(--mono);font-size:9px;color:var(--muted);letter-spacing:.1em">MAINTAINED BY</span><a href="https://github.com/gitdhirajsv" target="_blank" style="font-family:var(--mono);font-size:10px;color:var(--accent);text-decoration:none">@gitdhirajsv</a></div>
+        <div class="ph">System settings</div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">SCAN SCHEDULE</span><span style="color:#888">Every 15 min</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">OUTCOME CHECK</span><span style="color:#888">60m / 10%</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">CHAINS</span><span style="color:#888" id="opsChains">all supported</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">UNIVERSE</span><span style="color:#888" id="opsUniverse">Binance USDT futures</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">NEXT SCAN</span><span style="color:#888" id="opsNext">—</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">SUCCESS RATE</span><span style="color:#888" id="opsRate">—</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">DASHBOARD REFRESH</span><span style="color:#888">Every 60s</span></div>
+        <div class="row"><span style="color:#444;font-size:9px;letter-spacing:.08em">MAINTAINED BY</span><a href="https://github.com/Azalyst" target="_blank" style="color:#ff6600;text-decoration:none">@Azalyst</a></div>
       </div>
     </div>
   </div>
 </div>
 
+<div class="statusbar">
+  <span class="sb-item">SCAN <span class="sb-val">every 15min</span></span>
+  <span class="sb-item">ML <span class="sb-val">every 2h</span></span>
+  <span class="sb-item">REFRESH <span class="sb-val">60s</span></span>
+  <span class="sb-item" id="sbRepo">REPO <span class="sb-val">Azalyst/Azalyst-Birdeye-Scanner</span></span>
+  <span style="flex:1"></span>
+  <span class="sb-item" style="color:#222">AZALYST BIRDEYE SCANNER</span>
+</div>
+
 <script>
-const S = {
-  repo: 'Azalyst/Azalyst-Birdeye-Scanner', token: '',
-  runs: [], reports: [], parsed: null,
-  feed: [], outcomes: [], ml: null, refreshTimer: null, countdown: 60
-};
+const S={repo:'Azalyst/Azalyst-Birdeye-Scanner',token:'',runs:[],reports:[],parsed:null,feed:[],outcomes:[],ml:null,refreshTimer:null,countdown:60};
 
-// ── API helpers ──────────────────────────────────────────────
-function gh(p) {
-  const h = { 'Accept': 'application/vnd.github+json' };
-  if (S.token) h['Authorization'] = `Bearer ${S.token}`;
-  return fetch(`https://api.github.com/repos/${S.repo}${p}`, { headers: h });
-}
-function ghRaw(p) {
-  const h = {};
-  if (S.token) h['Authorization'] = `Bearer ${S.token}`;
-  return fetch(`https://raw.githubusercontent.com/${S.repo}/main/${p}`, { headers: h });
-}
+function updateClock(){const n=new Date(),ist=new Date(n.getTime()+(5.5*3600000));const h=ist.getUTCHours().toString().padStart(2,'0'),m=ist.getUTCMinutes().toString().padStart(2,'0'),s=ist.getUTCSeconds().toString().padStart(2,'0');document.getElementById('clock').textContent=`${h}:${m}:${s} IST`;}
+setInterval(updateClock,1000);updateClock();
 
-// ── Utilities ────────────────────────────────────────────────
-function rel(d) {
-  if (!d) return '—';
-  const m = Math.floor((Date.now() - new Date(d)) / 60000);
-  if (m < 1) return 'just now';
-  if (m < 60) return `${m}m ago`;
-  const h = Math.floor(m / 60);
-  if (h < 24) return `${h}h ago`;
-  return `${Math.floor(h / 24)}d ago`;
-}
-function nextHour() {
-  const n = new Date(), nx = new Date(n);
-  const nextMin = Math.ceil((n.getMinutes() + 1) / 15) * 15;
-  nx.setMinutes(nextMin, 0, 0);
-  if (nextMin >= 60) { nx.setHours(nx.getHours() + 1); nx.setMinutes(0, 0, 0); }
-  const m = Math.round((nx - n) / 60000);
-  return m < 60 ? `in ${m}m` : `in ${Math.floor(m / 60)}h ${m % 60}m`;
-}
-function usd(v) {
-  const n = parseFloat(v);
-  if (isNaN(n)) return '—';
-  if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
-  if (n >= 1e3) return `$${(n / 1e3).toFixed(0)}K`;
-  return `$${n.toFixed(0)}`;
-}
-function ctag(chain) {
-  const c = (chain || 'unknown').toLowerCase().replace(/\s/g, '');
-  return `<span class="chain-tag c-${c}">${c.toUpperCase()}</span>`;
-}
+function gh(p){const h={'Accept':'application/vnd.github+json'};if(S.token)h['Authorization']=`Bearer ${S.token}`;return fetch(`https://api.github.com/repos/${S.repo}${p}`,{headers:h});}
+function ghRaw(p){const h={};if(S.token)h['Authorization']=`Bearer ${S.token}`;return fetch(`https://raw.githubusercontent.com/${S.repo}/main/${p}`,{headers:h});}
 
-// ── Report parser ────────────────────────────────────────────
-function emptyIntel() {
-  return { timestamp: '', chains: [], pumps: [], dumps: [], whales: [], gems: [], outcomes: [], filters: {} };
-}
-function parseQuantOutcomes(data) {
-  return (data.outcomes || []).map(o => ({
-    time: o.evaluated_ts,
-    chain: (o.chain || 'unknown').toLowerCase(),
-    token: o.symbol || '?',
-    label: o.label || '',
-    direction: o.predicted_direction || '',
-    ret: parseFloat(o.return_pct || 0),
-    horizon: o.horizon_min || 0,
-    ok: !!o.is_true,
-    reasons: o.reasons || []
-  }));
-}
-function parseQuantSignals(data) {
-  const r = emptyIntel();
-  r.timestamp = data.generated_at || '';
-  r.filters = data.filters || {};
-  const binanceOnly = !!r.filters.binance_usdt_only;
-  const seenChains = new Set();
-  for (const s of (data.signals || [])) {
-    const chain = (s.chain || 'unknown').toLowerCase();
-    const token = s.symbol || '?';
-    const reasons = s.reasons || [];
-    const m = s.metrics || {};
-    const pumpScore = parseFloat(s.pump_score || 0);
-    const dumpScore = parseFloat(s.dump_score || 0);
-    const anomalyScore = parseFloat(s.anomaly_score || 0);
-    const whaleNet = parseFloat(m.whale_net_usd || 0);
-    seenChains.add(chain);
-    if (s.label === 'pump_candidate' || s.label === 'whale_accumulation' || pumpScore >= (binanceOnly ? 40 : 50) || (binanceOnly && anomalyScore >= 70)) {
-      r.pumps.push({
-        chain, token, confidence: pumpScore / 100, indicators: reasons, address: s.address, label: s.label,
-        binanceSymbol: s.binance_symbol || '', binanceBase: s.binance_base_asset || ''
-      });
-    }
-    if (s.label === 'dump_risk' || dumpScore >= (binanceOnly ? 40 : 50)) {
-      r.dumps.push({
-        chain, token, confidence: dumpScore / 100, indicators: reasons, address: s.address, label: s.label,
-        binanceSymbol: s.binance_symbol || '', binanceBase: s.binance_base_asset || ''
-      });
-    }
-    if (Math.abs(whaleNet) >= 10000 || reasons.some(x => String(x).includes('whale_'))) {
-      r.whales.push({
-        chain, token, value: Math.abs(whaleNet), type: whaleNet >= 0 ? 'BUY' : 'SELL',
-        wallet: s.address || '', label: s.label
-      });
-    }
-    if (s.label === 'pump_candidate' || s.label === 'anomaly_watch' || anomalyScore >= 55 || pumpScore >= 45) {
-      r.gems.push({
-        chain, token, score: Math.max(pumpScore, anomalyScore),
-        age: 0, vol1h: parseFloat(m.volume_1h_usd || 0), lp: parseFloat(m.liquidity_usd || 0),
-        label: s.label, binanceSymbol: s.binance_symbol || '', binanceBase: s.binance_base_asset || ''
-      });
-    }
+function rel(d){if(!d)return'—';const m=Math.floor((Date.now()-new Date(d))/60000);if(m<1)return'just now';if(m<60)return`${m}m ago`;const h=Math.floor(m/60);if(h<24)return`${h}h ago`;return`${Math.floor(h/24)}d ago`;}
+function nextHour(){const n=new Date(),nx=new Date(n);const nm=Math.ceil((n.getMinutes()+1)/15)*15;nx.setMinutes(nm,0,0);if(nm>=60){nx.setHours(nx.getHours()+1);nx.setMinutes(0,0,0);}const m=Math.round((nx-n)/60000);return m<60?`in ${m}m`:`in ${Math.floor(m/60)}h ${m%60}m`;}
+function usd(v){const n=parseFloat(v);if(isNaN(n))return'—';if(n>=1e6)return`$${(n/1e6).toFixed(1)}M`;if(n>=1e3)return`$${(n/1e3).toFixed(0)}K`;return`$${n.toFixed(0)}`;}
+function ctag(c){const k=(c||'unknown').toLowerCase().replace(/\s/g,'');return`<span class="chain-tag c-${k}">${k.toUpperCase()}</span>`;}
+
+function emptyIntel(){return{timestamp:'',chains:[],pumps:[],dumps:[],whales:[],gems:[],security:[],traders:[],outcomes:[],filters:{}};}
+function parseQuantOutcomes(data){return(data.outcomes||[]).map(o=>({time:o.evaluated_ts,chain:(o.chain||'unknown').toLowerCase(),token:o.symbol||'?',label:o.label||'',direction:o.predicted_direction||'',ret:parseFloat(o.return_pct||0),horizon:o.horizon_min||0,ok:!!o.is_true}));}
+function parseQuantSignals(data){
+  const r=emptyIntel();r.timestamp=data.generated_at||'';r.filters=data.filters||{};
+  const bo=!!r.filters.binance_usdt_only;const seen=new Set();
+  for(const s of(data.signals||[])){
+    const chain=(s.chain||'unknown').toLowerCase(),token=s.symbol||'?',reasons=s.reasons||[],m=s.metrics||{};
+    const ps=parseFloat(s.pump_score||0),ds=parseFloat(s.dump_score||0),as2=parseFloat(s.anomaly_score||0),rs=parseFloat(s.risk_score||0);
+    const wn=parseFloat(m.whale_net_usd||0);seen.add(chain);
+    if(s.label==='pump_candidate'||s.label==='whale_accumulation'||ps>=(bo?40:50)||(bo&&as2>=70))
+      r.pumps.push({chain,token,confidence:ps/100,indicators:reasons,address:s.address,label:s.label,binanceSymbol:s.binance_symbol||''});
+    if(s.label==='dump_risk'||ds>=(bo?40:50))
+      r.dumps.push({chain,token,confidence:ds/100,indicators:reasons,address:s.address,label:s.label});
+    if(Math.abs(wn)>=10000||reasons.some(x=>String(x).includes('whale_')))
+      r.whales.push({chain,token,value:Math.abs(wn),type:wn>=0?'BUY':'SELL',wallet:s.address||''});
+    if(s.label==='pump_candidate'||s.label==='anomaly_watch'||as2>=55||ps>=45)
+      r.gems.push({chain,token,score:Math.max(ps,as2),age:0,vol1h:parseFloat(m.volume_1h_usd||0),lp:parseFloat(m.liquidity_usd||0),label:s.label});
+    if(rs>=60||reasons.some(x=>String(x).includes('risk_')||String(x).includes('mintable')||String(x).includes('freeze')))
+      r.security.push({chain,token,riskScore:rs,level:rs>=80?'HIGH':rs>=60?'MED':'LOW',factors:reasons.filter(x=>String(x).includes('risk_')||String(x).includes('mintable')||String(x).includes('freeze')||String(x).includes('holder'))});
   }
-  r.chains = [...seenChains];
-  r.pumps.sort((a, b) => b.confidence - a.confidence);
-  r.dumps.sort((a, b) => b.confidence - a.confidence);
-  r.whales.sort((a, b) => b.value - a.value);
-  r.gems.sort((a, b) => b.score - a.score);
+  for(const t of(data.top_traders||[]))
+    r.traders.push({wallet:t.address||t.wallet||'?',pnl:parseFloat(t.realized_profit||t.pnl||0),volume:parseFloat(t.volume||0),trades:parseInt(t.trades||t.trade_count||0),winRate:parseFloat(t.win_rate||0)});
+  r.chains=[...seen];
+  r.pumps.sort((a,b)=>b.confidence-a.confidence);r.dumps.sort((a,b)=>b.confidence-a.confidence);
+  r.whales.sort((a,b)=>b.value-a.value);r.gems.sort((a,b)=>b.score-a.score);r.security.sort((a,b)=>b.riskScore-a.riskScore);
   return r;
 }
-function parseReport(text) {
-  try {
-    const data = JSON.parse(text);
-    if (data.kind === 'quant_signals' || data.signals) return parseQuantSignals(data);
-    if (data.kind === 'quant_outcomes' || data.outcomes) {
-      const r = emptyIntel();
-      r.timestamp = data.generated_at || '';
-      r.filters = data.filters || {};
-      r.outcomes = parseQuantOutcomes(data);
-      return r;
-    }
-  } catch (_) {}
-  const r = emptyIntel();
-  const lines = text.split('\n');
-  const ts = lines.find(l => l.startsWith('Generated'));
-  if (ts) r.timestamp = ts.replace('Generated :', '').trim();
-  const cl = lines.find(l => l.startsWith('Chains'));
-  if (cl) r.chains = cl.replace('Chains    :', '').trim().split(',').map(c => c.trim().toLowerCase()).filter(Boolean);
-
-  let section = '';
-  for (const raw of lines) {
-    const t = raw.trim();
-    if (!t || t.startsWith('=') || t.startsWith('-')) continue;
-    if (t === 'TRENDING TOKEN SIGNALS') { section = 'sig'; continue; }
-    if (t === 'TOP WHALE TRADES') { section = 'whale'; continue; }
-    if (t === 'HIDDEN GEMS') { section = 'gem'; continue; }
-
-    if (section === 'sig' && t.startsWith('[')) {
-      const cm = t.match(/\[([^\]]+)\]/);
-      const chain = cm ? cm[1].trim().toLowerCase() : 'unknown';
-      const rest = t.replace(/\[[^\]]+\]\s*/, '');
-      const parts = rest.split(/\s{2,}/);
-      const token = (parts[0] || '').trim();
-      const sigType = (parts[1] || '').trim().toLowerCase();
-      const conf = parseFloat(parts[2] || 0) / 100 || 0;
-      const inds = parts.slice(3).join(' ').split(',').map(s => s.trim()).filter(Boolean);
-      if (!token) continue;
-      if (sigType === 'pump') r.pumps.push({ chain, token, confidence: conf, indicators: inds });
-      else if (sigType === 'dump') r.dumps.push({ chain, token, confidence: conf, indicators: inds });
-    }
-    if (section === 'whale' && t.startsWith('[')) {
-      const cm = t.match(/\[([^\]]+)\]/);
-      const chain = cm ? cm[1].trim().toLowerCase() : 'unknown';
-      const rest = t.replace(/\[[^\]]+\]\s*/, '');
-      const parts = rest.split(/\s{2,}/);
-      const value = (parts[0] || '').replace(/[$,]/g, '');
-      r.whales.push({ chain, value: parseFloat(value) || 0, type: (parts[1] || '').trim(), token: (parts[2] || '').trim(), wallet: (parts[3] || '').trim() });
-    }
-    if (section === 'gem' && t.startsWith('[')) {
-      const cm = t.match(/\[([^\]]+)\]/);
-      const chain = cm ? cm[1].trim().toLowerCase() : 'unknown';
-      const rest = t.replace(/\[[^\]]+\]\s*/, '');
-      const sm = rest.match(/Score\s+([\d.]+)\/100/);
-      const am = rest.match(/Age\s+([\d.]+)h/);
-      const vm = rest.match(/Vol1H\s+\$([\d,.]+)/);
-      const lm = rest.match(/LP\s+\$([\d,.]+)/);
-      const token = rest.split(/\s{2,}/)[0].trim();
-      r.gems.push({ chain, token, score: sm ? parseFloat(sm[1]) : 0, age: am ? parseFloat(am[1]) : 0, vol1h: vm ? parseFloat(vm[1].replace(/,/g, '')) : 0, lp: lm ? parseFloat(lm[1].replace(/,/g, '')) : 0 });
-    }
-  }
-  r.pumps.sort((a, b) => b.confidence - a.confidence);
-  r.dumps.sort((a, b) => b.confidence - a.confidence);
-  r.whales.sort((a, b) => b.value - a.value);
-  r.gems.sort((a, b) => b.score - a.score);
-  return r;
+function parseReport(text){
+  try{const d=JSON.parse(text);if(d.kind==='quant_signals'||d.signals)return parseQuantSignals(d);if(d.kind==='quant_outcomes'||d.outcomes){const r=emptyIntel();r.timestamp=d.generated_at||'';r.filters=d.filters||{};r.outcomes=parseQuantOutcomes(d);return r;}}catch(_){}
+  return emptyIntel();
 }
 
-// ── Feed ─────────────────────────────────────────────────────
-function addFeed(type, text, time) {
-  const tags = { pump: 'ft-pump', dump: 'ft-dump', whale: 'ft-whale', gem: 'ft-gem', scan: 'ft-scan', outcome: 'ft-scan' };
-  const labels = { pump: 'PUMP', dump: 'DUMP', whale: 'WHALE', gem: 'GEM', scan: 'SCAN', outcome: 'RESULT' };
-  S.feed.unshift({ type, text, time: time || new Date().toISOString() });
-  if (S.feed.length > 200) S.feed.pop();
+function addFeed(type,text,time){S.feed.unshift({type,text,time:time||new Date().toISOString()});if(S.feed.length>200)S.feed.pop();}
+function buildFeed(intel){
+  if(!intel)return;
+  intel.pumps.slice(0,5).forEach(p=>addFeed('pump',`${p.token} [${p.chain}] — ${p.indicators[0]||'signal detected'} (${Math.round(p.confidence*100)}%)`,intel.timestamp));
+  intel.dumps.slice(0,3).forEach(d=>addFeed('dump',`${d.token} [${d.chain}] — ${d.indicators[0]||'dump signal'} (${Math.round(d.confidence*100)}%)`,intel.timestamp));
+  intel.whales.slice(0,3).forEach(w=>addFeed('whale',`${usd(w.value)} ${w.type} ${w.token||''} [${w.chain}]`,intel.timestamp));
+  intel.gems.slice(0,3).forEach(g=>addFeed('gem',`${g.token} [${g.chain}] — score ${g.score.toFixed(0)}/100`,intel.timestamp));
+  (S.outcomes||[]).slice(0,6).forEach(o=>addFeed('outcome',`${o.ok?'TRUE':'FALSE'} ${o.token} [${o.chain}] ${o.direction} ${o.ret.toFixed(2)}% after ${o.horizon}m`,o.time));
+  if(intel.timestamp)addFeed('scan',`Scan: ${intel.pumps.length}p / ${intel.dumps.length}d / ${intel.whales.length}w / ${intel.gems.length}g`,intel.timestamp);
 }
-function buildFeed(intel) {
-  if (!intel) return;
-  intel.pumps.slice(0, 5).forEach(p => addFeed('pump', `${p.token} [${p.chain}] — ${p.indicators[0] || 'signal detected'} (${Math.round(p.confidence * 100)}%)`, intel.timestamp));
-  intel.dumps.slice(0, 3).forEach(d => addFeed('dump', `${d.token} [${d.chain}] — ${d.indicators[0] || 'dump signal'} (${Math.round(d.confidence * 100)}%)`, intel.timestamp));
-  intel.whales.slice(0, 3).forEach(w => addFeed('whale', `${usd(w.value)} ${w.type} ${w.token || ''} [${w.chain}]`, intel.timestamp));
-  intel.gems.slice(0, 3).forEach(g => addFeed('gem', `${g.token} [${g.chain}] — score ${g.score.toFixed(0)}/100, age ${g.age}h`, intel.timestamp));
-  (intel.outcomes || S.outcomes || []).slice(0, 6).forEach(o => {
-    const verdict = o.ok ? 'TRUE' : 'FALSE';
-    addFeed('outcome', `${verdict} ${o.token} [${o.chain}] ${o.direction} ${o.ret.toFixed(2)}% after ${o.horizon}m`, o.time);
-  });
-  if (intel.timestamp) addFeed('scan', `Scan completed. ${intel.pumps.length}p / ${intel.dumps.length}d / ${intel.whales.length}w / ${intel.gems.length}g`, intel.timestamp);
+function renderFeed(){
+  const tags={pump:'ft-pump',dump:'ft-dump',whale:'ft-whale',gem:'ft-gem',scan:'ft-scan',outcome:'ft-scan'};
+  const labels={pump:'PUMP',dump:'DUMP',whale:'WHALE',gem:'GEM',scan:'SCAN',outcome:'RESULT'};
+  const el=document.getElementById('liveFeed');
+  if(!S.feed.length){el.innerHTML='<div class="empty">No events yet.</div>';return;}
+  el.innerHTML=S.feed.map(f=>`<div class="feed-row"><span class="feed-time">${rel(f.time)}</span><span class="feed-tag ${tags[f.type]||'ft-scan'}">${labels[f.type]||f.type}</span><span style="color:#555;flex:1">${f.text}</span></div>`).join('');
+  document.getElementById('bFeed').textContent=S.feed.length;document.getElementById('feedMeta').textContent=`${S.feed.length} events`;
 }
-function renderFeed() {
-  const tags = { pump: 'ft-pump', dump: 'ft-dump', whale: 'ft-whale', gem: 'ft-gem', scan: 'ft-scan', outcome: 'ft-scan' };
-  const labels = { pump: 'PUMP', dump: 'DUMP', whale: 'WHALE', gem: 'GEM', scan: 'SCAN', outcome: 'RESULT' };
-  const el = document.getElementById('liveFeed');
-  if (!S.feed.length) { el.innerHTML = '<div class="empty">No events yet.</div>'; return; }
-  el.innerHTML = S.feed.map((f, i) => `
-    <div class="feed-item${i === 0 ? ' new' : ''}">
-      <div class="feed-time">${rel(f.time)}</div>
-      <div class="feed-body"><span class="feed-tag ${tags[f.type] || 'ft-scan'}">${labels[f.type] || f.type}</span>${f.text}</div>
-    </div>`).join('');
-  document.getElementById('bFeed').textContent = S.feed.length;
-}
-
-// ── Ticker ───────────────────────────────────────────────────
-function renderTicker(intel) {
-  if (!intel) return;
-  const items = [
-    ...intel.pumps.slice(0, 6).map(p => `<span class="tick-item tick-pump">▲ ${p.token}/${p.chain.toUpperCase()} ${Math.round(p.confidence * 100)}%</span><span class="tick-sep">·</span>`),
-    ...intel.dumps.slice(0, 4).map(d => `<span class="tick-item tick-dump">▼ ${d.token}/${d.chain.toUpperCase()} ${Math.round(d.confidence * 100)}%</span><span class="tick-sep">·</span>`),
-    ...intel.whales.slice(0, 4).map(w => `<span class="tick-item" style="color:var(--blue)">🐋 ${usd(w.value)} ${w.type} ${w.token}/${w.chain.toUpperCase()}</span><span class="tick-sep">·</span>`),
-    ...intel.gems.slice(0, 4).map(g => `<span class="tick-item" style="color:var(--accent)">💎 ${g.token}/${g.chain.toUpperCase()} ${g.score.toFixed(0)}/100</span><span class="tick-sep">·</span>`),
+function renderTicker(intel){
+  if(!intel)return;
+  const items=[
+    ...intel.pumps.slice(0,6).map(p=>`<span class="tape-item tape-pump">▲ ${p.token}/${p.chain.toUpperCase()} ${Math.round(p.confidence*100)}%</span><span class="tape-sep"> · </span>`),
+    ...intel.dumps.slice(0,4).map(d=>`<span class="tape-item tape-dump">▼ ${d.token}/${d.chain.toUpperCase()} ${Math.round(d.confidence*100)}%</span><span class="tape-sep"> · </span>`),
+    ...intel.whales.slice(0,4).map(w=>`<span class="tape-item" style="color:#60a0ff">${w.type==='BUY'?'▲':'▼'} ${usd(w.value)} ${w.token}/${w.chain.toUpperCase()}</span><span class="tape-sep"> · </span>`),
+    ...intel.gems.slice(0,4).map(g=>`<span class="tape-item" style="color:#ff9900">◆ ${g.token}/${g.chain.toUpperCase()} ${g.score.toFixed(0)}/100</span><span class="tape-sep"> · </span>`),
   ].join('');
-  const doubled = items + items;
-  const ti = document.getElementById('tickerInner');
-  ti.innerHTML = doubled || '<span class="tick-item tick-sep">· awaiting scan data ·</span>';
+  const ti=document.getElementById('tapeInner');
+  ti.innerHTML=(items+items)||'<span class="tape-item tape-sep">· awaiting scan data ·</span>';
 }
 
-// ── Main render ──────────────────────────────────────────────
-function renderAll(intel) {
-  if (!intel) return;
+function renderAll(intel){
+  if(!intel)return;
+  document.getElementById('sPump').textContent=intel.pumps.length||'0';
+  document.getElementById('sDump').textContent=intel.dumps.length||'0';
+  document.getElementById('sWhale').textContent=intel.whales.length||'0';
+  document.getElementById('sGem').textContent=intel.gems.filter(g=>g.score>50).length||'0';
+  document.getElementById('sChain').textContent=[...new Set([...intel.pumps,...intel.dumps,...intel.whales,...intel.gems].map(x=>x.chain))].length||'0';
+  document.getElementById('sLast').textContent=intel.timestamp?rel(intel.timestamp):rel(S.runs[0]?.created_at);
+  document.getElementById('sNext').textContent='next: '+nextHour();
+  document.getElementById('bIntel').textContent=intel.pumps.length+intel.dumps.length;
+  document.getElementById('bIntel').className='badge'+(intel.pumps.length>0?' live':'');
+  document.getElementById('bWhale').textContent=intel.whales.length;
+  document.getElementById('bGem').textContent=intel.gems.length;
+  document.getElementById('bSecurity').textContent=intel.security.length;
+  document.getElementById('bSecurity').className='badge'+(intel.security.length>0?' warn':'');
+  document.getElementById('bTraders').textContent=intel.traders.length;
+  document.getElementById('opsNext').textContent=nextHour();
+  document.getElementById('pumpMeta').textContent=intel.filters?.binance_usdt_only?'binance usdt futures only':'sorted by confidence';
+  document.getElementById('opsUniverse').textContent=intel.filters?.binance_usdt_only?`Binance USDT futures (${intel.filters.binance_symbol_count||0} live)`:'Open Birdeye universe';
+  document.getElementById('opsChains').textContent=(intel.filters?.scan_chains||[]).length?intel.filters.scan_chains.join(', '):'all supported chains';
+  document.getElementById('sbRepo').innerHTML=`REPO <span class="sb-val">${S.repo}</span>`;
 
-  // Stats
-  document.getElementById('sPump').textContent = intel.pumps.length || '0';
-  document.getElementById('sDump').textContent = intel.dumps.length || '0';
-  document.getElementById('sWhale').textContent = intel.whales.length || '0';
-  document.getElementById('sGem').textContent = intel.gems.filter(g => g.score > 50).length || '0';
-  document.getElementById('sChain').textContent = [...new Set([...intel.pumps, ...intel.dumps, ...intel.whales, ...intel.gems].map(x => x.chain))].length || '0';
-  document.getElementById('sLast').textContent = intel.timestamp ? rel(intel.timestamp) : rel(S.runs[0]?.created_at);
-  document.getElementById('sNext').textContent = 'next: ' + nextHour();
-  document.getElementById('bIntel').textContent = intel.pumps.length + intel.dumps.length;
-  document.getElementById('bIntel').className = 'badge' + (intel.pumps.length > 0 ? ' live' : '');
-  document.getElementById('bWhale').textContent = intel.whales.length;
-  document.getElementById('bGem').textContent = intel.gems.length;
-  document.getElementById('opsNext').textContent = nextHour();
-  document.getElementById('pumpMeta').textContent = intel.filters?.binance_usdt_only
-    ? 'binance usdt futures only'
-    : 'sorted by confidence';
-  document.getElementById('opsUniverse').textContent = intel.filters?.binance_usdt_only
-    ? `Binance USDT futures (${intel.filters.binance_symbol_count || 0} live symbols)`
-    : 'Open Birdeye universe';
-  document.getElementById('opsChains').textContent = (intel.filters?.scan_chains || []).length
-    ? `${intel.filters.scan_chains.join(', ')}`
-    : 'all supported Birdeye chains';
+  document.getElementById('pumpCount').textContent=intel.pumps.length;
+  document.getElementById('pumpList').innerHTML=intel.pumps.length
+    ?intel.pumps.slice(0,15).map(p=>`<div class="row">${ctag(p.chain)}<span class="tok">${p.token}</span><span class="ind">${p.indicators.join(' · ')||'—'}</span><div class="conf-wrap"><div class="conf-n">${Math.round(p.confidence*100)}%</div><div class="conf-bar"><div class="cf-p" style="width:${p.confidence*100}%"></div></div></div><span class="sig-p">PUMP</span></div>`).join('')
+    :'<div class="empty">No pump signals in latest scan.</div>';
 
-  // Pump list
-  document.getElementById('pumpCount').textContent = intel.pumps.length;
-  document.getElementById('pumpList').innerHTML = intel.pumps.length
-    ? intel.pumps.slice(0, 15).map(p => `
-      <div class="row r-sig">
-        ${ctag(p.chain)}
-        <span class="tok">${p.token}</span>
-        <span class="ind">${p.indicators.join(' · ') || '—'}</span>
-        <div class="conf"><div class="conf-n">${Math.round(p.confidence * 100)}%</div><div class="conf-bar"><div class="cf-p" style="width:${p.confidence * 100}%"></div></div></div>
-        <span class="sig-p">PUMP</span>
-      </div>`).join('')
-    : '<div class="empty">No pump signals in latest scan.</div>';
+  document.getElementById('dumpCount').textContent=intel.dumps.length;
+  document.getElementById('dumpList').innerHTML=intel.dumps.length
+    ?intel.dumps.slice(0,10).map(d=>`<div class="row">${ctag(d.chain)}<span class="tok">${d.token}</span><span class="ind">${d.indicators.join(' · ')||'—'}</span><div class="conf-wrap"><div class="conf-n">${Math.round(d.confidence*100)}%</div><div class="conf-bar"><div class="cf-d" style="width:${d.confidence*100}%"></div></div></div><span class="sig-d">DUMP</span></div>`).join('')
+    :'<div class="empty">No dump warnings.</div>';
 
-  // Dump list
-  document.getElementById('dumpCount').textContent = intel.dumps.length;
-  document.getElementById('dumpList').innerHTML = intel.dumps.length
-    ? intel.dumps.slice(0, 10).map(d => `
-      <div class="row r-sig">
-        ${ctag(d.chain)}
-        <span class="tok">${d.token}</span>
-        <span class="ind">${d.indicators.join(' · ') || '—'}</span>
-        <div class="conf"><div class="conf-n">${Math.round(d.confidence * 100)}%</div><div class="conf-bar"><div class="cf-d" style="width:${d.confidence * 100}%"></div></div></div>
-        <span class="sig-d">DUMP</span>
-      </div>`).join('')
-    : '<div class="empty">No dump warnings.</div>';
+  document.getElementById('whaleCount').textContent=intel.whales.length;
+  document.getElementById('whaleList').innerHTML=intel.whales.length
+    ?intel.whales.map(w=>`<div class="row">${ctag(w.chain)}<span class="tok">${w.token||'—'}</span><span class="${w.type==='BUY'?'sig-p':'sig-d'}">${w.type}</span><span class="addr">${w.wallet?w.wallet.slice(0,8)+'…'+w.wallet.slice(-5):'—'}</span><span class="val">${usd(w.value)}</span></div>`).join('')
+    :'<div class="empty">No whale trades detected.</div>';
 
-  // Whale list
-  document.getElementById('whaleCount').textContent = intel.whales.length;
-  document.getElementById('whaleList').innerHTML = intel.whales.length
-    ? intel.whales.map(w => `
-      <div class="row r-whale">
-        ${ctag(w.chain)}
-        <span class="tok">${w.token || '—'}</span>
-        <span class="${w.type === 'BUY' ? 'sig-p' : 'sig-d'}">${w.type || '—'}</span>
-        <span class="addr">${w.wallet ? w.wallet.slice(0, 8) + '…' + w.wallet.slice(-5) : '—'}</span>
-        <span class="val">${usd(w.value)}</span>
-      </div>`).join('')
-    : '<div class="empty">No whale trades detected.</div>';
+  document.getElementById('gemCount').textContent=intel.gems.length;
+  document.getElementById('gemList').innerHTML=intel.gems.length
+    ?intel.gems.map(g=>`<div class="row">${ctag(g.chain)}<span class="tok">${g.token}</span><span class="val" style="font-size:10px">${g.score.toFixed(0)}/100</span><span class="ind">Vol ${usd(g.vol1h)} · LP ${usd(g.lp)}</span><span style="${g.score>=70?'color:#00dd33':g.score>=40?'color:#cc7700':'color:#cc2200'};font-size:9px;font-weight:700;flex-shrink:0">${g.score>=70?'STRONG':g.score>=40?'WATCH':'WEAK'}</span></div>`).join('')
+    :'<div class="empty">No gems found.</div>';
 
-  // Gem list
-  document.getElementById('gemCount').textContent = intel.gems.length;
-  document.getElementById('gemList').innerHTML = intel.gems.length
-    ? intel.gems.map(g => `
-      <div class="row r-gem">
-        ${ctag(g.chain)}
-        <span class="tok">${g.token}</span>
-        <span class="val" style="font-size:10px">${g.score.toFixed(0)}/100</span>
-        <span class="ind">Age ${g.age}h · Vol ${usd(g.vol1h)} · LP ${usd(g.lp)}</span>
-        <span class="${g.score >= 70 ? 'sig-p' : g.score >= 40 ? '' : 'sig-d'}" style="${g.score >= 40 && g.score < 70 ? 'color:var(--accent);font-family:var(--mono);font-size:9px' : ''}">${g.score >= 70 ? 'STRONG' : g.score >= 40 ? 'WATCH' : 'WEAK'}</span>
-      </div>`).join('')
-    : '<div class="empty">No gems found.</div>';
+  document.getElementById('securityCount').textContent=intel.security.length;
+  document.getElementById('securityList').innerHTML=intel.security.length
+    ?intel.security.slice(0,20).map(s=>`<div class="row"><span class="tok">${s.token}</span><span class="pill ${s.level==='HIGH'?'p-fail':s.level==='MED'?'p-nu':'p-ok'}">${s.level}</span><span class="val" style="font-size:10px">${s.riskScore.toFixed(0)}/100</span><span class="ind">${s.factors.join(' · ')||'—'}</span>${ctag(s.chain)}</div>`).join('')
+    :'<div class="empty">No high-risk tokens detected.</div>';
 
-  // Chain heatmap
-  const cm = {};
-  intel.pumps.forEach(p => { cm[p.chain] = cm[p.chain] || { p: 0, d: 0 }; cm[p.chain].p++; });
-  intel.dumps.forEach(d => { cm[d.chain] = cm[d.chain] || { p: 0, d: 0 }; cm[d.chain].d++; });
-  const chains = ['solana', 'ethereum', 'base', 'arbitrum', 'bnb', 'avalanche', 'polygon', 'optimism', 'zksync'];
-  document.getElementById('chainMap').innerHTML = chains.map(c => {
-    const d = cm[c] || { p: 0, d: 0 };
-    const total = d.p + d.d || 1;
-    const cls = d.p > 0 && d.d > 0 ? 'hot-both' : d.p > 0 ? 'hot-pump' : d.d > 0 ? 'hot-dump' : '';
-    return `<div class="hm-cell ${cls}">
-      <div class="hm-name">${c.toUpperCase()}</div>
-      <div class="hm-nums">
-        <div><div class="hm-p">${d.p}</div><div class="hm-sub">pump</div></div>
-        <div><div class="hm-d">${d.d}</div><div class="hm-sub">dump</div></div>
-      </div>
-      <div class="hm-bar">
-        <div class="hm-bp" style="width:${(d.p / total * 100).toFixed(0)}%"></div>
-        <div class="hm-bd" style="width:${(d.d / total * 100).toFixed(0)}%"></div>
-      </div>
-    </div>`;
-  }).join('');
+  document.getElementById('traderCount').textContent=intel.traders.length;
+  document.getElementById('tradersList').innerHTML=intel.traders.length
+    ?intel.traders.slice(0,20).map((t,i)=>`<div class="row"><span class="addr">#${i+1}</span><span class="addr">${t.wallet.slice(0,8)}…${t.wallet.slice(-5)}</span><span class="${t.pnl>=0?'sig-p':'sig-d'}">${usd(t.pnl)}</span><span class="val" style="font-size:10px">${usd(t.volume)}</span><span class="addr">${t.winRate>0?(t.winRate*100).toFixed(0)+'%':t.trades+' trades'}</span></div>`).join('')
+    :'<div class="empty">No top trader data in latest scan.</div>';
 
-  // Runs — exclude SKIPPED from health rate (a skipped cron is not a failure)
-  const runsForHealth = S.runs.filter(r => r.conclusion !== 'skipped');
-  const l10 = runsForHealth.slice(0, 10);
-  const ok = l10.filter(r => r.conclusion === 'success').length;
-  document.getElementById('opsRate').textContent = l10.length ? `${Math.round(ok / l10.length * 100)}% (${ok}/${l10.length})` : '—';
-  document.getElementById('opsList').innerHTML = S.runs.slice(0, 20).map(r => {
-    const cls = r.conclusion === 'success' ? 'p-ok' : r.conclusion === 'failure' ? 'p-fail' : 'p-run';
-    const dur = r.run_started_at && r.updated_at ? Math.round((new Date(r.updated_at) - new Date(r.run_started_at)) / 1000) + 's' : '—';
-    return `<div class="row r-run"><span class="addr">${r._wf} · ${rel(r.created_at)}</span><span class="addr">${dur}</span><span class="addr">${r.event}</span><span class="pill ${cls}">${(r.conclusion || r.status || '?').toUpperCase()}</span></div>`;
-  }).join('') || '<div class="empty">No runs.</div>';
-  document.getElementById('runList').innerHTML = document.getElementById('opsList').innerHTML;
+  const cm={};intel.pumps.forEach(p=>{cm[p.chain]=cm[p.chain]||{p:0,d:0};cm[p.chain].p++;});intel.dumps.forEach(d=>{cm[d.chain]=cm[d.chain]||{p:0,d:0};cm[d.chain].d++;});
+  const chains=['solana','ethereum','base','arbitrum','bnb','avalanche','polygon','optimism','zksync'];
+  document.getElementById('chainMap').innerHTML=chains.map(c=>{const d=cm[c]||{p:0,d:0};const total=d.p+d.d||1;const cls=d.p>0&&d.d>0?'hot-both':d.p>0?'hot-pump':d.d>0?'hot-dump':'';return`<div class="hm-cell ${cls}"><div class="hm-name">${c.toUpperCase()}</div><div class="hm-nums"><div><div class="hm-p">${d.p}</div><div class="hm-sub">pump</div></div><div><div class="hm-d">${d.d}</div><div class="hm-sub">dump</div></div></div><div class="hm-bar"><div class="hm-bp" style="width:${(d.p/total*100).toFixed(0)}%"></div><div class="hm-bd" style="width:${(d.d/total*100).toFixed(0)}%"></div></div></div>`;}).join('');
 
-  renderTicker(intel);
-  buildFeed(intel);
-  renderFeed();
+  const rh=S.runs.filter(r=>r.conclusion!=='skipped');const l10=rh.slice(0,10);const ok=l10.filter(r=>r.conclusion==='success').length;
+  document.getElementById('opsRate').textContent=l10.length?`${Math.round(ok/l10.length*100)}% (${ok}/${l10.length})`:'—';
+  const runHTML=S.runs.slice(0,20).map(r=>{const cls=r.conclusion==='success'?'p-ok':r.conclusion==='failure'?'p-fail':'p-run';const dur=r.run_started_at&&r.updated_at?Math.round((new Date(r.updated_at)-new Date(r.run_started_at))/1000)+'s':'—';return`<div class="row"><span class="addr">${r._wf} · ${rel(r.created_at)}</span><span class="addr">${dur}</span><span class="addr">${r.event}</span><span class="pill ${cls}">${(r.conclusion||r.status||'?').toUpperCase()}</span></div>`;}).join('')||'<div class="empty">No runs.</div>';
+  document.getElementById('opsList').innerHTML=runHTML;document.getElementById('runList').innerHTML=runHTML;
+  renderTicker(intel);buildFeed(intel);renderFeed();
 }
 
-function renderML() {
-  const ml = S.ml;
-  const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
-  if (!ml) {
-    set('bML', '—'); set('mlStatus', 'no data');
-    document.getElementById('mlSigList').innerHTML = '<div class="empty">ML pipeline has not run yet.</div>';
-    document.getElementById('mlPatList').innerHTML = '<div class="empty">No patterns mined.</div>';
-    return;
-  }
-  const mm = ml.model_metrics || {};
-  const tot = ml.totals || {};
-  const clusters = ml.cluster_counts || {};
-  const sigs = ml.top_signals || [];
-  const pats = ml.top_patterns || [];
-
-  set('bML', sigs.length || pats.length || '0');
-  set('mlStatus', (mm.status || 'unknown').toUpperCase());
-  set('mlTrained', mm.trained_ts ? rel(mm.trained_ts) : '—');
-  set('mlAuc', mm.roc_auc != null ? (Number(mm.roc_auc).toFixed(3)) : '—');
-  set('mlF1', 'f1: ' + (mm.f1 != null ? Number(mm.f1).toFixed(3) : '—'));
-  set('mlLabeled', mm.labeled_rows != null ? mm.labeled_rows : (tot.labeled_outcomes || 0));
-  set('mlPosRate', 'pos rate: ' + (mm.positive_rate != null ? (Number(mm.positive_rate) * 100).toFixed(1) + '%' : '—'));
-  set('mlEvents', (tot.wallet_events || 0).toLocaleString());
-  set('mlSnaps', 'snaps: ' + ((tot.snapshots || 0).toLocaleString()));
-  set('mlClusters', Object.entries(clusters).map(([k, v]) => `${k}:${v}`).join(' · ') || '—');
-  set('mlPatCount', pats.length);
-  set('mlSigCount', sigs.length);
-  set('mlPatListCount', pats.length);
-
-  document.getElementById('mlSigList').innerHTML = sigs.length ? sigs.map(s => {
-    const prob = (Number(s.ml_prob) * 100).toFixed(1);
-    const dirCls = s.ml_direction === 'up' ? 'p-ok' : s.ml_direction === 'down' ? 'p-fail' : 'p-run';
-    return `<div class="row r-run">
-      <span class="addr">${(s.chain || '').toUpperCase()} — ${s.symbol || '?'}</span>
-      <span class="addr">${prob}%</span>
-      <span class="pill ${dirCls}">${(s.ml_direction || '—').toUpperCase()}</span>
-      <span class="addr">${s.label || ''}</span>
-    </div>`;
-  }).join('') : '<div class="empty">No ML scores in the last 24h.</div>';
-
-  document.getElementById('mlPatList').innerHTML = pats.length ? pats.map(p => {
-    const seq = (p.prefix || []).join(' → ');
-    const lift = Number(p.lift || 0).toFixed(2);
-    const pr = (Number(p.positive_rate || 0) * 100).toFixed(1);
-    return `<div class="row r-run">
-      <span class="addr">${seq}</span>
-      <span class="addr">lift ${lift}×</span>
-      <span class="addr">sup ${p.support}</span>
-      <span class="pill p-ok">${pr}%</span>
-    </div>`;
-  }).join('') : '<div class="empty">Need more data to mine patterns.</div>';
+function renderML(){
+  const ml=S.ml;const set=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v;};
+  if(!ml){set('bML','—');set('mlStatus','no data');document.getElementById('mlSigList').innerHTML='<div class="empty">ML pipeline has not run yet.</div>';document.getElementById('mlPatList').innerHTML='<div class="empty">No patterns mined.</div>';return;}
+  const mm=ml.model_metrics||{},tot=ml.totals||{},clusters=ml.cluster_counts||{},sigs=ml.top_signals||[],pats=ml.top_patterns||[];
+  set('bML',sigs.length||pats.length||'0');set('mlStatus',(mm.status||'unknown').toUpperCase());set('mlTrained',mm.trained_ts?rel(mm.trained_ts):'—');
+  set('mlAuc',mm.roc_auc!=null?Number(mm.roc_auc).toFixed(3):'—');set('mlF1','f1: '+(mm.f1!=null?Number(mm.f1).toFixed(3):'—'));
+  set('mlLabeled',mm.labeled_rows!=null?mm.labeled_rows:(tot.labeled_outcomes||0));set('mlPosRate','pos rate: '+(mm.positive_rate!=null?(Number(mm.positive_rate)*100).toFixed(1)+'%':'—'));
+  set('mlEvents',(tot.wallet_events||0).toLocaleString());set('mlSnaps','snaps: '+(tot.snapshots||0).toLocaleString());
+  set('mlClusters',Object.entries(clusters).map(([k,v])=>`${k}:${v}`).join(' · ')||'—');set('mlPatCount',pats.length);set('mlSigCount',sigs.length);set('mlPatListCount',pats.length);
+  document.getElementById('mlSigList').innerHTML=sigs.length?sigs.map(s=>`<div class="row"><span class="addr">${(s.chain||'').toUpperCase()} — ${s.symbol||'?'}</span><span class="addr">${(Number(s.ml_prob)*100).toFixed(1)}%</span><span class="pill ${s.ml_direction==='up'?'p-ok':s.ml_direction==='down'?'p-fail':'p-run'}">${(s.ml_direction||'—').toUpperCase()}</span><span class="addr">${s.label||''}</span></div>`).join(''):'<div class="empty">No ML scores in the last 24h.</div>';
+  document.getElementById('mlPatList').innerHTML=pats.length?pats.map(p=>`<div class="row"><span class="addr" style="flex:1">${(p.prefix||[]).join(' → ')}</span><span class="addr">lift ${Number(p.lift||0).toFixed(2)}×</span><span class="addr">sup ${p.support}</span><span class="pill p-ok">${(Number(p.positive_rate||0)*100).toFixed(1)}%</span></div>`).join(''):'<div class="empty">Need more data to mine patterns.</div>';
 }
 
-function renderReports() {
-  document.getElementById('bReports').textContent = S.reports.length;
-  document.getElementById('rptMeta').textContent = `${S.reports.length} files`;
-  document.getElementById('rptList').innerHTML = S.reports.length
-    ? S.reports.map(f => `<div class="rpt-row" onclick="loadRpt('${f.path}',this)"><span class="rpt-name">${f.path.split('/').pop()}</span><span class="rpt-meta">view →</span></div>`).join('')
-    : '<div class="empty">No reports yet.</div>';
+function renderReports(){
+  document.getElementById('bReports').textContent=S.reports.length;document.getElementById('rptMeta').textContent=`${S.reports.length} files`;
+  document.getElementById('rptList').innerHTML=S.reports.length?S.reports.map(f=>`<div class="rpt-row" onclick="loadRpt('${f.path}',this)"><span class="rpt-name">${f.path.split('/').pop()}</span><span class="rpt-meta">view →</span></div>`).join(''):'<div class="empty">No reports yet.</div>';
 }
 
-async function loadRpt(path, el) {
-  document.querySelectorAll('.rpt-row').forEach(e => e.classList.remove('sel'));
-  el?.classList.add('sel');
-  document.getElementById('rptContent').textContent = 'Loading…';
-  try {
-    const r = await ghRaw(path);
-    const text = await r.text();
-    document.getElementById('rptContent').textContent = text || '(empty)';
-    const parsed = parseReport(text);
-    if (parsed.outcomes?.length) S.outcomes = parsed.outcomes;
-    parsed.outcomes = parsed.outcomes?.length ? parsed.outcomes : S.outcomes;
-    S.parsed = parsed;
-    renderAll(parsed);
-  } catch (e) {
-    document.getElementById('rptContent').textContent = `Error: ${e.message}`;
-  }
+async function loadRpt(path,el){
+  document.querySelectorAll('.rpt-row').forEach(e=>e.classList.remove('sel'));el?.classList.add('sel');
+  document.getElementById('rptContent').textContent='Loading…';
+  try{const r=await ghRaw(path);const text=await r.text();document.getElementById('rptContent').textContent=text||'(empty)';const parsed=parseReport(text);if(parsed.outcomes?.length)S.outcomes=parsed.outcomes;S.parsed=parsed;renderAll(parsed);}
+  catch(e){document.getElementById('rptContent').textContent=`Error: ${e.message}`;}
 }
 
-// ── Init & auto-refresh ──────────────────────────────────────
-async function init() {
-  const repo = document.getElementById('repoIn').value.trim();
-  const token = document.getElementById('tokenIn').value.trim();
-  if (!repo || !repo.includes('/')) { alert('Enter owner/repository'); return; }
-  S.repo = repo; S.token = token;
-
-  setStatus('loading');
-
-  try {
-    const [wh, wt, qt] = await Promise.all([
-      gh('/actions/workflows/agent.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
-      gh('/actions/workflows/ml_pipeline.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
-      gh('/actions/workflows/quant_signal_engine.yml/runs?per_page=20').then(r => r.json()).catch(() => ({ workflow_runs: [] })),
+async function init(){
+  const repo=document.getElementById('repoIn').value.trim();const token=document.getElementById('tokenIn').value.trim();
+  if(!repo||!repo.includes('/')){alert('Enter owner/repository');return;}
+  S.repo=repo;S.token=token;setStatus('loading');
+  try{
+    const[wh,wt,qt]=await Promise.all([
+      gh('/actions/workflows/agent.yml/runs?per_page=20').then(r=>r.json()).catch(()=>({workflow_runs:[]})),
+      gh('/actions/workflows/ml_pipeline.yml/runs?per_page=20').then(r=>r.json()).catch(()=>({workflow_runs:[]})),
+      gh('/actions/workflows/quant_signal_engine.yml/runs?per_page=20').then(r=>r.json()).catch(()=>({workflow_runs:[]})),
     ]);
-    S.runs = [
-      ...(wh.workflow_runs || []).map(r => ({ ...r, _wf: 'Agent' })),
-      ...(wt.workflow_runs || []).map(r => ({ ...r, _wf: 'Whale' })),
-      ...(qt.workflow_runs || []).map(r => ({ ...r, _wf: 'Quant' }))
-    ].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
-    const tree = await gh('/git/trees/main?recursive=1').then(r => r.json());
-    S.reports = (tree.tree || [])
-      .filter(f => f.path.startsWith('reports/') && (f.path.endsWith('.txt') || f.path.endsWith('.md') || f.path.endsWith('.json') || f.path.endsWith('.csv')) && !f.path.endsWith('.gitkeep'))
-      .sort((a, b) => b.path.localeCompare(a.path))
-      .slice(0, 50);
-
-    if (S.reports.length) {
-      const signalReport = S.reports.find(f => f.path.endsWith('latest_quant_signals.json'))
-        || S.reports.find(f => /quant_signals_.*\.json$/.test(f.path))
-        || S.reports[0];
-      const outcomeReport = S.reports.find(f => f.path.endsWith('latest_quant_outcomes.json'))
-        || S.reports.find(f => /quant_outcomes_.*\.json$/.test(f.path));
-      const mlReport = S.reports.find(f => f.path.endsWith('latest_ml_scores.json'));
-      const r = await ghRaw(signalReport.path);
-      const text = await r.text();
-      S.parsed = parseReport(text);
-      if (outcomeReport) {
-        const or = await ghRaw(outcomeReport.path);
-        const otext = await or.text();
-        const parsedOutcome = parseReport(otext);
-        S.outcomes = parsedOutcome.outcomes || [];
-        S.parsed.outcomes = S.outcomes;
-      }
-      if (mlReport) {
-        try {
-          const mr = await ghRaw(mlReport.path);
-          S.ml = JSON.parse(await mr.text());
-        } catch (e) { S.ml = null; }
-      }
-    } else {
-      S.parsed = emptyIntel();
-    }
-
-    renderAll(S.parsed);
-    renderReports();
-    renderML();
-    setStatus('live');
-  } catch (e) {
-    setStatus('error');
-    console.error(e);
-  }
+    S.runs=[...(wh.workflow_runs||[]).map(r=>({...r,_wf:'Agent'})),...(wt.workflow_runs||[]).map(r=>({...r,_wf:'ML'})),...(qt.workflow_runs||[]).map(r=>({...r,_wf:'Quant'}))].sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+    const tree=await gh('/git/trees/main?recursive=1').then(r=>r.json());
+    S.reports=(tree.tree||[]).filter(f=>f.path.startsWith('reports/')&&(f.path.endsWith('.json')||f.path.endsWith('.md')||f.path.endsWith('.csv')||f.path.endsWith('.txt'))&&!f.path.endsWith('.gitkeep')).sort((a,b)=>b.path.localeCompare(a.path)).slice(0,50);
+    if(S.reports.length){
+      const sr=S.reports.find(f=>f.path.endsWith('latest_quant_signals.json'))||S.reports.find(f=>/quant_signals_.*\.json$/.test(f.path))||S.reports[0];
+      const or2=S.reports.find(f=>f.path.endsWith('latest_quant_outcomes.json'))||S.reports.find(f=>/quant_outcomes_.*\.json$/.test(f.path));
+      const mr=S.reports.find(f=>f.path.endsWith('latest_ml_scores.json'));
+      S.parsed=parseReport(await(await ghRaw(sr.path)).text());
+      if(or2){const po=parseReport(await(await ghRaw(or2.path)).text());S.outcomes=po.outcomes||[];S.parsed.outcomes=S.outcomes;}
+      if(mr){try{S.ml=JSON.parse(await(await ghRaw(mr.path)).text());}catch(e){S.ml=null;}}
+    }else{S.parsed=emptyIntel();}
+    renderAll(S.parsed);renderReports();renderML();setStatus('live');
+  }catch(e){setStatus('error');console.error(e);}
 }
 
-function setStatus(s) {
-  const dot = document.getElementById('streamDot');
-  const lbl = document.getElementById('streamLabel');
-  const ldot = document.getElementById('liveDot');
-  if (s === 'live') { dot.className = 'live-dot active'; lbl.textContent = 'LIVE'; ldot.style.animationDuration = '1.5s'; }
-  else if (s === 'loading') { dot.className = 'live-dot'; lbl.textContent = 'LOADING'; }
-  else { dot.className = 'live-dot'; lbl.textContent = 'ERROR'; ldot.style.background = 'var(--red)'; }
+function setStatus(s){
+  const dot=document.getElementById('liveDot'),lbl=document.getElementById('dataStatus');
+  if(s==='live'){dot.classList.add('on');lbl.textContent='● LIVE';lbl.className='live-badge';}
+  else if(s==='loading'){dot.classList.remove('on');lbl.textContent='● LOADING';lbl.className='stale-badge';}
+  else{dot.classList.remove('on');lbl.textContent='● ERROR';lbl.className='offline-badge';}
 }
 
-// ── Countdown + auto-refresh every 60s ──────────────────────
-function startCountdown() {
-  if (S.refreshTimer) clearInterval(S.refreshTimer);
-  S.countdown = 60;
-  S.refreshTimer = setInterval(() => {
-    S.countdown--;
-    document.getElementById('countdown').textContent = `↻ ${S.countdown}s`;
-    if (S.countdown <= 0) { S.countdown = 60; if (S.repo) init(); }
-  }, 1000);
+function startCountdown(){
+  if(S.refreshTimer)clearInterval(S.refreshTimer);S.countdown=60;
+  S.refreshTimer=setInterval(()=>{S.countdown--;document.getElementById('countdown').textContent=`↻ ${S.countdown}s`;if(S.countdown<=0){S.countdown=60;if(S.repo)init();}},1000);
 }
 
-function tab(name, el) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  el.classList.add('active');
+function tab(name,el){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');el.classList.add('active');
 }
 
-// ── Boot ─────────────────────────────────────────────────────
-const p = new URLSearchParams(location.search);
-if (p.get('repo')) { document.getElementById('repoIn').value = p.get('repo'); S.repo = p.get('repo'); }
-if (S.repo) init();
-startCountdown();
+const p=new URLSearchParams(location.search);
+if(p.get('repo')){document.getElementById('repoIn').value=p.get('repo');S.repo=p.get('repo');}
+if(S.repo)init();startCountdown();
 </script>
 </body>
 </html>
