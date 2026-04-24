@@ -8,6 +8,7 @@ signal scoring. It uses Birdeye's public API instead of scraping pages.
 from __future__ import annotations
 
 import argparse
+import logging
 import csv
 import json
 import math
