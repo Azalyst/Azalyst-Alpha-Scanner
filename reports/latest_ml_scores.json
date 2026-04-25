@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-24T23:00:14.156684+00:00",
+  "generated_at": "2026-04-25T03:33:41.655284+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -98,9 +98,9 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 288,
+    "snapshots": 326,
     "wallet_events": 377,
-    "labeled_outcomes": 34
+    "labeled_outcomes": 47
   },
   "top_signals": [
     {
@@ -143,6 +143,19 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 291,
+      "ts": "2026-04-24T23:24:39+00:00",
+      "chain": "arbitrum",
+      "address": "0x7f9fbf9bdd3f4105c478b996b648fe6e828a1e98",
+      "symbol": "APE",
+      "ml_prob": 0.9431729374596868,
+      "ml_direction": "up",
+      "pump_score": 0.0,
+      "dump_score": 6.27,
+      "anomaly_score": 3.93,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 280,
       "ts": "2026-04-24T22:04:57+00:00",
       "chain": "ethereum",
@@ -153,6 +166,19 @@
       "pump_score": 53.05,
       "dump_score": 9.25,
       "anomaly_score": 95.17,
+      "label": "anomaly_watch"
+    },
+    {
+      "snapshot_id": 309,
+      "ts": "2026-04-25T00:00:20+00:00",
+      "chain": "ethereum",
+      "address": "0xdfa208bb0b811cfbb5fa3ea98ec37aa86180e668",
+      "symbol": "w\ud83c\udf56",
+      "ml_prob": 0.8710038824905136,
+      "ml_direction": "up",
+      "pump_score": 0.0,
+      "dump_score": 31.9,
+      "anomaly_score": 95.32,
       "label": "anomaly_watch"
     },
     {
@@ -169,6 +195,32 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 304,
+      "ts": "2026-04-25T00:00:20+00:00",
+      "chain": "ethereum",
+      "address": "0xc7e4254a72169fdf7a2e080462724f2f642daf7e",
+      "symbol": "ELIEN",
+      "ml_prob": 0.8279540399433158,
+      "ml_direction": "up",
+      "pump_score": 3.25,
+      "dump_score": 6.88,
+      "anomaly_score": 21.65,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 305,
+      "ts": "2026-04-25T00:00:20+00:00",
+      "chain": "ethereum",
+      "address": "0xce82213c4bae42e1c04880ea64a53eef73e195de",
+      "symbol": "FLORK",
+      "ml_prob": 0.8279540399433158,
+      "ml_direction": "up",
+      "pump_score": 0.0,
+      "dump_score": 8.61,
+      "anomaly_score": 26.0,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 272,
       "ts": "2026-04-24T22:04:57+00:00",
       "chain": "ethereum",
@@ -180,6 +232,45 @@
       "dump_score": 6.25,
       "anomaly_score": 65.0,
       "label": "watch"
+    },
+    {
+      "snapshot_id": 317,
+      "ts": "2026-04-25T00:00:20+00:00",
+      "chain": "ethereum",
+      "address": "0xa2c8b16578a028dccdc5ab321b32c08d26f22ec6",
+      "symbol": "ETH32",
+      "ml_prob": 0.30470491821203566,
+      "ml_direction": "down",
+      "pump_score": 57.25,
+      "dump_score": 6.25,
+      "anomaly_score": 65.0,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 316,
+      "ts": "2026-04-25T00:00:20+00:00",
+      "chain": "ethereum",
+      "address": "0x1d345122a5fbd83a1d4910050c945eabe29bf2a8",
+      "symbol": "\ud83e\uddecHLND",
+      "ml_prob": 0.27219217143582036,
+      "ml_direction": "down",
+      "pump_score": 57.25,
+      "dump_score": 6.25,
+      "anomaly_score": 85.34,
+      "label": "anomaly_watch"
+    },
+    {
+      "snapshot_id": 310,
+      "ts": "2026-04-25T00:00:20+00:00",
+      "chain": "ethereum",
+      "address": "0x1ebb17c510b41d75b3b94adabba473438d58525c",
+      "symbol": "based",
+      "ml_prob": 0.15130973049787783,
+      "ml_direction": "down",
+      "pump_score": 57.25,
+      "dump_score": 6.25,
+      "anomaly_score": 100.0,
+      "label": "anomaly_watch"
     },
     {
       "snapshot_id": 273,
@@ -336,102 +427,11 @@
       "dump_score": 6.25,
       "anomaly_score": 35.38,
       "label": "watch"
-    },
-    {
-      "snapshot_id": 279,
-      "ts": "2026-04-24T22:04:57+00:00",
-      "chain": "ethereum",
-      "address": "0x1482170657c887e3f06535f651305be537538bc8",
-      "symbol": "Emi",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 21.25,
-      "dump_score": 33.4,
-      "anomaly_score": 65.0,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 281,
-      "ts": "2026-04-24T22:04:57+00:00",
-      "chain": "ethereum",
-      "address": "0x818ee7fa8ec7edcf6cf2adbe7b99735da4cab9a3",
-      "symbol": "pNFTr",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 21.37,
-      "dump_score": 6.25,
-      "anomaly_score": 30.18,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 282,
-      "ts": "2026-04-24T22:42:13+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000042",
-      "symbol": "OP",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 0.0,
-      "dump_score": 13.01,
-      "anomaly_score": 13.27,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 283,
-      "ts": "2026-04-24T22:42:13+00:00",
-      "chain": "optimism",
-      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
-      "symbol": "USDC",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 0.82,
-      "dump_score": 6.31,
-      "anomaly_score": 10.87,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 284,
-      "ts": "2026-04-24T22:42:13+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000006",
-      "symbol": "WETH",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 0.01,
-      "dump_score": 6.44,
-      "anomaly_score": 25.15,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 285,
-      "ts": "2026-04-24T22:42:13+00:00",
-      "chain": "optimism",
-      "address": "0x1e925de1c68ef83bd98ee3e130ef14a50309c01b",
-      "symbol": "EXA",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 0.0,
-      "dump_score": 6.25,
-      "anomaly_score": 0.57,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 286,
-      "ts": "2026-04-24T22:42:13+00:00",
-      "chain": "optimism",
-      "address": "0x9560e827af36c94d2ac33a39bce1fe78631088db",
-      "symbol": "VELO",
-      "ml_prob": 0.007160201568327632,
-      "ml_direction": "down",
-      "pump_score": 0.0,
-      "dump_score": 12.51,
-      "anomaly_score": 0.08,
-      "label": "watch"
     }
   ],
   "top_patterns": [
     {
-      "pattern_id": 333,
+      "pattern_id": 361,
       "length": 4,
       "support": 15,
       "lift": 1.2,
@@ -445,7 +445,7 @@
       ]
     },
     {
-      "pattern_id": 334,
+      "pattern_id": 362,
       "length": 4,
       "support": 13,
       "lift": 1.2,
@@ -459,7 +459,7 @@
       ]
     },
     {
-      "pattern_id": 335,
+      "pattern_id": 363,
       "length": 3,
       "support": 13,
       "lift": 1.2,
@@ -472,7 +472,7 @@
       ]
     },
     {
-      "pattern_id": 336,
+      "pattern_id": 364,
       "length": 2,
       "support": 13,
       "lift": 1.2,
@@ -484,7 +484,7 @@
       ]
     },
     {
-      "pattern_id": 337,
+      "pattern_id": 365,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -498,7 +498,7 @@
       ]
     },
     {
-      "pattern_id": 338,
+      "pattern_id": 366,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -512,7 +512,7 @@
       ]
     },
     {
-      "pattern_id": 339,
+      "pattern_id": 367,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -526,7 +526,7 @@
       ]
     },
     {
-      "pattern_id": 340,
+      "pattern_id": 368,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -540,7 +540,7 @@
       ]
     },
     {
-      "pattern_id": 341,
+      "pattern_id": 369,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -553,7 +553,7 @@
       ]
     },
     {
-      "pattern_id": 342,
+      "pattern_id": 370,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -567,7 +567,7 @@
       ]
     },
     {
-      "pattern_id": 343,
+      "pattern_id": 371,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -580,7 +580,7 @@
       ]
     },
     {
-      "pattern_id": 344,
+      "pattern_id": 372,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -594,7 +594,7 @@
       ]
     },
     {
-      "pattern_id": 345,
+      "pattern_id": 373,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -607,7 +607,7 @@
       ]
     },
     {
-      "pattern_id": 346,
+      "pattern_id": 374,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -620,7 +620,7 @@
       ]
     },
     {
-      "pattern_id": 347,
+      "pattern_id": 375,
       "length": 4,
       "support": 12,
       "lift": 1.2,
