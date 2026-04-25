@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-25T13:40:05.987169+00:00",
+  "generated_at": "2026-04-25T15:02:47.005015+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -98,9 +98,9 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 463,
+    "snapshots": 487,
     "wallet_events": 377,
-    "labeled_outcomes": 62
+    "labeled_outcomes": 64
   },
   "top_signals": [
     {
@@ -299,6 +299,19 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 475,
+      "ts": "2026-04-25T13:49:54+00:00",
+      "chain": "ethereum",
+      "address": "0xa0d872865f9a01ba68170b29b8afc6f06cc22a15",
+      "symbol": "KITTENGER",
+      "ml_prob": 0.05275277892832546,
+      "ml_direction": "down",
+      "pump_score": 21.25,
+      "dump_score": 42.25,
+      "anomaly_score": 65.0,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 312,
       "ts": "2026-04-25T00:00:20+00:00",
       "chain": "ethereum",
@@ -414,24 +427,11 @@
       "dump_score": 21.34,
       "anomaly_score": 53.48,
       "label": "watch"
-    },
-    {
-      "snapshot_id": 274,
-      "ts": "2026-04-24T22:04:57+00:00",
-      "chain": "ethereum",
-      "address": "0x51c34830ef3b64f6c1b19a16071e94d729a111d0",
-      "symbol": "\ud83d\udc7a",
-      "ml_prob": 0.040578515204878006,
-      "ml_direction": "down",
-      "pump_score": 21.25,
-      "dump_score": 6.25,
-      "anomaly_score": 30.0,
-      "label": "watch"
     }
   ],
   "top_patterns": [
     {
-      "pattern_id": 529,
+      "pattern_id": 557,
       "length": 4,
       "support": 15,
       "lift": 1.2,
@@ -445,7 +445,7 @@
       ]
     },
     {
-      "pattern_id": 530,
+      "pattern_id": 558,
       "length": 4,
       "support": 13,
       "lift": 1.2,
@@ -459,7 +459,7 @@
       ]
     },
     {
-      "pattern_id": 531,
+      "pattern_id": 559,
       "length": 3,
       "support": 13,
       "lift": 1.2,
@@ -472,7 +472,7 @@
       ]
     },
     {
-      "pattern_id": 532,
+      "pattern_id": 560,
       "length": 2,
       "support": 13,
       "lift": 1.2,
@@ -484,7 +484,7 @@
       ]
     },
     {
-      "pattern_id": 533,
+      "pattern_id": 561,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -498,7 +498,7 @@
       ]
     },
     {
-      "pattern_id": 534,
+      "pattern_id": 562,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -512,7 +512,7 @@
       ]
     },
     {
-      "pattern_id": 535,
+      "pattern_id": 563,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -526,7 +526,7 @@
       ]
     },
     {
-      "pattern_id": 536,
+      "pattern_id": 564,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -540,7 +540,7 @@
       ]
     },
     {
-      "pattern_id": 537,
+      "pattern_id": 565,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -553,7 +553,7 @@
       ]
     },
     {
-      "pattern_id": 538,
+      "pattern_id": 566,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -567,7 +567,7 @@
       ]
     },
     {
-      "pattern_id": 539,
+      "pattern_id": 567,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -580,7 +580,7 @@
       ]
     },
     {
-      "pattern_id": 540,
+      "pattern_id": 568,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -594,7 +594,7 @@
       ]
     },
     {
-      "pattern_id": 541,
+      "pattern_id": 569,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -607,7 +607,7 @@
       ]
     },
     {
-      "pattern_id": 542,
+      "pattern_id": 570,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -620,7 +620,7 @@
       ]
     },
     {
-      "pattern_id": 543,
+      "pattern_id": 571,
       "length": 4,
       "support": 12,
       "lift": 1.2,
