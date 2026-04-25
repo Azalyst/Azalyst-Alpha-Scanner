@@ -133,3 +133,10 @@ jobs:
           git commit -m "Azalyst scan: ${SNAP} snapshots — $(date -u +%H:%M UTC)"
           git pull --rebase -X theirs origin main || git rebase --abort
           git push origin HEAD:main
+
+      - name: Send Discord summary
+        continue-on-error: true
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          python scripts/discord_report.py --run-url "$RUN_URL"
