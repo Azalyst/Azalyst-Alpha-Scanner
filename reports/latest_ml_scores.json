@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-26T13:35:56.191424+00:00",
+  "generated_at": "2026-04-26T15:08:44.231884+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -115,9 +115,9 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 731,
+    "snapshots": 750,
     "wallet_events": 377,
-    "labeled_outcomes": 120
+    "labeled_outcomes": 124
   },
   "top_signals": [
     {
@@ -146,20 +146,6 @@
       "pump_score": 7.3,
       "dump_score": 0.21,
       "anomaly_score": 8.49,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 481,
-      "ts": "2026-04-25T14:35:39+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000042",
-      "symbol": "OP",
-      "ml_prob": 0.0008860078510485725,
-      "ml_direction": "down",
-      "ml_edge": 0.9982279842979028,
-      "pump_score": 0.0,
-      "dump_score": 13.11,
-      "anomaly_score": 6.63,
       "label": "watch"
     },
     {
@@ -205,20 +191,6 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 465,
-      "ts": "2026-04-25T13:49:54+00:00",
-      "chain": "ethereum",
-      "address": "0xaff2565091e7207191dbe340b8528d02fa78d044",
-      "symbol": "ASTEROID",
-      "ml_prob": 0.0009503584649701592,
-      "ml_direction": "down",
-      "ml_edge": 0.9980992830700597,
-      "pump_score": 0.0,
-      "dump_score": 12.05,
-      "anomaly_score": 12.2,
-      "label": "watch"
-    },
-    {
       "snapshot_id": 492,
       "ts": "2026-04-25T15:25:44+00:00",
       "chain": "arbitrum",
@@ -230,20 +202,6 @@
       "pump_score": 0.0,
       "dump_score": 6.26,
       "anomaly_score": 5.52,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 464,
-      "ts": "2026-04-25T13:49:54+00:00",
-      "chain": "ethereum",
-      "address": "0x8de39b057cc6522230ab19c0205080a8663331ef",
-      "symbol": "wojak",
-      "ml_prob": 0.0009549898522407996,
-      "ml_direction": "down",
-      "ml_edge": 0.9980900202955184,
-      "pump_score": 20.33,
-      "dump_score": 6.25,
-      "anomaly_score": 35.28,
       "label": "watch"
     },
     {
@@ -415,20 +373,6 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 484,
-      "ts": "2026-04-25T14:35:39+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000006",
-      "symbol": "WETH",
-      "ml_prob": 0.0011527364940284311,
-      "ml_direction": "down",
-      "ml_edge": 0.9976945270119432,
-      "pump_score": 0.0,
-      "dump_score": 6.25,
-      "anomaly_score": 0.26,
-      "label": "watch"
-    },
-    {
       "snapshot_id": 493,
       "ts": "2026-04-25T15:25:44+00:00",
       "chain": "arbitrum",
@@ -468,6 +412,62 @@
       "pump_score": 0.0,
       "dump_score": 12.64,
       "anomaly_score": 6.44,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 617,
+      "ts": "2026-04-25T22:36:10+00:00",
+      "chain": "optimism",
+      "address": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+      "symbol": "WETH",
+      "ml_prob": 0.001201041170051442,
+      "ml_direction": "down",
+      "ml_edge": 0.9975979176598971,
+      "pump_score": 0.0,
+      "dump_score": 12.5,
+      "anomaly_score": 8.63,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 592,
+      "ts": "2026-04-25T17:38:42+00:00",
+      "chain": "optimism",
+      "address": "0x94b008aa00579c1307b0ef2c499ad98a8ce58e58",
+      "symbol": "WETH",
+      "ml_prob": 0.001201041170051442,
+      "ml_direction": "down",
+      "ml_edge": 0.9975979176598971,
+      "pump_score": 0.0,
+      "dump_score": 12.64,
+      "anomaly_score": 14.05,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 738,
+      "ts": "2026-04-26T14:53:37+00:00",
+      "chain": "solana",
+      "address": "AmSYbLUcwYmBZc8G9GTenSn2dsLjsZiVeMxMQvcUpump",
+      "symbol": "LASTMAN",
+      "ml_prob": 0.0012142862234881203,
+      "ml_direction": "down",
+      "ml_edge": 0.9975714275530237,
+      "pump_score": 0.0,
+      "dump_score": 0.0,
+      "anomaly_score": 0.0,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 680,
+      "ts": "2026-04-26T04:43:03+00:00",
+      "chain": "optimism",
+      "address": "0x1e925de1c68ef83bd98ee3e130ef14a50309c01b",
+      "symbol": "EXA",
+      "ml_prob": 0.0012142862234881203,
+      "ml_direction": "down",
+      "ml_edge": 0.9975714275530237,
+      "pump_score": 0.0,
+      "dump_score": 0.31,
+      "anomaly_score": 0.44,
       "label": "watch"
     }
   ],

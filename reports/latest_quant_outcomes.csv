@@ -1,6 +1,5 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-04-26T13:26:37+00:00,ethereum,0xf280b16ef293d8e534e370794ef26bf312694126,ASTEROID,anomaly_watch,up,0.0003645,0.0003426,-6.0082,10.0,60,False,predicted_up;return_-6.01pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-26T13:26:37+00:00,solana,7uUEX55KKMyiJDfoTaT3K2ZHmEWVwwxoqpXPxDTXtzQo,BitCoin,anomaly_watch,up,0.001383,0.001608,16.269,10.0,60,True,predicted_up;return_16.27pct;target_10.00pct;label_anomaly_watch;pump_confirmed
-2026-04-26T13:26:37+00:00,solana,6QSmayjFkfXpNJJ4rM44PTvgdMS2PfkVrp9EwgGXpump,Trump,anomaly_watch,down,6.149e-07,6.831e-07,11.0912,10.0,60,False,predicted_down;return_11.09pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-26T13:26:37+00:00,solana,27NdPJMkbCuQy4BuQhtgsVrvhVKr4tfKZVNZrFqEFTpw,Korat,watch,up,2.114e-05,4.559e-05,115.6575,10.0,60,True,predicted_up;return_115.66pct;target_10.00pct;label_watch;pump_confirmed
-2026-04-26T13:26:37+00:00,solana,AmSYbLUcwYmBZc8G9GTenSn2dsLjsZiVeMxMQvcUpump,LASTMAN,anomaly_watch,down,0.00318,0.00318,0.0,10.0,60,False,predicted_down;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-04-26T14:54:34+00:00,arbitrum,0xdc6576e635f9a5ea134a069b74aebe3cdc0d548b,MEKA,watch,up,0.04364,0.06783,55.4308,10.0,60,True,predicted_up;return_55.43pct;target_10.00pct;label_watch;pump_confirmed
+2026-04-26T14:54:35+00:00,arbitrum,0xb36edc1cb45d9e9383ff0235e1a502a5421d37b6,MNFLAB,watch,up,0.0006765,0.001123,66.0015,10.0,60,True,predicted_up;return_66.00pct;target_10.00pct;label_watch;pump_confirmed
+2026-04-26T14:54:35+00:00,arbitrum,0x912ce59144191c1204e64559fe8253a0e49e6548,ARB,watch,down,0.1303,0.1304,0.0767,10.0,60,False,predicted_down;return_0.08pct;target_10.00pct;label_watch;not_confirmed
+2026-04-26T14:54:35+00:00,arbitrum,0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f,WBTC,dump_risk,down,77663.062,77897.36,0.3017,10.0,60,False,predicted_down;return_0.30pct;target_10.00pct;label_dump_risk;not_confirmed
