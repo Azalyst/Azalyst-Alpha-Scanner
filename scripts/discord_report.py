@@ -228,25 +228,25 @@ def build_payload(
     return {
         "username": "Azalyst Alpha Scanner",
         "allowed_mentions": {"parse": []},
-        "content": f"New Azalyst scanner update. {links}",
+        "content": f"{title} | Quant Update | {links}",
         "embeds": [
             {
-                "title": f"{title} - Human Summary",
+                "title": "Executive Brief",
                 "color": 0xF97316,
                 "description": truncate(plain_english, MAX_EMBED_DESCRIPTION),
             },
             {
-                "title": "Top Signals",
+                "title": "Signal Board",
                 "color": 0x2563EB,
                 "description": signal_lines,
             },
             {
-                "title": "Technical + Process Details",
+                "title": "Model + Run Details",
                 "color": 0x64748B,
                 "description": truncate(technical, MAX_EMBED_DESCRIPTION),
             },
             {
-                "title": "Qwen Brief",
+                "title": "Research Note",
                 "color": 0x7C3AED,
                 "description": truncate(qwen_excerpt, MAX_EMBED_DESCRIPTION),
             },
