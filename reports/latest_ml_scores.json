@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-27T17:43:15.567378+00:00",
+  "generated_at": "2026-04-27T18:05:49.744359+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -115,7 +115,7 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 993,
+    "snapshots": 1023,
     "wallet_events": 377,
     "labeled_outcomes": 156
   },
@@ -174,6 +174,20 @@
       "pump_score": 30.05,
       "dump_score": 0.0,
       "anomaly_score": 30.08,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1010,
+      "ts": "2026-04-27T17:59:42+00:00",
+      "chain": "solana",
+      "address": "4rf7iKpfW7zW1oQExdGd5MbgMwjE9WKkNGwApoZbpump",
+      "symbol": "Spermrace",
+      "ml_prob": 0.0006463757093499098,
+      "ml_direction": "down",
+      "ml_edge": 0.9987072485813002,
+      "pump_score": 30.0,
+      "dump_score": 4.58,
+      "anomaly_score": 37.13,
       "label": "watch"
     },
     {
@@ -429,6 +443,20 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 1006,
+      "ts": "2026-04-27T17:59:42+00:00",
+      "chain": "solana",
+      "address": "9aVd3JpjrDnDnpUUgKHDJ5YiWzxVRj9kQrnKhNHTpump",
+      "symbol": "Spiderman",
+      "ml_prob": 0.001193494456831419,
+      "ml_direction": "down",
+      "ml_edge": 0.9976130110863372,
+      "pump_score": 30.0,
+      "dump_score": 36.0,
+      "anomaly_score": 65.0,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 893,
       "ts": "2026-04-27T08:06:15+00:00",
       "chain": "solana",
@@ -441,34 +469,6 @@
       "dump_score": 26.15,
       "anomaly_score": 65.0,
       "label": "watch"
-    },
-    {
-      "snapshot_id": 754,
-      "ts": "2026-04-26T18:07:24+00:00",
-      "chain": "solana",
-      "address": "3YBL9HTd8G5WYgZWyM5THzwUPhmatbVMFCHhwRxjpump",
-      "symbol": "PLS",
-      "ml_prob": 0.0012250309193294695,
-      "ml_direction": "down",
-      "ml_edge": 0.9975499381613411,
-      "pump_score": 30.0,
-      "dump_score": 36.0,
-      "anomaly_score": 65.0,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 751,
-      "ts": "2026-04-26T18:07:24+00:00",
-      "chain": "solana",
-      "address": "AmSYbLUcwYmBZc8G9GTenSn2dsLjsZiVeMxMQvcUpump",
-      "symbol": "LASTMAN",
-      "ml_prob": 0.0012303774215120303,
-      "ml_direction": "down",
-      "ml_edge": 0.9975392451569759,
-      "pump_score": 36.0,
-      "dump_score": 0.0,
-      "anomaly_score": 100.0,
-      "label": "anomaly_watch"
     }
   ],
   "top_patterns": [
