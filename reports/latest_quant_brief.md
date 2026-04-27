@@ -1,69 +1,57 @@
 # Quant Signal Brief
 
-Generated: 2026-04-27T20:42:52+00:00
+Generated: 2026-04-27T21:58:46+00:00
 
 ### Azalyst Alpha Scanner Token Signals Brief
 
-**Date:** 2026-04-27  
-**Chain:** Optimism
+#### Overview
+This brief evaluates the top signals from the Azalyst Alpha Scanner as of 2026-04-27T21:55:04+00:00, focusing on pump, dump, anomaly, and smart money scores. The criteria for classification are:
+- **Strong Long**: pump_score ≥ 70, smart_money_score ≥ 45
+- **Strong Short**: dump_score ≥ 65
+- **Anomaly**: anomaly_score ≥ 70
+- **Low-Conviction or Tentative Watch**: Otherwise
 
----
+#### Top Signals Analysis
 
-#### Token Signals Overview
+1. **RTX**
+   - **Chain**: Base
+   - **Scores**: pump_score = 61.8, dump_score = 3.0, anomaly_score = 100.0, smart_money_score = 0.0, risk_score = 12.0
+   - **Classification**: Anomaly Watch
+   - **Reasons**: Sudden rise in price and volume, thin liquidity, machine learning anomaly detection.
+   - **Metrics**: Price = 2.016e-09, Liquidity (USD) = 192.43, 1H Price Change = 340%
+   - **Biggest Risks**: Thin liquidity, potential false-positive due to low smart money involvement.
+   - **Next Steps**: Monitor liquidity changes and smart money activity.
 
-1. **OP (0x4200000000000000000000000000000000000042)**
-   - **Pump Score:** 20.59
-   - **Dump Score:** 6.45
-   - **Anomaly Score:** 24.1
-   - **Smart Money Score:** 10.0
-   - **Risk Score:** 25.0
-   - **Label:** Watch
-   - **Reasons:** Buy pressure, mintable risk
-   - **Metrics:**
-     - Price: $0.121
-     - Liquidity (USD): $521,217.21
-     - Price Change (1h): +0.62%
-     - Volume (1h USD): $17,286.16
-     - Buy Imbalance: 0.7509
-   - **Analysis:** The token shows some buy pressure but does not meet the criteria for a strong long position. The mintable risk and recent price volatility are significant concerns.
-   - **Biggest Risks:** Mintable risk, recent price volatility.
-   - **False-Positive Risk:** Moderate.
-   - **Next Confirmation Needed:** Further analysis of the underlying project, market sentiment, and liquidity trends.
+2. **nothing**
+   - **Chain**: Base
+   - **Scores**: pump_score = 74.98, dump_score = 3.0, anomaly_score = 88.42, smart_money_score = 5.13, risk_score = 12.0
+   - **Classification**: Anomaly Watch
+   - **Reasons**: Sudden rise in price and volume, buy pressure, thin liquidity, machine learning anomaly detection.
+   - **Metrics**: Price = 1.244e-06, Liquidity (USD) = 1690.79, 1H Price Change = 101%
+   - **Biggest Risks**: Thin liquidity, potential false-positive due to low smart money involvement.
+   - **Next Steps**: Monitor liquidity changes and smart money activity.
 
-2. **msUSD (0x7f5c764cbc14f9669b88837ca1490cca17c31607)**
-   - **Pump Score:** 0.0
-   - **Dump Score:** 12.5
-   - **Anomaly Score:** 4.57
-   - **Smart Money Score:** 0.0
-   - **Risk Score:** 50.0
-   - **Label:** Watch
-   - **Reasons:** Mintable risk, freeze authority risk
-   - **Metrics:**
-     - Price: $0.9958
-     - Liquidity (USD): $1,090,250.21
-     - Price Change (1h): +0.02%
-     - Volume (1h USD): $873.08
-   - **Analysis:** The token has a moderate dump score and significant risk factors, including mintable and freeze authority risks. It does not meet the criteria for a strong short position.
-   - **Biggest Risks:** Mintable risk, freeze authority risk.
-   - **False-Positive Risk:** High.
-   - **Next Confirmation Needed:** Detailed risk assessment, project governance review, and market sentiment analysis.
+3. **ALFRED**
+   - **Chain**: Solana
+   - **Scores**: pump_score = 66.0, dump_score = 0.0, anomaly_score = 65.0, smart_money_score = 0.0, risk_score = 0.0
+   - **Classification**: Watch
+   - **Reasons**: Sudden rise in price and volume.
+   - **Metrics**: Price = 5.671e-06, Liquidity (USD) = 0.0, 1H Price Change = 127%
+   - **Biggest Risks**: No liquidity data available, potential false-positive.
+   - **Next Steps**: Confirm liquidity and smart money involvement.
 
-3. **WETH (0x4200000000000000000000000000000000000006)**
-   - **Pump Score:** 5.47
-   - **Dump Score:** 0.51
-   - **Anomaly Score:** 6.79
-   - **Smart Money Score:** 0.0
-   - **Risk Score:** 0.0
-   - **Label:** Watch
-   - **Reasons:** Normal watch
-   - **Metrics:**
-     - Price: $2,289.64
-     - Liquidity (USD): $123,970,607.78
-     - Price Change (1h): +0.32%
-     - Volume (1h USD): $2,375,929.81
-   - **Analysis:** WETH is a stablecoin wrapped version of ETH and shows normal market activity. It does not meet the criteria for a strong long or short position.
-   - **Biggest Risks:** Market volatility, smart contract risk.
-   - **False-Positive Risk:** Low.
-   - **Next Confirmation Needed:** Monitoring for unusual price movements or liquidity changes.
+4. **Botman**
+   - **Chain**: Solana
+   - **Scores**: pump_score = 30.0, dump_score = 36.0, anomaly_score = 65.0, smart_money_score = 0.0, risk_score = 0.0
+   - **Classification**: Watch
+   - **Reasons**: Normal watch.
+   - **Metrics**: Price = 4.048e-07, Liquidity (USD) = 0.0, 1H Price Change = -82.95%
+   - **Biggest Risks**: No liquidity data available, potential false-positive.
+   - **Next Steps**: Confirm liquidity and smart money involvement.
 
-4. **US
+5. **SWEET**
+   - **Chain**: Solana
+   - **Scores**: pump_score = 30.0, dump_score = 36.0, anomaly_score = 65.0, smart_money_score = 0.0, risk_score = 0.0
+   - **Classification**: Watch
+   - **Reasons**: Normal watch.
+   - **Metrics**: Price = 1.148e-06, Liquidity (USD) = 0.0, 
