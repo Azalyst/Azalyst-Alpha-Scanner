@@ -58,6 +58,7 @@ jobs:
       TARGET_PCT: ${{ github.event.inputs.target_pct || '10' }}
       HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
       NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
+      MODEL_HMAC_KEY: ${{ secrets.MODEL_HMAC_KEY || 'default-audit-fix-key-2026' }}
 
     steps:
       - name: Checkout
