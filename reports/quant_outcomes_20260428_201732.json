@@ -1,0 +1,185 @@
+{
+  "kind": "quant_outcomes",
+  "generated_at": "2026-04-28T20:17:32+00:00",
+  "evaluated_count": 8,
+  "hit_count": 0,
+  "hit_rate": 0.0,
+  "outcomes": [
+    {
+      "snapshot_id": 1272,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:31+00:00",
+      "chain": "base",
+      "address": "0xfca95aeb5bf44ae355806a5ad14659c940dc6bf7",
+      "symbol": "SHIB",
+      "label": "anomaly_watch",
+      "predicted_direction": "up",
+      "entry_price": 4.006e-09,
+      "current_price": 4.063e-09,
+      "return_pct": 1.4229,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_1.42pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1266,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:31+00:00",
+      "chain": "ethereum",
+      "address": "0x06524fd36e2d28f46fc77f6e6dd307d1bea52edd",
+      "symbol": "APHEX",
+      "label": "watch",
+      "predicted_direction": "up",
+      "entry_price": 3.448e-05,
+      "current_price": 1.232e-05,
+      "return_pct": -64.2691,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_-64.27pct",
+        "target_10.00pct",
+        "label_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1264,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:31+00:00",
+      "chain": "ethereum",
+      "address": "0x131608d14934c9b5c264d120436fa225db8845d3",
+      "symbol": "usPEG",
+      "label": "anomaly_watch",
+      "predicted_direction": "up",
+      "entry_price": 0.3677,
+      "current_price": 0.3677,
+      "return_pct": 0.0,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_0.00pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1263,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:31+00:00",
+      "chain": "ethereum",
+      "address": "0x1a66f9c2ded2b8bcfb39c73dba873248b688645a",
+      "symbol": "APHEX",
+      "label": "anomaly_watch",
+      "predicted_direction": "up",
+      "entry_price": 0.001051,
+      "current_price": 0.0009194,
+      "return_pct": -12.5214,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_-12.52pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1261,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:32+00:00",
+      "chain": "ethereum",
+      "address": "0x9077f048dd4759a1224b030d1623290c80f79596",
+      "symbol": "APHEX",
+      "label": "anomaly_watch",
+      "predicted_direction": "up",
+      "entry_price": 3.163e-05,
+      "current_price": 3.163e-05,
+      "return_pct": 0.0,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_0.00pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1255,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:32+00:00",
+      "chain": "solana",
+      "address": "7em4R4LiWvVukz9a8N79gj9ef55nWkbEKbF1pRxpkaDH",
+      "symbol": "unc",
+      "label": "watch",
+      "predicted_direction": "up",
+      "entry_price": 0.03518,
+      "current_price": 2.662e-10,
+      "return_pct": -100.0,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_-100.00pct",
+        "target_10.00pct",
+        "label_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1252,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:32+00:00",
+      "chain": "solana",
+      "address": "CnF85nKHmaZsDsKwjbbAxgf1XFB9vygX96fyhDyXpump",
+      "symbol": "BEAR",
+      "label": "anomaly_watch",
+      "predicted_direction": "up",
+      "entry_price": 5.932e-06,
+      "current_price": 2.344e-06,
+      "return_pct": -60.4855,
+      "is_true": false,
+      "reasons": [
+        "predicted_up",
+        "return_-60.49pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "not_confirmed"
+      ]
+    },
+    {
+      "snapshot_id": 1246,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T20:17:32+00:00",
+      "chain": "solana",
+      "address": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+      "symbol": "ORCA",
+      "label": "anomaly_watch",
+      "predicted_direction": "down",
+      "entry_price": 1.64,
+      "current_price": 1.65,
+      "return_pct": 0.6098,
+      "is_true": false,
+      "reasons": [
+        "predicted_down",
+        "return_0.61pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "not_confirmed"
+      ]
+    }
+  ]
+}

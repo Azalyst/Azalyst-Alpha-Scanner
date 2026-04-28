@@ -1,0 +1,9 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-04-28T20:17:31+00:00,base,0xfca95aeb5bf44ae355806a5ad14659c940dc6bf7,SHIB,anomaly_watch,up,4.006e-09,4.063e-09,1.4229,10.0,60,False,predicted_up;return_1.42pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-04-28T20:17:31+00:00,ethereum,0x06524fd36e2d28f46fc77f6e6dd307d1bea52edd,APHEX,watch,up,3.448e-05,1.232e-05,-64.2691,10.0,60,False,predicted_up;return_-64.27pct;target_10.00pct;label_watch;not_confirmed
+2026-04-28T20:17:31+00:00,ethereum,0x131608d14934c9b5c264d120436fa225db8845d3,usPEG,anomaly_watch,up,0.3677,0.3677,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-04-28T20:17:31+00:00,ethereum,0x1a66f9c2ded2b8bcfb39c73dba873248b688645a,APHEX,anomaly_watch,up,0.001051,0.0009194,-12.5214,10.0,60,False,predicted_up;return_-12.52pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-04-28T20:17:32+00:00,ethereum,0x9077f048dd4759a1224b030d1623290c80f79596,APHEX,anomaly_watch,up,3.163e-05,3.163e-05,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-04-28T20:17:32+00:00,solana,7em4R4LiWvVukz9a8N79gj9ef55nWkbEKbF1pRxpkaDH,unc,watch,up,0.03518,2.662e-10,-100.0,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
+2026-04-28T20:17:32+00:00,solana,CnF85nKHmaZsDsKwjbbAxgf1XFB9vygX96fyhDyXpump,BEAR,anomaly_watch,up,5.932e-06,2.344e-06,-60.4855,10.0,60,False,predicted_up;return_-60.49pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-04-28T20:17:32+00:00,solana,orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE,ORCA,anomaly_watch,down,1.64,1.65,0.6098,10.0,60,False,predicted_down;return_0.61pct;target_10.00pct;label_anomaly_watch;not_confirmed
