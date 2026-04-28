@@ -1,46 +1,113 @@
 # Quant Signal Brief
 
-Generated: 2026-04-28T01:26:46+00:00
+Generated: 2026-04-28T04:51:39+00:00
 
-### Quant Analyst Brief: Azalyst Alpha Scanner Token Signals
+### Azalyst Alpha Scanner Token Signals Brief
 
-#### Overview
-This brief evaluates token signals from the Azalyst Alpha Scanner as of 2026-04-28T01:21:38+00:00. The scanner provides scores for pump, dump, anomaly, smart money, and risk, which are used to classify signals into strong longs, strong shorts, anomalies, and low-conviction or tentative watches.
+**Date:** 2026-04-28  
+**Chain:** Solana
 
-#### Signal Analysis
+---
 
-1. **NERMIN (ARB)**
-   - **Classification:** Anomaly Watch
-   - **Scores:** Pump Score: 56.92, Dump Score: 0.0, Anomaly Score: 73.54, Smart Money Score: 0.0, Risk Score: 0.0
-   - **Metrics:** Price: $0.0311, Liquidity: $104,582.67, 1h Price Change: 86.45%
-   - **Description:** NERMIN shows a significant price pump and a high anomaly score, indicating unusual activity. However, it lacks smart money involvement and does not meet the criteria for a strong long.
-   - **Risks:** High false-positive risk due to the absence of smart money activity. Requires confirmation of the underlying cause of the pump.
-   - **Next Steps:** Monitor for further smart money involvement or additional price movement.
+#### SCAM (Snapshot ID: 1115)
+- **Pump Score:** 20.87
+- **Dump Score:** 0.0
+- **Anomaly Score:** 100.0
+- **Smart Money Score:** 6.31
+- **Risk Score:** 0.0
+- **Label:** Anomaly Watch
+- **Reasons:** Normal Watch, ML Isolation Forest Anomaly
 
-2. **SPACE (BNB)**
-   - **Classification:** Watch
-   - **Scores:** Pump Score: 39.0, Dump Score: 6.25, Anomaly Score: 46.21, Smart Money Score: 10.0, Risk Score: 25.0
-   - **Metrics:** Price: $0.00677, Liquidity: $9,754.25, 1h Price Change: 1.58%
-   - **Description:** SPACE has moderate pump and anomaly scores, with some smart money involvement. However, it does not meet the criteria for a strong long or short.
-   - **Risks:** Mintable token risk. False-positive risk due to low smart money involvement.
-   - **Next Steps:** Confirm the legitimacy of the token and monitor for further smart money activity.
+**Metrics:**
+- Price: $0.01219
+- Liquidity (USD): $392,952.32
+- Price Change (1h): 4.46%
+- Derived Price Change: 28.37%
+- Volume (1h USD): $173,766.17
+- Hourly Volume Ratio: 0.73
+- Buy Imbalance: 0.32
+- Liquidity Change: 26.29%
 
-3. **SCAM (BNB)**
-   - **Classification:** Watch
-   - **Scores:** Pump Score: 30.0, Dump Score: 4.85, Anomaly Score: 37.55, Smart Money Score: 0.0, Risk Score: 0.0
-   - **Metrics:** Price: $0.0001105, Liquidity: $32,524.15, 1h Price Change: -5.39%
-   - **Description:** SCAM has a moderate pump score but lacks smart money involvement and does not meet the criteria for a strong long or short.
-   - **Risks:** High volume with low price change suggests potential manipulation. False-positive risk.
-   - **Next Steps:** Monitor for smart money activity and further price movement.
+**Analysis:**
+- **Anomaly Detection:** High anomaly score indicates unusual activity.
+- **Liquidity:** Significant liquidity, suggesting potential market interest.
+- **Price Movement:** Recent price increase, but not strong enough to classify as a strong long.
+- **Smart Money:** Low smart money involvement.
 
-4. **ARB (ARB)**
-   - **Classification:** Watch
-   - **Scores:** Pump Score: 31.57, Dump Score: 0.0, Anomaly Score: 26.89, Smart Money Score: 14.72, Risk Score: 0.0
-   - **Metrics:** Price: $0.1269, Liquidity: $4,082,718.12, 1h Price Change: 0.29%
-   - **Description:** ARB has a moderate pump score and some smart money involvement but does not meet the criteria for a strong long.
-   - **Risks:** False-positive risk due to low anomaly score.
-   - **Next Steps:** Monitor for further smart money activity and price movement.
+**Biggest Risks:**
+- False-positive risk due to high anomaly score.
+- Lack of smart money involvement.
 
-5. **USDC (ARB)**
-   - **Classification:** Watch
-   - **Scores:** Pump Score: 28.94, Dump Score: 0.0, Anomaly Score: 24.83, Smart Money Score: 15.0, Risk Score: 
+**Next Steps:**
+- Monitor liquidity and price changes.
+- Confirm if smart money starts to show interest.
+
+---
+
+#### MASCOTS (Snapshot ID: 1117)
+- **Pump Score:** 11.89
+- **Dump Score:** 8.7
+- **Anomaly Score:** 58.98
+- **Smart Money Score:** 0.0
+- **Risk Score:** 0.0
+- **Label:** Watch
+- **Reasons:** Normal Watch
+
+**Metrics:**
+- Price: $0.0005486
+- Liquidity (USD): $65,829.12
+- Price Change (1h): 10.63%
+- Derived Price Change: -8.95%
+- Volume (1h USD): $11,837.29
+- Hourly Volume Ratio: 0.29
+- Buy Imbalance: -0.16
+- Liquidity Change: -4.31%
+
+**Analysis:**
+- **Anomaly Detection:** Moderate anomaly score.
+- **Liquidity:** Moderate liquidity.
+- **Price Movement:** Recent price increase, but with a negative derived price change.
+- **Smart Money:** No smart money involvement.
+
+**Biggest Risks:**
+- False-positive risk due to anomaly score.
+- Negative derived price change indicates potential reversal.
+
+**Next Steps:**
+- Monitor price and liquidity changes.
+- Look for smart money involvement.
+
+---
+
+#### Gemini (Snapshot ID: 1129)
+- **Pump Score:** 30.0
+- **Dump Score:** 14.72
+- **Anomaly Score:** 52.89
+- **Smart Money Score:** 0.0
+- **Risk Score:** 0.0
+- **Label:** Watch
+- **Reasons:** Normal Watch
+
+**Metrics:**
+- Price: $0.000002349
+- Liquidity (USD): $0.0
+- Price Change (1h): -16.35%
+- Derived Price Change: 0.0%
+- Volume (1h USD): $563.9
+- Hourly Volume Ratio: 24.0
+- Buy Imbalance: 0.0
+- Liquidity Change: 0.0%
+
+**Analysis:**
+- **Anomaly Detection:** Moderate anomaly score.
+- **Liquidity:** No liquidity data.
+- **Price Movement:** Recent price decrease.
+- **Smart Money:** No smart money involvement.
+
+**Biggest Risks:**
+- False-positive risk due to anomaly score.
+- No liquidity data available.
+
+**Next Steps:**
+- Monitor price changes.
+-

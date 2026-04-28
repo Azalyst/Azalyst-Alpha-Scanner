@@ -1,0 +1,31 @@
+{
+  "kind": "quant_outcomes",
+  "generated_at": "2026-04-28T04:51:12+00:00",
+  "evaluated_count": 1,
+  "hit_count": 1,
+  "hit_rate": 1.0,
+  "outcomes": [
+    {
+      "snapshot_id": 1104,
+      "horizon_min": 60,
+      "target_pct": 10.0,
+      "evaluated_ts": "2026-04-28T04:51:12+00:00",
+      "chain": "arbitrum",
+      "address": "0xb934beb34966fc73a624ecc71f4e8fe77498c5fc",
+      "symbol": "NERMIN",
+      "label": "anomaly_watch",
+      "predicted_direction": "up",
+      "entry_price": 0.0311,
+      "current_price": 0.04339,
+      "return_pct": 39.5177,
+      "is_true": true,
+      "reasons": [
+        "predicted_up",
+        "return_39.52pct",
+        "target_10.00pct",
+        "label_anomaly_watch",
+        "pump_confirmed"
+      ]
+    }
+  ]
+}

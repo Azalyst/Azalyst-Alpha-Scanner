@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T04:08:28.015193+00:00",
+  "generated_at": "2026-04-28T04:51:41.142563+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -115,9 +115,9 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 1114,
+    "snapshots": 1134,
     "wallet_events": 377,
-    "labeled_outcomes": 178
+    "labeled_outcomes": 179
   },
   "top_signals": [
     {
@@ -160,6 +160,20 @@
       "pump_score": 30.05,
       "dump_score": 0.0,
       "anomaly_score": 30.08,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1128,
+      "ts": "2026-04-28T04:50:15+00:00",
+      "chain": "solana",
+      "address": "4Uk9WCUK3ZdyZXqUQxUvgRcD5LKzSWZziD1nJYTxpump",
+      "symbol": "despair",
+      "ml_prob": 0.0006417257569942089,
+      "ml_direction": "down",
+      "ml_edge": 0.9987165484860115,
+      "pump_score": 30.0,
+      "dump_score": 0.0,
+      "anomaly_score": 30.0,
       "label": "watch"
     },
     {
@@ -303,6 +317,20 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 1127,
+      "ts": "2026-04-28T04:50:15+00:00",
+      "chain": "solana",
+      "address": "7E8UGgwJpBFaqMWCQuaA3sUUM1DsMbqbDriyZS5vpump",
+      "symbol": "AFC",
+      "ml_prob": 0.0009193599064087763,
+      "ml_direction": "down",
+      "ml_edge": 0.9981612801871824,
+      "pump_score": 30.0,
+      "dump_score": 8.9,
+      "anomaly_score": 43.85,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 1083,
       "ts": "2026-04-27T23:48:28+00:00",
       "chain": "solana",
@@ -440,34 +468,6 @@
       "pump_score": 30.0,
       "dump_score": 26.15,
       "anomaly_score": 65.0,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 962,
-      "ts": "2026-04-27T15:08:02+00:00",
-      "chain": "solana",
-      "address": "3bPGpCd3NPLszASvDuf1TsTn8s4ihn2aqnUQPsDCpump",
-      "symbol": "JEWS",
-      "ml_prob": 0.0012772493134441953,
-      "ml_direction": "down",
-      "ml_edge": 0.9974455013731116,
-      "pump_score": 30.0,
-      "dump_score": 23.88,
-      "anomaly_score": 65.0,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1081,
-      "ts": "2026-04-27T23:48:28+00:00",
-      "chain": "solana",
-      "address": "6C4FQdJtXbgmq5AgGcep4cRZynmkg3fBBwVsQY6wpump",
-      "symbol": "SONIC",
-      "ml_prob": 0.001349657129969795,
-      "ml_direction": "down",
-      "ml_edge": 0.9973006857400604,
-      "pump_score": 30.0,
-      "dump_score": 15.45,
-      "anomaly_score": 54.04,
       "label": "watch"
     }
   ],
