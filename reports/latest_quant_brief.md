@@ -1,55 +1,51 @@
 # Quant Signal Brief
 
-Generated: 2026-04-28T21:35:31+00:00
+Generated: 2026-04-28T22:38:11+00:00
 
 ### Azalyst Alpha Scanner Token Signals Brief
 
-**Date:** 2026-04-28
-
 #### Overview
-This brief evaluates the top signals from the Azalyst Alpha Scanner, focusing on conservative criteria for strong longs, strong shorts, and anomalies. Tokens that do not meet these criteria are categorized as low-conviction or tentative watches.
+This brief evaluates the top signals from the Azalyst Alpha Scanner for tokens on the Optimism chain as of 2026-04-28T22:37:30+00:00. The evaluation is based on specific thresholds for pump_score, dump_score, anomaly_score, and smart_money_score to determine the strength of long or short positions and to identify anomalies. Signals not meeting these thresholds are categorized as low-conviction or tentative watches.
 
 #### Signal Analysis
 
-1. **wstETH (Optimism)**
-   - **Scores:** Pump: 27.22, Dump: 0.35, Anomaly: 25.9, Smart Money: 15.0
-   - **Classification:** Low-conviction watch
-   - **Metrics:** Price: $2814.27, Liquidity: $710,240.93, 1h Price Change: -0.39%
-   - **Reasons:** Buy pressure noted, but does not meet strong long criteria.
-   - **Biggest Risks:** False-positive risk due to low smart money score.
-   - **Next Steps:** Monitor for increased smart money activity and higher pump score.
+1. **WLD**
+   - **Scores**: pump_score = 0.0, dump_score = 12.5, anomaly_score = 0.0, smart_money_score = 0.0
+   - **Classification**: Low-conviction watch
+   - **Reasons**: dump_score is above 10, indicating a potential short opportunity, but it does not meet the dump_score threshold of 65 for a strong short call. Risks include mintable tokens and freeze authority.
+   - **Next Steps**: Monitor for any changes in dump_score and smart_money_score. Confirm if the current price movement is a trend or a short-term anomaly.
 
-2. **NODL (zkSync)**
-   - **Scores:** Pump: 9.22, Dump: 6.25, Anomaly: 13.89, Smart Money: 4.62
-   - **Classification:** Low-conviction watch
-   - **Metrics:** Price: $0.0007149, Liquidity: $27,437.81, 1h Price Change: 1.26%
-   - **Reasons:** Buy pressure noted, but does not meet strong long criteria. Mintable risk.
-   - **Biggest Risks:** Mintable risk, false-positive risk due to low smart money score.
-   - **Next Steps:** Monitor for increased smart money activity and higher pump score.
+2. **VELO**
+   - **Scores**: pump_score = 1.35, dump_score = 6.39, anomaly_score = 7.77, smart_money_score = 0.27
+   - **Classification**: Low-conviction watch
+   - **Reasons**: No scores meet the thresholds for strong long or short positions. An anomaly_score above 7 would classify it as an anomaly, but it does not meet this threshold. Risk includes mintable tokens.
+   - **Next Steps**: Monitor for changes in pump_score and smart_money_score. Confirm if the current price movement is a trend or a short-term anomaly.
 
-3. **WLD (Optimism)**
-   - **Scores:** Pump: 0.0, Dump: 12.5, Anomaly: 7.89, Smart Money: 0.0
-   - **Classification:** Low-conviction watch
-   - **Metrics:** Price: $0.2519, Liquidity: $42,881.46, 1h Price Change: 0.01%
-   - **Reasons:** Dump pressure noted, mintable and freeze authority risks.
-   - **Biggest Risks:** High risk score, mintable and freeze authority risks.
-   - **Next Steps:** Monitor for changes in risk factors and smart money activity.
+3. **OP**
+   - **Scores**: pump_score = 0.0, dump_score = 6.25, anomaly_score = 6.69, smart_money_score = 0.0
+   - **Classification**: Low-conviction watch
+   - **Reasons**: Similar to VELO, no scores meet the thresholds for strong long or short positions. Risk includes mintable tokens.
+   - **Next Steps**: Monitor for changes in pump_score and smart_money_score. Confirm if the current price movement is a trend or a short-term anomaly.
 
-4. **VELO (Optimism)**
-   - **Scores:** Pump: 0.0, Dump: 6.71, Anomaly: 9.23, Smart Money: 0.0
-   - **Classification:** Low-conviction watch
-   - **Metrics:** Price: $0.01828, Liquidity: $681,877.61, 1h Price Change: -0.51%
-   - **Reasons:** Dump pressure noted, mintable risk.
-   - **Biggest Risks:** Mintable risk, high price volatility.
-   - **Next Steps:** Monitor for changes in risk factors and smart money activity.
+4. **WETH**
+   - **Scores**: pump_score = 3.22, dump_score = 0.12, anomaly_score = 3.79, smart_money_score = 0.0
+   - **Classification**: Low-conviction watch
+   - **Reasons**: No scores meet the thresholds for strong long or short positions. No specific risks noted.
+   - **Next Steps**: Monitor for changes in pump_score and smart_money_score. Confirm if the current price movement is a trend or a short-term anomaly.
 
-5. **OP (Optimism)**
-   - **Scores:** Pump: 0.0, Dump: 6.28, Anomaly: 8.87, Smart Money: 0.0
-   - **Classification:** Low-conviction watch
-   - **Metrics:** Price: $0.1213, Liquidity: $521,821.97, 1h Price Change: -0.03%
-   - **Reasons:** Dump pressure noted, mintable risk.
-   - **Biggest Risks:** Mintable risk, high risk score.
-   - **Next Steps:** Monitor for changes in risk factors and smart money activity.
+5. **wstETH**
+   - **Scores**: pump_score = 2.42, dump_score = 0.0, anomaly_score = 2.74, smart_money_score = 0.0
+   - **Classification**: Low-conviction watch
+   - **Reasons**: No scores meet the thresholds for strong long or short positions. No specific risks noted.
+   - **Next Steps**: Monitor for changes in pump_score and smart_money_score. Confirm if the current price movement is a trend or a short-term anomaly.
 
-6. **USDC (Optimism)**
-   - **Scores:** Pump: 6.49, Dump: 0.35, Anomaly: 8.03, Smart Money: 0.
+6. **USDC**
+   - **Scores**: pump_score = 2.0, dump_score = 0.0, anomaly_score = 2.38, smart_money_score = 0.0
+   - **Classification**: Low-conviction watch
+   - **Reasons**: No scores meet the thresholds for strong long or short positions. No specific risks noted.
+   - **Next Steps**: Monitor for changes in pump_score and smart_money_score. Confirm if the current price movement is a trend or a short-term anomaly.
+
+7. **MESSA**
+   - **Scores**: pump_score = 0.0, dump_score = 0.0, anomaly_score = 0.0, smart_money_score = 0.0
+   - **Classification**: Low-conviction watch
+  

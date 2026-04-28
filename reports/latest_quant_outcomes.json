@@ -1,75 +1,8 @@
 {
   "kind": "quant_outcomes",
-  "generated_at": "2026-04-28T21:35:16+00:00",
-  "evaluated_count": 3,
+  "generated_at": "2026-04-28T22:37:56+00:00",
+  "evaluated_count": 0,
   "hit_count": 0,
-  "hit_rate": 0.0,
-  "outcomes": [
-    {
-      "snapshot_id": 1284,
-      "horizon_min": 60,
-      "target_pct": 10.0,
-      "evaluated_ts": "2026-04-28T21:35:16+00:00",
-      "chain": "arbitrum",
-      "address": "0x35ca1e5a9b1c09fa542fa18d1ba4d61c8edff852",
-      "symbol": "SCHRODI",
-      "label": "anomaly_watch",
-      "predicted_direction": "up",
-      "entry_price": 0.001768,
-      "current_price": 0.001768,
-      "return_pct": 0.0,
-      "is_true": false,
-      "reasons": [
-        "predicted_up",
-        "return_0.00pct",
-        "target_10.00pct",
-        "label_anomaly_watch",
-        "not_confirmed"
-      ]
-    },
-    {
-      "snapshot_id": 1280,
-      "horizon_min": 60,
-      "target_pct": 10.0,
-      "evaluated_ts": "2026-04-28T21:35:16+00:00",
-      "chain": "arbitrum",
-      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
-      "symbol": "WBTC",
-      "label": "whale_accumulation",
-      "predicted_direction": "up",
-      "entry_price": 76179.21,
-      "current_price": 76118.63,
-      "return_pct": -0.0795,
-      "is_true": false,
-      "reasons": [
-        "predicted_up",
-        "return_-0.08pct",
-        "target_10.00pct",
-        "label_whale_accumulation",
-        "not_confirmed"
-      ]
-    },
-    {
-      "snapshot_id": 1278,
-      "horizon_min": 60,
-      "target_pct": 10.0,
-      "evaluated_ts": "2026-04-28T21:35:16+00:00",
-      "chain": "arbitrum",
-      "address": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
-      "symbol": "USDC",
-      "label": "whale_accumulation",
-      "predicted_direction": "up",
-      "entry_price": 0.9999,
-      "current_price": 0.9999,
-      "return_pct": 0.0,
-      "is_true": false,
-      "reasons": [
-        "predicted_up",
-        "return_0.00pct",
-        "target_10.00pct",
-        "label_whale_accumulation",
-        "not_confirmed"
-      ]
-    }
-  ]
+  "hit_rate": null,
+  "outcomes": []
 }
