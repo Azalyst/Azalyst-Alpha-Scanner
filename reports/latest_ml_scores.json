@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T20:17:50.112096+00:00",
+  "generated_at": "2026-04-28T21:20:33.576022+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -415,20 +415,6 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 1034,
-      "ts": "2026-04-27T20:37:29+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000042",
-      "symbol": "OP",
-      "ml_prob": 0.001722214340238013,
-      "ml_direction": "down",
-      "ml_edge": 0.996555571319524,
-      "pump_score": 20.59,
-      "dump_score": 6.45,
-      "anomaly_score": 24.1,
-      "label": "watch"
-    },
-    {
       "snapshot_id": 1084,
       "ts": "2026-04-27T23:48:28+00:00",
       "chain": "solana",
@@ -469,11 +455,25 @@
       "dump_score": 20.87,
       "anomaly_score": 62.47,
       "label": "watch"
+    },
+    {
+      "snapshot_id": 1214,
+      "ts": "2026-04-28T13:08:36+00:00",
+      "chain": "ethereum",
+      "address": "0x6093f9ea65e70f9d4920b9198c33a7a354cfc103",
+      "symbol": "CLAW",
+      "ml_prob": 0.0018142142377148695,
+      "ml_direction": "down",
+      "ml_edge": 0.9963715715245702,
+      "pump_score": 30.0,
+      "dump_score": 25.36,
+      "anomaly_score": 65.0,
+      "label": "watch"
     }
   ],
   "top_patterns": [
     {
-      "pattern_id": 1157,
+      "pattern_id": 1185,
       "length": 4,
       "support": 15,
       "lift": 1.2,
@@ -487,7 +487,7 @@
       ]
     },
     {
-      "pattern_id": 1158,
+      "pattern_id": 1186,
       "length": 4,
       "support": 13,
       "lift": 1.2,
@@ -501,7 +501,7 @@
       ]
     },
     {
-      "pattern_id": 1159,
+      "pattern_id": 1187,
       "length": 3,
       "support": 13,
       "lift": 1.2,
@@ -514,7 +514,7 @@
       ]
     },
     {
-      "pattern_id": 1160,
+      "pattern_id": 1188,
       "length": 2,
       "support": 13,
       "lift": 1.2,
@@ -526,7 +526,7 @@
       ]
     },
     {
-      "pattern_id": 1161,
+      "pattern_id": 1189,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -540,7 +540,7 @@
       ]
     },
     {
-      "pattern_id": 1162,
+      "pattern_id": 1190,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -554,7 +554,7 @@
       ]
     },
     {
-      "pattern_id": 1163,
+      "pattern_id": 1191,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -568,7 +568,7 @@
       ]
     },
     {
-      "pattern_id": 1164,
+      "pattern_id": 1192,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -582,7 +582,7 @@
       ]
     },
     {
-      "pattern_id": 1165,
+      "pattern_id": 1193,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -595,7 +595,7 @@
       ]
     },
     {
-      "pattern_id": 1166,
+      "pattern_id": 1194,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -609,7 +609,7 @@
       ]
     },
     {
-      "pattern_id": 1167,
+      "pattern_id": 1195,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -622,7 +622,7 @@
       ]
     },
     {
-      "pattern_id": 1168,
+      "pattern_id": 1196,
       "length": 4,
       "support": 12,
       "lift": 1.2,
@@ -636,7 +636,7 @@
       ]
     },
     {
-      "pattern_id": 1169,
+      "pattern_id": 1197,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -649,7 +649,7 @@
       ]
     },
     {
-      "pattern_id": 1170,
+      "pattern_id": 1198,
       "length": 3,
       "support": 12,
       "lift": 1.2,
@@ -662,7 +662,7 @@
       ]
     },
     {
-      "pattern_id": 1171,
+      "pattern_id": 1199,
       "length": 4,
       "support": 12,
       "lift": 1.2,
