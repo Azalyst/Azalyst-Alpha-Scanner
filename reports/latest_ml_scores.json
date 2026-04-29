@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T20:04:58.205720+00:00",
+  "generated_at": "2026-04-29T21:12:02.987728+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -115,7 +115,7 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 1506,
+    "snapshots": 1535,
     "wallet_events": 377,
     "labeled_outcomes": 240
   },
@@ -289,6 +289,20 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 1520,
+      "ts": "2026-04-29T20:51:12+00:00",
+      "chain": "solana",
+      "address": "BvWeBjvt96ScYNU16362uTWFJvtwk9Zk4pWJtG7opump",
+      "symbol": "Community",
+      "ml_prob": 0.0012498991329531345,
+      "ml_direction": "down",
+      "ml_edge": 0.9975002017340937,
+      "pump_score": 30.0,
+      "dump_score": 3.61,
+      "anomaly_score": 35.61,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 1478,
       "ts": "2026-04-29T15:02:37+00:00",
       "chain": "ethereum",
@@ -415,17 +429,17 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 1282,
-      "ts": "2026-04-28T20:16:47+00:00",
-      "chain": "arbitrum",
-      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
-      "symbol": "WETH",
-      "ml_prob": 0.0013269876309611472,
+      "snapshot_id": 1532,
+      "ts": "2026-04-29T20:51:12+00:00",
+      "chain": "base",
+      "address": "0x940181a94a35a4569e4529a3cdfb74e38fd98631",
+      "symbol": "AERO",
+      "ml_prob": 0.001344138704850835,
       "ml_direction": "down",
-      "ml_edge": 0.9973460247380777,
-      "pump_score": 16.11,
-      "dump_score": 0.0,
-      "anomaly_score": 18.65,
+      "ml_edge": 0.9973117225902983,
+      "pump_score": 6.17,
+      "dump_score": 6.25,
+      "anomaly_score": 51.28,
       "label": "watch"
     },
     {
@@ -454,20 +468,6 @@
       "pump_score": 0.0,
       "dump_score": 6.25,
       "anomaly_score": 6.69,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1298,
-      "ts": "2026-04-28T21:34:39+00:00",
-      "chain": "optimism",
-      "address": "0x4200000000000000000000000000000000000042",
-      "symbol": "OP",
-      "ml_prob": 0.0013573207702742545,
-      "ml_direction": "down",
-      "ml_edge": 0.9972853584594515,
-      "pump_score": 0.0,
-      "dump_score": 6.28,
-      "anomaly_score": 8.87,
       "label": "watch"
     }
   ],
