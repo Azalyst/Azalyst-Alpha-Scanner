@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-28T23:35:43.439933+00:00",
+  "generated_at": "2026-04-29T01:23:56.365798+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -115,7 +115,7 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 1318,
+    "snapshots": 1335,
     "wallet_events": 377,
     "labeled_outcomes": 205
   },
@@ -146,20 +146,6 @@
       "pump_score": 0.0,
       "dump_score": 6.63,
       "anomaly_score": 70.73,
-      "label": "anomaly_watch"
-    },
-    {
-      "snapshot_id": 1076,
-      "ts": "2026-04-27T23:48:28+00:00",
-      "chain": "solana",
-      "address": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
-      "symbol": "ORCA",
-      "ml_prob": 0.0009720552965160021,
-      "ml_direction": "down",
-      "ml_edge": 0.998055889406968,
-      "pump_score": 1.92,
-      "dump_score": 6.25,
-      "anomaly_score": 96.28,
       "label": "anomaly_watch"
     },
     {
@@ -219,20 +205,6 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 1080,
-      "ts": "2026-04-27T23:48:28+00:00",
-      "chain": "solana",
-      "address": "2XFosHqsfZdbBYMQxNNeVeqk7egnBr4WnkqFVDiHDSpm",
-      "symbol": "ROSU",
-      "ml_prob": 0.0010674862826042463,
-      "ml_direction": "down",
-      "ml_edge": 0.9978650274347916,
-      "pump_score": 30.38,
-      "dump_score": 0.0,
-      "anomaly_score": 30.59,
-      "label": "watch"
-    },
-    {
       "snapshot_id": 1271,
       "ts": "2026-04-28T18:59:30+00:00",
       "chain": "base",
@@ -258,34 +230,6 @@
       "pump_score": 3.83,
       "dump_score": 0.22,
       "anomaly_score": 4.6,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1102,
-      "ts": "2026-04-28T01:21:38+00:00",
-      "chain": "arbitrum",
-      "address": "0x97e66d3c4d5bcd7c64e3e55af28544c9addf9281",
-      "symbol": "CAPX",
-      "ml_prob": 0.001102570011502275,
-      "ml_direction": "down",
-      "ml_edge": 0.9977948599769955,
-      "pump_score": 9.52,
-      "dump_score": 0.0,
-      "anomaly_score": 11.09,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1112,
-      "ts": "2026-04-28T01:21:38+00:00",
-      "chain": "bnb",
-      "address": "0x55ad16bd573b3365f43a9daeb0cc66a73821b4a5",
-      "symbol": "AIOT",
-      "ml_prob": 0.00111071222802733,
-      "ml_direction": "down",
-      "ml_edge": 0.9977785755439453,
-      "pump_score": 6.56,
-      "dump_score": 0.0,
-      "anomaly_score": 8.86,
       "label": "watch"
     },
     {
@@ -387,20 +331,6 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 1075,
-      "ts": "2026-04-27T23:48:28+00:00",
-      "chain": "solana",
-      "address": "2uaoVwaQVSgqTKio5ExeXeD9oofdnYbhcFv5MChopump",
-      "symbol": "STFU",
-      "ml_prob": 0.0015411704586619699,
-      "ml_direction": "down",
-      "ml_edge": 0.996917659082676,
-      "pump_score": 0.08,
-      "dump_score": 36.68,
-      "anomaly_score": 83.27,
-      "label": "anomaly_watch"
-    },
-    {
       "snapshot_id": 1141,
       "ts": "2026-04-28T07:26:36+00:00",
       "chain": "arbitrum",
@@ -443,17 +373,17 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 1084,
-      "ts": "2026-04-27T23:48:28+00:00",
-      "chain": "solana",
-      "address": "AqTARLXvMYwaeneh7jM8esWffzFaZJf7JWrw35Xspump",
-      "symbol": "OMNI",
-      "ml_prob": 0.0017382445398184396,
+      "snapshot_id": 1319,
+      "ts": "2026-04-29T01:22:48+00:00",
+      "chain": "arbitrum",
+      "address": "0x0c1c1c109fe34733fca54b82d7b46b75cfb71f6e",
+      "symbol": "CHIP",
+      "ml_prob": 0.0017121824407217135,
       "ml_direction": "down",
-      "ml_edge": 0.9965235109203632,
-      "pump_score": 30.0,
-      "dump_score": 5.71,
-      "anomaly_score": 38.89,
+      "ml_edge": 0.9965756351185566,
+      "pump_score": 4.23,
+      "dump_score": 10.13,
+      "anomaly_score": 12.52,
       "label": "watch"
     },
     {
@@ -468,6 +398,76 @@
       "pump_score": 30.0,
       "dump_score": 20.87,
       "anomaly_score": 62.47,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1214,
+      "ts": "2026-04-28T13:08:36+00:00",
+      "chain": "ethereum",
+      "address": "0x6093f9ea65e70f9d4920b9198c33a7a354cfc103",
+      "symbol": "CLAW",
+      "ml_prob": 0.0018142142377148695,
+      "ml_direction": "down",
+      "ml_edge": 0.9963715715245702,
+      "pump_score": 30.0,
+      "dump_score": 25.36,
+      "anomaly_score": 65.0,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1220,
+      "ts": "2026-04-28T15:35:07+00:00",
+      "chain": "optimism",
+      "address": "0x4200000000000000000000000000000000000042",
+      "symbol": "OP",
+      "ml_prob": 0.0018166413168182384,
+      "ml_direction": "down",
+      "ml_edge": 0.9963667173663635,
+      "pump_score": 1.23,
+      "dump_score": 6.44,
+      "anomaly_score": 11.73,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1138,
+      "ts": "2026-04-28T07:26:36+00:00",
+      "chain": "arbitrum",
+      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+      "symbol": "WBTC",
+      "ml_prob": 0.0018185978160766359,
+      "ml_direction": "down",
+      "ml_edge": 0.9963628043678467,
+      "pump_score": 14.52,
+      "dump_score": 1.19,
+      "anomaly_score": 32.25,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1282,
+      "ts": "2026-04-28T20:16:47+00:00",
+      "chain": "arbitrum",
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+      "symbol": "WETH",
+      "ml_prob": 0.0018304807368783864,
+      "ml_direction": "down",
+      "ml_edge": 0.9963390385262433,
+      "pump_score": 16.11,
+      "dump_score": 0.0,
+      "anomaly_score": 18.65,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1323,
+      "ts": "2026-04-29T01:22:48+00:00",
+      "chain": "arbitrum",
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+      "symbol": "WETH",
+      "ml_prob": 0.0018439884772691634,
+      "ml_direction": "down",
+      "ml_edge": 0.9963120230454616,
+      "pump_score": 7.65,
+      "dump_score": 0.68,
+      "anomaly_score": 9.43,
       "label": "watch"
     }
   ],
