@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T06:39:19.918708+00:00",
+  "generated_at": "2026-04-29T07:12:08.953272+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -115,9 +115,9 @@
     "anonymous": 71
   },
   "totals": {
-    "snapshots": 1354,
+    "snapshots": 1384,
     "wallet_events": 377,
-    "labeled_outcomes": 207
+    "labeled_outcomes": 210
   },
   "top_signals": [
     {
@@ -146,6 +146,20 @@
       "pump_score": 66.0,
       "dump_score": 0.0,
       "anomaly_score": 70.73,
+      "label": "anomaly_watch"
+    },
+    {
+      "snapshot_id": 1361,
+      "ts": "2026-04-29T07:10:33+00:00",
+      "chain": "solana",
+      "address": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
+      "symbol": "ORCA",
+      "ml_prob": 0.0009251813910240056,
+      "ml_direction": "down",
+      "ml_edge": 0.998149637217952,
+      "pump_score": 10.78,
+      "dump_score": 6.25,
+      "anomaly_score": 74.69,
       "label": "anomaly_watch"
     },
     {
@@ -454,20 +468,6 @@
       "pump_score": 5.32,
       "dump_score": 0.39,
       "anomaly_score": 6.47,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1138,
-      "ts": "2026-04-28T07:26:36+00:00",
-      "chain": "arbitrum",
-      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
-      "symbol": "WBTC",
-      "ml_prob": 0.0012995846467563994,
-      "ml_direction": "down",
-      "ml_edge": 0.9974008307064872,
-      "pump_score": 14.52,
-      "dump_score": 1.19,
-      "anomaly_score": 32.25,
       "label": "watch"
     }
   ],
