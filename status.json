@@ -1,0 +1,371 @@
+{
+  "dashboard_type": "alpha_scanner",
+  "generated_at": "2026-04-30 10:33:56 UTC",
+  "portfolio_value": 250,
+  "total_deposited": 5000,
+  "cash": 2500,
+  "market_value": 125,
+  "unrealised_pnl": 0,
+  "unrealised_str": "+0.00",
+  "realised_pnl": 0.0,
+  "realised_str": "+0.00",
+  "change": "+0.00%",
+  "change_raw": 0.0,
+  "closed_trades": 2,
+  "positions": [],
+  "track_record": {
+    "total_trades": 2,
+    "winners": 0,
+    "losers": 2,
+    "win_rate": 0.0,
+    "avg_win": 0,
+    "avg_loss": 0,
+    "profit_factor": 0,
+    "expectancy": 0,
+    "sharpe_proxy": 0,
+    "best": null,
+    "worst": null
+  },
+  "confidence_threshold": 50,
+  "allocation": {
+    "labels": [
+      "Signals",
+      "Cash"
+    ],
+    "values": [
+      60,
+      40
+    ]
+  },
+  "pnl": {
+    "labels": [],
+    "values": []
+  },
+  "confidence": [
+    {
+      "symbol": "OP",
+      "score": 31
+    },
+    {
+      "symbol": "USDC",
+      "score": 28
+    },
+    {
+      "symbol": "WETH",
+      "score": 8
+    },
+    {
+      "symbol": "VELO",
+      "score": 6
+    },
+    {
+      "symbol": "wstETH",
+      "score": 4
+    }
+  ],
+  "signals": [
+    {
+      "sector_key": "optimism|OP",
+      "sector_label": "OP",
+      "confidence": 31,
+      "severity": "LOW",
+      "direction": "BEARISH",
+      "direction_score": -31.25,
+      "ml_sentiment_label": "WATCH",
+      "ml_sentiment_score": 0.3125,
+      "ml_sentiment_mode": "heuristic",
+      "article_count": 1,
+      "latest_at": "2026-04-30T09:32:53+00:00",
+      "headline": "OP \u2014 Pump:0 Dump:31 Anom:25 Smart:0",
+      "regions": [
+        "OPTIMISM"
+      ],
+      "sources": [
+        "risk:mintable"
+      ],
+      "primary_etf": "OP-USDT",
+      "top_etfs": [
+        "OP-USDT"
+      ],
+      "access_markets": [
+        "DEX/CEX"
+      ],
+      "is_legacy": false,
+      "breakdown": {
+        "signal_strength": 0.0,
+        "volume_confirmation": 0.0,
+        "source_diversity": 3.3,
+        "recency": 20.0,
+        "geopolitical_severity": 25.0
+      }
+    },
+    {
+      "sector_key": "optimism|USDC",
+      "sector_label": "USDC",
+      "confidence": 28,
+      "severity": "LOW",
+      "direction": "BEARISH",
+      "direction_score": -21.8,
+      "ml_sentiment_label": "WATCH",
+      "ml_sentiment_score": 0.2721,
+      "ml_sentiment_mode": "heuristic",
+      "article_count": 1,
+      "latest_at": "2026-04-30T09:32:53+00:00",
+      "headline": "USDC \u2014 Pump:5 Dump:27 Anom:28 Smart:0",
+      "regions": [
+        "OPTIMISM"
+      ],
+      "sources": [
+        "normal_watch"
+      ],
+      "primary_etf": "USDC-USDT",
+      "top_etfs": [
+        "USDC-USDT"
+      ],
+      "access_markets": [
+        "DEX/CEX"
+      ],
+      "is_legacy": false,
+      "breakdown": {
+        "signal_strength": 5.41,
+        "volume_confirmation": 0.0,
+        "source_diversity": 3.3,
+        "recency": 20.0,
+        "geopolitical_severity": 0.0
+      }
+    },
+    {
+      "sector_key": "optimism|WETH",
+      "sector_label": "WETH",
+      "confidence": 8,
+      "severity": "LOW",
+      "direction": "BULLISH",
+      "direction_score": 6.41,
+      "ml_sentiment_label": "WATCH",
+      "ml_sentiment_score": 0.0641,
+      "ml_sentiment_mode": "heuristic",
+      "article_count": 1,
+      "latest_at": "2026-04-30T09:32:53+00:00",
+      "headline": "WETH \u2014 Pump:6 Dump:0 Anom:8 Smart:0",
+      "regions": [
+        "OPTIMISM"
+      ],
+      "sources": [
+        "normal_watch"
+      ],
+      "primary_etf": "WETH-USDT",
+      "top_etfs": [
+        "WETH-USDT"
+      ],
+      "access_markets": [
+        "DEX/CEX"
+      ],
+      "is_legacy": false,
+      "breakdown": {
+        "signal_strength": 6.41,
+        "volume_confirmation": 0.0,
+        "source_diversity": 3.3,
+        "recency": 20.0,
+        "geopolitical_severity": 0.0
+      }
+    },
+    {
+      "sector_key": "optimism|VELO",
+      "sector_label": "VELO",
+      "confidence": 6,
+      "severity": "LOW",
+      "direction": "BEARISH",
+      "direction_score": -6.25,
+      "ml_sentiment_label": "WATCH",
+      "ml_sentiment_score": 0.0625,
+      "ml_sentiment_mode": "heuristic",
+      "article_count": 1,
+      "latest_at": "2026-04-30T09:32:53+00:00",
+      "headline": "VELO \u2014 Pump:0 Dump:6 Anom:1 Smart:0",
+      "regions": [
+        "OPTIMISM"
+      ],
+      "sources": [
+        "risk:mintable"
+      ],
+      "primary_etf": "VELO-USDT",
+      "top_etfs": [
+        "VELO-USDT"
+      ],
+      "access_markets": [
+        "DEX/CEX"
+      ],
+      "is_legacy": false,
+      "breakdown": {
+        "signal_strength": 0.0,
+        "volume_confirmation": 0.0,
+        "source_diversity": 3.3,
+        "recency": 20.0,
+        "geopolitical_severity": 25.0
+      }
+    },
+    {
+      "sector_key": "optimism|wstETH",
+      "sector_label": "wstETH",
+      "confidence": 4,
+      "severity": "LOW",
+      "direction": "NEUTRAL",
+      "direction_score": 2.03,
+      "ml_sentiment_label": "WATCH",
+      "ml_sentiment_score": 0.0203,
+      "ml_sentiment_mode": "heuristic",
+      "article_count": 1,
+      "latest_at": "2026-04-30T09:32:53+00:00",
+      "headline": "wstETH \u2014 Pump:2 Dump:0 Anom:4 Smart:0",
+      "regions": [
+        "OPTIMISM"
+      ],
+      "sources": [
+        "normal_watch"
+      ],
+      "primary_etf": "wstETH-USDT",
+      "top_etfs": [
+        "wstETH-USDT"
+      ],
+      "access_markets": [
+        "DEX/CEX"
+      ],
+      "is_legacy": false,
+      "breakdown": {
+        "signal_strength": 2.03,
+        "volume_confirmation": 0.0,
+        "source_diversity": 3.3,
+        "recency": 20.0,
+        "geopolitical_severity": 0.0
+      }
+    }
+  ],
+  "articles": [
+    {
+      "tag": "tag-bear",
+      "label": "Bearish",
+      "text": "OP \u2014 Pump:0 Dump:31 Anom:25 Smart:0"
+    },
+    {
+      "tag": "tag-bear",
+      "label": "Bearish",
+      "text": "USDC \u2014 Pump:5 Dump:27 Anom:28 Smart:0"
+    },
+    {
+      "tag": "tag-bull",
+      "label": "Bullish",
+      "text": "WETH \u2014 Pump:6 Dump:0 Anom:8 Smart:0"
+    },
+    {
+      "tag": "tag-bear",
+      "label": "Bearish",
+      "text": "VELO \u2014 Pump:0 Dump:6 Anom:1 Smart:0"
+    },
+    {
+      "tag": "tag-neu",
+      "label": "Neutral",
+      "text": "wstETH \u2014 Pump:2 Dump:0 Anom:4 Smart:0"
+    }
+  ],
+  "market_snapshot": [
+    {
+      "label": "OP",
+      "ticker": "OP-USDT",
+      "region": "OPTIMI",
+      "price": 31,
+      "currency": "SCORE",
+      "change": -31.25,
+      "change_pct": -31.25,
+      "change_str": "-31.2",
+      "direction": "down"
+    },
+    {
+      "label": "USDC",
+      "ticker": "USDC-USDT",
+      "region": "OPTIMI",
+      "price": 28,
+      "currency": "SCORE",
+      "change": -21.8,
+      "change_pct": -21.8,
+      "change_str": "-21.8",
+      "direction": "down"
+    },
+    {
+      "label": "WETH",
+      "ticker": "WETH-USDT",
+      "region": "OPTIMI",
+      "price": 8,
+      "currency": "SCORE",
+      "change": 6.41,
+      "change_pct": 6.41,
+      "change_str": "+6.4",
+      "direction": "up"
+    },
+    {
+      "label": "VELO",
+      "ticker": "VELO-USDT",
+      "region": "OPTIMI",
+      "price": 6,
+      "currency": "SCORE",
+      "change": -6.25,
+      "change_pct": -6.25,
+      "change_str": "-6.2",
+      "direction": "down"
+    },
+    {
+      "label": "wstETH",
+      "ticker": "wstETH-USDT",
+      "region": "OPTIMI",
+      "price": 4,
+      "currency": "SCORE",
+      "change": 2.03,
+      "change_pct": 2.03,
+      "change_str": "+2.0",
+      "direction": "neu"
+    }
+  ],
+  "risk_controls": {
+    "circuit_breaker_active": false,
+    "drawdown_from_peak_pct": 0.0,
+    "portfolio_peak": 5,
+    "vix": null,
+    "vix_regime": "NORMAL",
+    "sector_concentration": [
+      {
+        "sector": "OP",
+        "weight": 9.299999999999999,
+        "at_cap": false
+      },
+      {
+        "sector": "USDC",
+        "weight": 8.4,
+        "at_cap": false
+      },
+      {
+        "sector": "WETH",
+        "weight": 2.4,
+        "at_cap": false
+      },
+      {
+        "sector": "VELO",
+        "weight": 1.7999999999999998,
+        "at_cap": false
+      },
+      {
+        "sector": "wstETH",
+        "weight": 1.2,
+        "at_cap": false
+      }
+    ],
+    "max_drawdown_pct": 0,
+    "sector_cap_pct": 30,
+    "trailing_stop_pct": 8,
+    "hard_stop_pct": 10,
+    "partial_profit_pct": 8
+  },
+  "model_health": {},
+  "logs": [
+    "2026-04-30 10:33:56 UTC [INFO] AZALYST ALPHA \u2014 status.json generated",
+    "2026-04-30 10:33:56 UTC [INFO] SIGNALS \u2014 5 active | Outcomes: 0/2 hits"
+  ]
+}
