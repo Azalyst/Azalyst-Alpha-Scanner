@@ -5,7 +5,7 @@
    Matches: gitdhirajsv.github.io/Azalyst-ETF-Intelligence/
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&display=swap');
+
 
 /* ── Variables ─────────────────────────────────────────────── */
 :root {
@@ -20,22 +20,22 @@
   --text-muted:    #444444;
   --text-label:    #606060;
 
-  --green:         #00d496;
-  --green-dim:     rgba(0,212,150,0.15);
-  --green-glow:    rgba(0,212,150,0.07);
+  --orange:         #ff6600;
+  --orange-dim:     rgba(0,212,150,0.15);
+  --orange-glow:    rgba(0,212,150,0.07);
   --amber:         #f0a500;
   --amber-dim:     rgba(240,165,0,0.12);
   --red:           #e03838;
   --red-dim:       rgba(224,56,56,0.12);
   --blue:          #4488ff;
   --purple:        #9966ff;
-  --orange:        #ff7722;
+  --orange:        #ff6600;
 
   --border:        #181818;
   --border-mid:    #222222;
   --border-bright: #2e2e2e;
 
-  --font:          'IBM Plex Mono', 'Roboto Mono', 'Courier New', monospace;
+  --font:          'Courier New', 'Courier New', 'Courier New', monospace;
   --radius:        2px;
   --transition:    0.15s ease;
 
@@ -204,7 +204,7 @@ button[data-action="load"] {
 .load-btn:hover {
   color: var(--green);
   border-color: var(--green);
-  background: var(--green-glow);
+  background: var(--orange-glow);
 }
 
 /* ── Layout Wrapper ────────────────────────────────────────── */
@@ -271,7 +271,7 @@ nav.sidebar,
 .sidebar-link.active,
 .nav-item.active {
   color: var(--green);
-  background: var(--green-glow);
+  background: var(--orange-glow);
   border-left: 2px solid var(--green);
 }
 
@@ -538,7 +538,7 @@ td.wallet { font-size: 9px; color: var(--text-muted); font-family: var(--font); 
 
 .risk-high   { color: var(--red);   background: var(--red-dim);   border: 1px solid rgba(224,56,56,0.3); }
 .risk-medium { color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(240,165,0,0.3); }
-.risk-low    { color: var(--green); background: var(--green-dim); border: 1px solid rgba(0,212,150,0.3); }
+.risk-low    { color: var(--green); background: var(--orange-dim); border: 1px solid rgba(0,212,150,0.3); }
 
 /* ── ML Section ────────────────────────────────────────────── */
 .ml-status-grid {
@@ -636,7 +636,7 @@ td.wallet { font-size: 9px; color: var(--text-muted); font-family: var(--font); 
   text-align: center;
 }
 
-.feed-type.pump  { color: var(--green); background: var(--green-dim); border: 1px solid rgba(0,212,150,0.25); }
+.feed-type.pump  { color: var(--green); background: var(--orange-dim); border: 1px solid rgba(0,212,150,0.25); }
 .feed-type.dump  { color: var(--red);   background: var(--red-dim);   border: 1px solid rgba(224,56,56,0.25); }
 .feed-type.whale { color: var(--blue);  background: rgba(68,136,255,0.1); border: 1px solid rgba(68,136,255,0.25); }
 .feed-type.alert { color: var(--amber); background: var(--amber-dim); border: 1px solid rgba(240,165,0,0.25); }
@@ -698,7 +698,7 @@ td.wallet { font-size: 9px; color: var(--text-muted); font-family: var(--font); 
 }
 
 .report-item:hover    { color: var(--text-primary); background: var(--bg-hover); }
-.report-item.selected { color: var(--green); background: var(--green-glow); }
+.report-item.selected { color: var(--green); background: var(--orange-glow); }
 
 .report-content {
   padding: 14px;
@@ -771,7 +771,7 @@ button, .btn {
 button:hover, .btn:hover {
   color: var(--green);
   border-color: var(--green);
-  background: var(--green-glow);
+  background: var(--orange-glow);
 }
 
 /* ── Responsive ────────────────────────────────────────────── */
