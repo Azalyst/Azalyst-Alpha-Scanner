@@ -28,3 +28,19 @@ node_modules/
 .vscode/
 .idea/
 ```
+
+# AZALYST - runtime artifacts
+data/birdeye_quant.db
+data/*.db
+reports/quant_signals_*.json
+reports/quant_signals_*.csv
+reports/quant_outcomes_*.json
+reports/quant_outcomes_*.csv
+reports/quant_brief_*.md
+reports/daily_scan_*.json
+reports/whale_scan_*.txt
+ml/model.pkl
+ml/metrics.json
+status.json
+azalyst_state.json
+azalyst_portfolio.json

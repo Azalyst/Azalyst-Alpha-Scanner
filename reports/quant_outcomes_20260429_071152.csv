@@ -1,4 +1,0 @@
-evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-04-29T07:11:51+00:00,solana,BeeJfsiLyJR4arJEyxSAxVRsQGBrCM8kc84iQrcVHHHR,Red Bull,watch,up,8.471e-05,2.363e-10,-99.9997,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
-2026-04-29T07:11:51+00:00,solana,EXLv3SRRdMADpHXGfVCv1Rj56wbjVD6rjz5662xHq2HG,RCSC,watch,up,0.7535,0.01088,-98.5561,10.0,60,False,predicted_up;return_-98.56pct;target_10.00pct;label_watch;not_confirmed
-2026-04-29T07:11:52+00:00,solana,2XnyiZqMQ5iZgNESVMzcHMwrVatGAW8cNvBV8CiGWcXy,Noxa,watch,up,0.0001657,0.1198,72199.3361,10.0,60,True,predicted_up;return_72199.34pct;target_10.00pct;label_watch;pump_confirmed

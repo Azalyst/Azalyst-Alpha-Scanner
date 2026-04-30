@@ -1,7 +1,0 @@
-ts,chain,address,symbol,binance_symbol,binance_base_asset,binance_match_type,label,pump_score,dump_score,anomaly_score,smart_money_score,risk_score,reasons
-2026-04-28T15:35:07+00:00,optimism,0x6b0dcd77199786ffbf3dd6f4a2540cd666ce13ff,MESSA,,,,watch,33.65,0.0,35.68,0.0,0.0,normal_watch
-2026-04-28T15:35:07+00:00,optimism,0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1,WLD,,,,watch,0.0,12.5,13.29,0.0,50.0,risk:mintable;risk:freeze_authority
-2026-04-28T15:35:07+00:00,optimism,0x1f32b1c2345538c0c6f582fcb022739c4a194ebb,wstETH,,,,watch,9.18,0.0,11.85,1.67,0.0,normal_watch
-2026-04-28T15:35:07+00:00,optimism,0x4200000000000000000000000000000000000042,OP,,,,watch,1.23,6.44,11.73,0.0,25.0,risk:mintable
-2026-04-28T15:35:07+00:00,optimism,0x4200000000000000000000000000000000000006,WETH,,,,watch,9.27,0.0,10.46,0.0,0.0,normal_watch
-2026-04-28T15:35:07+00:00,optimism,0x0b2c639c533813f4aa9d7837caf62653d097ff85,USDC,,,,watch,8.23,0.0,9.44,0.0,0.0,normal_watch

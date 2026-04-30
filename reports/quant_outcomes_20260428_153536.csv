@@ -1,7 +1,0 @@
-evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-04-28T15:35:31+00:00,ethereum,0xfd256da0b4f864ef37c925b40d04af27ed090315,ELIEN,anomaly_watch,up,2.084e-10,2.084e-10,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-28T15:35:36+00:00,ethereum,0x47ea863839bed88fe4da3e057a2551cc464ddd0f,SHIBA,anomaly_watch,up,5.522e-07,1.051e-12,-99.9998,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-28T15:35:36+00:00,solana,8Xh4Qb5KHqD3bsiR22YNRi4aZw89e3AgZKMWXzQEo8oF,DORA,anomaly_watch,down,8.996e-06,1.112e-09,-99.9876,10.0,60,True,predicted_down;return_-99.99pct;target_10.00pct;label_anomaly_watch;dump_confirmed
-2026-04-28T15:35:36+00:00,solana,orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE,ORCA,anomaly_watch,down,1.7,1.62,-4.7059,10.0,60,False,predicted_down;return_-4.71pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-28T15:35:36+00:00,solana,DXcwhg1MwrResr1CoaBuhnnHmcx222ntZAgRd28Jpump,SCAM,anomaly_watch,down,0.0003145,0.0003408,8.3625,10.0,60,False,predicted_down;return_8.36pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-28T15:35:36+00:00,solana,8GxLxKA8tf3h8JUkXFfP4dNyn6D2vvwyGif5wanRpump,MASCOTS,anomaly_watch,up,0.0006679,0.0006875,2.9346,10.0,60,False,predicted_up;return_2.93pct;target_10.00pct;label_anomaly_watch;not_confirmed

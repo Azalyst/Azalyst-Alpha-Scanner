@@ -1,7 +1,0 @@
-evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-04-29T23:41:09+00:00,solana,JB8rMqyFmypiMqjiJ13bitubssM6aYDdq5ndUF5Wpump,BP,watch,up,7.785e-05,0.0002118,172.0617,10.0,60,True,predicted_up;return_172.06pct;target_10.00pct;label_watch;pump_confirmed
-2026-04-29T23:41:09+00:00,solana,CzuZQGdgxmjKqKkrwNr5uL4dC32aYThp1kg7S6kjpump,MCHOUSE,anomaly_watch,up,8.599e-06,8.481e-06,-1.3723,10.0,60,False,predicted_up;return_-1.37pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-29T23:41:09+00:00,solana,BBEsTnKaiLxmL75XEYFu72n75VtdaSxb7pTFdKsLrUxG,FTP,watch,up,2.716e-05,1.746e-05,-35.7143,10.0,60,False,predicted_up;return_-35.71pct;target_10.00pct;label_watch;not_confirmed
-2026-04-29T23:41:09+00:00,solana,E8syR4zsgQG2zo9YyiyfX4ujubByR4z6qj9stjASpump,STJUDE,anomaly_watch,up,0.001447,0.0007952,-45.0449,10.0,60,False,predicted_up;return_-45.04pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-29T23:41:10+00:00,solana,3KHMZhpthXuiCcgfTv7vVu9PpEz64KAEURFwi6Lopump,Goblin,anomaly_watch,down,0.001256,0.0009989,-20.4697,10.0,60,True,predicted_down;return_-20.47pct;target_10.00pct;label_anomaly_watch;dump_confirmed
-2026-04-29T23:41:10+00:00,solana,6AVAUKa9uxQpruHZUinFECpXEh1usRVtzQWK8N2wpump,SCAM,anomaly_watch,down,0.0006975,0.0007308,4.7742,10.0,60,False,predicted_down;return_4.77pct;target_10.00pct;label_anomaly_watch;not_confirmed

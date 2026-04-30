@@ -1,4 +1,0 @@
-evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-04-28T21:35:16+00:00,arbitrum,0x35ca1e5a9b1c09fa542fa18d1ba4d61c8edff852,SCHRODI,anomaly_watch,up,0.001768,0.001768,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-04-28T21:35:16+00:00,arbitrum,0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f,WBTC,whale_accumulation,up,76179.21,76118.63,-0.0795,10.0,60,False,predicted_up;return_-0.08pct;target_10.00pct;label_whale_accumulation;not_confirmed
-2026-04-28T21:35:16+00:00,arbitrum,0xaf88d065e77c8cc2239327c5edb3a432268e5831,USDC,whale_accumulation,up,0.9999,0.9999,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_whale_accumulation;not_confirmed
