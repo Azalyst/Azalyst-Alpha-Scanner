@@ -1,0 +1,11 @@
+ts,chain,address,symbol,binance_symbol,binance_base_asset,binance_match_type,label,pump_score,dump_score,anomaly_score,smart_money_score,risk_score,reasons
+2026-05-01T07:43:45+00:00,zksync,0x5a7d6b2f92c77fad6ccabd7ee0624e64907eaf3e,ZKX,,,,watch,30.0,1.86,32.9,0.0,0.0,normal_watch
+2026-05-01T07:43:45+00:00,optimism,0x0b2c639c533813f4aa9d7837caf62653d097ff85,USDC,,,,watch,9.9,0.14,11.37,0.0,0.0,normal_watch
+2026-05-01T07:43:45+00:00,optimism,0x4200000000000000000000000000000000000006,WETH,,,,watch,9.23,0.21,10.71,0.0,0.0,normal_watch
+2026-05-01T07:43:45+00:00,zksync,0x5aea5775959fbc2557cc8789bc1bf90a239d9a91,WETH,,,,watch,8.37,0.23,9.78,0.0,0.0,normal_watch
+2026-05-01T07:43:45+00:00,zksync,0x3355df6d4c9c3035724fd0e3914de96a5a83aaf4,WETH,,,,watch,8.37,0.23,9.78,0.0,0.0,normal_watch
+2026-05-01T07:43:45+00:00,zksync,0x31c2c031fdc9d33e974f327ab0d9883eae06ca4a,ZF,,,,watch,0.0,9.11,2.24,0.0,25.0,risk:mintable
+2026-05-01T07:43:45+00:00,optimism,0x4200000000000000000000000000000000000042,OP,,,,watch,0.0,6.37,6.95,0.0,25.0,risk:mintable
+2026-05-01T07:43:45+00:00,optimism,0x9560e827af36c94d2ac33a39bce1fe78631088db,VELO,,,,watch,0.0,6.32,0.29,0.0,25.0,risk:mintable
+2026-05-01T07:43:45+00:00,zksync,0xbd4372e44c5ee654dd838304006e1f0f69983154,NODL,,,,watch,0.0,6.25,0.0,0.0,25.0,risk:mintable
+2026-05-01T07:43:45+00:00,optimism,0x6b0dcd77199786ffbf3dd6f4a2540cd666ce13ff,MESSA,,,,watch,0.0,0.0,0.0,0.0,0.0,normal_watch

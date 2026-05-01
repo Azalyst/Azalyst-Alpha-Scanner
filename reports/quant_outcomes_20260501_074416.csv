@@ -1,0 +1,4 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-01T07:44:16+00:00,solana,4aU8kPcEcpYjSbV4WM5iQAuUzw2aQDUj5AgaLYtvpump,MOODANG,anomaly_watch,up,2.343e-06,2.343e-06,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-01T07:44:16+00:00,solana,GZQ9FcpqJ2yqYhJLSr3Utb7ybXnh4fRt5B1bpUgqJZGx,Dragon,anomaly_watch,up,5.735e-06,5.735e-06,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-01T07:44:16+00:00,solana,3KHMZhpthXuiCcgfTv7vVu9PpEz64KAEURFwi6Lopump,Goblin,anomaly_watch,down,0.003061,0.002934,-4.149,10.0,60,False,predicted_down;return_-4.15pct;target_10.00pct;label_anomaly_watch;not_confirmed
