@@ -1,0 +1,5 @@
+ts,chain,address,symbol,binance_symbol,binance_base_asset,binance_match_type,label,pump_score,dump_score,anomaly_score,smart_money_score,risk_score,reasons
+2026-05-01T20:43:13+00:00,optimism,0x9560e827af36c94d2ac33a39bce1fe78631088db,VELO,,,,watch,8.5,6.82,20.15,0.0,25.0,risk:mintable
+2026-05-01T20:43:13+00:00,optimism,0x0b2c639c533813f4aa9d7837caf62653d097ff85,USDC,,,,watch,14.54,0.74,17.31,0.0,0.0,normal_watch
+2026-05-01T20:43:13+00:00,optimism,0x4200000000000000000000000000000000000006,WETH,,,,watch,14.46,0.36,16.8,0.0,0.0,normal_watch
+2026-05-01T20:43:13+00:00,optimism,0x4200000000000000000000000000000000000042,OP,,,,watch,0.0,14.97,14.86,0.0,25.0,risk:mintable
