@@ -16,6 +16,7 @@ DEFAULT_QUANT_PATH = Path("reports/latest_quant_signals.json")
 DEFAULT_OUTCOMES_PATH = Path("reports/latest_quant_outcomes.json")
 DEFAULT_ML_PATH = Path("reports/latest_ml_scores.json")
 DEFAULT_BRIEF_PATH = Path("reports/latest_quant_brief.md")
+DEFAULT_PORTFOLIO_PATH = Path("portfolio.json")
 MAX_EMBED_DESCRIPTION = 4000
 
 CHAIN_LABELS = {
@@ -182,6 +183,50 @@ def build_qwen_excerpt(brief_text: str) -> str:
     return truncate(cleaned, 1000)
 
 
+def build_paper_trading_section(portfolio_data: Dict[str, Any]) -> str:
+    if not portfolio_data:
+        return "Paper Trading: No portfolio data available yet."
+    
+    # If portfolio_data already has summary fields, use them directly
+    if "portfolio_value" in portfolio_data:
+        cash = float(portfolio_data.get("cash", 0))
+        invested = float(portfolio_data.get("invested", 0))
+        unrealised = float(portfolio_data.get("unrealised", 0))
+        closed_pnl = float(portfolio_data.get("closed_pnl", 0))
+        portfolio_value = float(portfolio_data.get("portfolio_value", 0))
+        total_return = float(portfolio_data.get("total_return_pct", 0))
+        open_count = int(portfolio_data.get("open_count", 0))
+        closed_count = int(portfolio_data.get("closed_count", 0))
+        win_rate = float(portfolio_data.get("win_rate", 0))
+    else:
+        # Raw portfolio.json format - calculate summary
+        cash = float(portfolio_data.get("cash", 5000))
+        open_positions = portfolio_data.get("open", [])
+        closed_positions = portfolio_data.get("closed", [])
+        
+        invested = sum(p.get("invested", 0) for p in open_positions)
+        cur_value = sum(p.get("current", p.get("entry", 0)) * p.get("units", 0) for p in open_positions)
+        unrealised = cur_value - invested
+        closed_pnl = sum(t.get("pnl", 0) for t in closed_positions)
+        portfolio_value = cash + cur_value
+        deposited = 5000.0
+        total_return = ((portfolio_value - deposited) / deposited * 100) if deposited else 0
+        open_count = len(open_positions)
+        closed_count = len(closed_positions)
+        wins = len([t for t in closed_positions if t.get("pnl", 0) > 0])
+        win_rate = (wins / closed_count * 100) if closed_count else 0
+    
+    lines = [
+        f"**Portfolio Value:** ${portfolio_value:,.2f}",
+        f"**Cash:** ${cash:,.2f} | **Invested:** ${invested:,.2f}",
+        f"**Unrealized P&L:** ${unrealised:+,.2f} | **Closed P&L:** ${closed_pnl:+,.2f}",
+        f"**Total Return:** {total_return:+.2f}% | **Win Rate:** {win_rate:.1f}%",
+        f"**Open Positions:** {open_count} | **Closed Trades:** {closed_count}",
+    ]
+    
+    return "\n".join(lines)
+
+
 def build_signal_embed(signals: List[Dict[str, Any]]) -> str:
     if not signals:
         return "No live signals were produced."
@@ -207,12 +252,14 @@ def build_payload(
     dashboard_url: str,
     repo_url: str,
     run_url: str,
+    portfolio_data: Dict[str, Any],
 ) -> Dict[str, Any]:
     title = "Azalyst Alpha Scanner"
     plain_english = build_plain_english(quant, outcomes, ml)
     technical = build_technical_summary(quant, outcomes, ml)
     signal_lines = build_signal_embed(quant.get("signals") or [])
     qwen_excerpt = build_qwen_excerpt(brief_text)
+    paper_trading_lines = build_paper_trading_section(portfolio_data)
     quant_generated = str(quant.get("generated_at") or "")
     if quant_generated and brief_text and quant_generated not in brief_text:
         qwen_excerpt = truncate(
@@ -225,32 +272,39 @@ def build_payload(
         link_bits.append(f"[Workflow Run]({run_url})")
     links = " | ".join(link_bits)
 
+    embeds = [
+        {
+            "title": "Executive Brief",
+            "color": 0xF97316,
+            "description": truncate(plain_english, MAX_EMBED_DESCRIPTION),
+        },
+        {
+            "title": "Signal Board",
+            "color": 0x2563EB,
+            "description": signal_lines,
+        },
+        {
+            "title": "Paper Trading Performance",
+            "color": 0x10B981,
+            "description": truncate(paper_trading_lines, MAX_EMBED_DESCRIPTION),
+        },
+        {
+            "title": "Model + Run Details",
+            "color": 0x64748B,
+            "description": truncate(technical, MAX_EMBED_DESCRIPTION),
+        },
+        {
+            "title": "Research Note",
+            "color": 0x7C3AED,
+            "description": truncate(qwen_excerpt, MAX_EMBED_DESCRIPTION),
+        },
+    ]
+
     return {
         "username": "Azalyst Alpha Scanner",
         "allowed_mentions": {"parse": []},
         "content": f"{title} | Quant Update | {links}",
-        "embeds": [
-            {
-                "title": "Executive Brief",
-                "color": 0xF97316,
-                "description": truncate(plain_english, MAX_EMBED_DESCRIPTION),
-            },
-            {
-                "title": "Signal Board",
-                "color": 0x2563EB,
-                "description": signal_lines,
-            },
-            {
-                "title": "Model + Run Details",
-                "color": 0x64748B,
-                "description": truncate(technical, MAX_EMBED_DESCRIPTION),
-            },
-            {
-                "title": "Research Note",
-                "color": 0x7C3AED,
-                "description": truncate(qwen_excerpt, MAX_EMBED_DESCRIPTION),
-            },
-        ],
+        "embeds": embeds,
     }
 
 
@@ -269,6 +323,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--outcomes-report", default=str(DEFAULT_OUTCOMES_PATH), help="Path to latest outcomes JSON")
     parser.add_argument("--ml-report", default=str(DEFAULT_ML_PATH), help="Path to latest ML JSON")
     parser.add_argument("--brief-report", default=str(DEFAULT_BRIEF_PATH), help="Path to latest Qwen brief markdown")
+    parser.add_argument("--portfolio-report", default=str(DEFAULT_PORTFOLIO_PATH), help="Path to portfolio JSON")
     parser.add_argument("--payload-out", default="", help="Optional path to write the Discord JSON payload")
     parser.add_argument("--dry-run", action="store_true", help="Print payload instead of posting")
     return parser.parse_args()
@@ -280,6 +335,7 @@ def main() -> int:
     outcomes = load_json(Path(args.outcomes_report))
     ml = load_json(Path(args.ml_report))
     brief_text = load_text(Path(args.brief_report))
+    portfolio_data = load_json(Path(args.portfolio_report))
 
     payload = build_payload(
         quant=quant,
@@ -289,6 +345,7 @@ def main() -> int:
         dashboard_url=args.dashboard_url,
         repo_url=args.repo_url,
         run_url=args.run_url,
+        portfolio_data=portfolio_data,
     )
 
     if args.payload_out:

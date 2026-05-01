@@ -1,46 +1,43 @@
 ```
-# Database files
-*.db
-
-# ML model artifacts
-*.json
-
-# Compiled Python files
-*.pyc
+# Python
 __pycache__/
-
-# Dependencies
-.venv/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
 venv/
-node_modules/
+.venv/
+.ENV
+.ENV.*
+.python-version
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage/
+htmlcov/
 
-# Logs and temp files
+# Logs
 *.log
-*.tmp
-*.swp
 
 # Environment
 .env
 .env.local
 .env.*
 
-# Editors
+# Editor
 .vscode/
 .idea/
-```
+*.swp
+*.swo
+*.tmp
 
-# AZALYST - runtime artifacts
-data/birdeye_quant.db
-data/*.db
-reports/quant_signals_*.json
-reports/quant_signals_*.csv
-reports/quant_outcomes_*.json
-reports/quant_outcomes_*.csv
-reports/quant_brief_*.md
-reports/daily_scan_*.json
-reports/whale_scan_*.txt
-ml/model.pkl
-ml/metrics.json
-status.json
-azalyst_state.json
-azalyst_portfolio.json
+# OS
+.DS_Store
+Thumbs.db
+
+# Build and distribution
+dist/
+build/
+*.egg-info/
+```
