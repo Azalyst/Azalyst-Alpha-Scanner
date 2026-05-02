@@ -1,0 +1,21 @@
+ts,chain,address,symbol,binance_symbol,binance_base_asset,binance_match_type,label,pump_score,dump_score,anomaly_score,smart_money_score,risk_score,reasons
+2026-05-02T21:04:54+00:00,solana,G1fqojELGng9mkEUqhepecwSHnHcaQ459Eed8Q5qZbEm,BELEAF,,,,anomaly_watch,25.8,39.0,100.0,0.0,12.0,risk:thin_liquidity;ml_isolation_forest_anomaly
+2026-05-02T21:04:54+00:00,solana,DJ15QJxVPFGv6kYhT6LvDGqG9b4aBFWQzavA7dGxpump,goblintown,,,,anomaly_watch,4.29,60.5,70.71,0.0,0.0,liquidity_drop;ml_isolation_forest_anomaly
+2026-05-02T21:04:54+00:00,solana,BanusqnHkNxydvSzrESD8cZGVu3commdwKCJfwVzpump,Chloe,,,,watch,66.0,0.0,65.0,0.0,0.0,sudden_rise_price_plus_volume
+2026-05-02T21:04:54+00:00,solana,GynEuy1V1PyrXBJEvf2kJpm9Q9uZdHhJiKhz2swgpump,MAGA,,,,watch,66.0,0.0,65.0,0.0,0.0,sudden_rise_price_plus_volume
+2026-05-02T21:04:54+00:00,solana,DdWhBFJutypz9NtLaxrwHoeqFvgNhek2wZTQ89fWpump,Asshole,,,,watch,66.0,0.0,65.0,0.0,0.0,sudden_rise_price_plus_volume
+2026-05-02T21:04:54+00:00,solana,65TtJkSXb254visPNwviX8HAtCNUFTpt5EPyqsHCpump,TOKUP14,,,,watch,66.0,0.0,65.0,0.0,0.0,sudden_rise_price_plus_volume
+2026-05-02T21:04:54+00:00,solana,6AVAUKa9uxQpruHZUinFECpXEh1usRVtzQWK8N2wpump,SCAM,,,,watch,49.11,0.0,61.9,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,9KrdYnHHrsWYpWMxyzbmmrjcXRr7ERWpB3byNeb1pump,UNIPUMP,,,,watch,12.25,52.59,60.83,4.12,0.0,liquidity_drop
+2026-05-02T21:04:54+00:00,solana,3QQQxazHaMb72d7N9iftT26vuk6A4Re31fYmkwA2pump,PETS,,,,watch,10.54,34.59,58.43,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB,GME,,,,watch,7.04,28.96,57.99,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,J9qzZNG54EVeDbhicPHsPsqHAzCgVdp8xJ75vzCapump,SKI,,,,watch,30.0,15.09,53.48,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,3KHMZhpthXuiCcgfTv7vVu9PpEz64KAEURFwi6Lopump,USDS,,,,watch,0.0,0.0,51.84,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,4o57EumLFaRKnFF3XE5neixjoebBsM7WDua27yS8pump,SKI,,,,watch,30.66,13.63,51.68,0.38,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,6KyTx67ga3VsEz3ntJ5P337SDjEjZNVP7J3uvNQPpump,MAGA,,,,watch,37.49,0.0,41.65,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,38s1M5YnTUFXgzVz8vnbYt5bfZqUcMFBPPamM8Adpump,SEdge ,,,,watch,33.83,0.0,35.96,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,8c3JdTcEqy9XdUJ36NAns7XVDfh356nWxvwcMYKNpump,Scribbli,,,,watch,17.94,9.96,35.17,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,JAxMg5ErnK6ji37TnUh89yA2mouDkFVpiKGaEi1mpump,WINNING,,,,watch,3.76,17.59,31.59,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,DQzggpTcKvX6PUf2L9CP8KPmnzQUcGF9Qb7KAFN9pump,canons,,,,watch,30.43,0.0,30.67,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,9AvytnUKsLxPxFHFqS6VLxaxt5p6BhYNr53SD2Chpump,67,,,,watch,19.16,4.66,26.98,0.0,0.0,normal_watch
+2026-05-02T21:04:54+00:00,solana,5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2,TROLL,,,,watch,4.85,12.63,22.33,0.0,0.0,normal_watch
