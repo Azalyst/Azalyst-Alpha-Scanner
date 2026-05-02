@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-02T09:34:35.435740+00:00",
+  "generated_at": "2026-05-02T10:30:07.251107+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -113,9 +113,9 @@
   },
   "cluster_counts": {},
   "totals": {
-    "snapshots": 577,
+    "snapshots": 589,
     "wallet_events": 0,
-    "labeled_outcomes": 84
+    "labeled_outcomes": 85
   },
   "top_signals": [
     {
@@ -144,20 +144,6 @@
       "pump_score": 30.0,
       "dump_score": 1.21,
       "anomaly_score": 31.88,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 293,
-      "ts": "2026-05-01T09:51:24+00:00",
-      "chain": "solana",
-      "address": "6YQAtgyqfBGehPukWVG1c41BA31mh7Z2GCTwcdG7pump",
-      "symbol": "SOPHIA",
-      "ml_prob": 0.000997449928474612,
-      "ml_direction": "down",
-      "ml_edge": 0.9980051001430508,
-      "pump_score": 30.0,
-      "dump_score": 0.16,
-      "anomaly_score": 30.25,
       "label": "watch"
     },
     {
@@ -466,6 +452,20 @@
       "pump_score": 0.0,
       "dump_score": 0.0,
       "anomaly_score": 46.35,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 319,
+      "ts": "2026-05-01T10:50:18+00:00",
+      "chain": "solana",
+      "address": "6Wr2gNRSS5AY598SHBectF5T7ZhHbXa48E46NnQBpump",
+      "symbol": "Mask",
+      "ml_prob": 0.0010052363267680543,
+      "ml_direction": "down",
+      "ml_edge": 0.9979895273464638,
+      "pump_score": 30.0,
+      "dump_score": 0.59,
+      "anomaly_score": 30.91,
       "label": "watch"
     }
   ],

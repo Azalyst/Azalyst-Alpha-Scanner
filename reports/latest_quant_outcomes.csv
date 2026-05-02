@@ -1,4 +1,2 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-05-02T09:20:25+00:00,solana,EBB1Av7ZKkn5FBvq4PGRGRgzCKQ9sdzmHk9H38w5pump,💎,watch,up,3.427e-06,1.779e-06,-48.0887,10.0,60,False,predicted_up;return_-48.09pct;target_10.00pct;label_watch;not_confirmed
-2026-05-02T09:20:26+00:00,solana,3D7fjsatwxk55C5nsyUfMAACTt49YHtx81jjMu9hpump,death,watch,up,4.43e-06,5.578e-07,-87.4086,10.0,60,False,predicted_up;return_-87.41pct;target_10.00pct;label_watch;not_confirmed
-2026-05-02T09:20:26+00:00,solana,F8ZVdDU2EdqYaBuJsA488Hr1QPachasWnQF6k3TDpump,CCP,anomaly_watch,down,1.814e-05,1.715e-05,-5.4576,10.0,60,False,predicted_down;return_-5.46pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-02T10:26:58+00:00,arbitrum,0xaf88d065e77c8cc2239327c5edb3a432268e5831,USDC,dump_risk,down,1.000014,1.000046,0.0032,10.0,60,False,predicted_down;return_0.00pct;target_10.00pct;label_dump_risk;not_confirmed
