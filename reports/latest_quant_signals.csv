@@ -1,6 +1,6 @@
 ts,chain,address,symbol,binance_symbol,binance_base_asset,binance_match_type,label,pump_score,dump_score,anomaly_score,smart_money_score,risk_score,reasons
-2026-05-03T09:44:13+00:00,optimism,0x9560e827af36c94d2ac33a39bce1fe78631088db,VELO,,,,watch,22.62,7.12,32.99,0.0,25.0,risk:mintable
-2026-05-03T09:44:13+00:00,optimism,0x0b2c639c533813f4aa9d7837caf62653d097ff85,USDC,,,,watch,20.63,0.0,23.77,0.0,0.0,normal_watch
-2026-05-03T09:44:13+00:00,optimism,0x4200000000000000000000000000000000000006,WETH,,,,watch,19.8,0.08,22.48,0.0,0.0,normal_watch
-2026-05-03T09:44:13+00:00,optimism,0x4200000000000000000000000000000000000042,OP,,,,watch,9.77,6.76,16.05,2.44,25.0,buy_pressure;risk:mintable
-2026-05-03T09:44:13+00:00,optimism,0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1,WLD,,,,watch,0.0,14.17,11.07,0.0,50.0,risk:mintable;risk:freeze_authority
+2026-05-03T10:36:49+00:00,optimism,0x9560e827af36c94d2ac33a39bce1fe78631088db,VELO,,,,watch,20.64,6.25,31.55,0.0,25.0,risk:mintable
+2026-05-03T10:36:49+00:00,optimism,0xdc6ff44d5d932cbd77b52e5612ba0529dc6226f1,WLD,,,,watch,12.65,12.5,30.34,0.0,50.0,risk:mintable;risk:freeze_authority
+2026-05-03T10:36:49+00:00,optimism,0x0b2c639c533813f4aa9d7837caf62653d097ff85,USDC,,,,watch,20.34,0.27,24.07,0.0,0.0,normal_watch
+2026-05-03T10:36:49+00:00,optimism,0x4200000000000000000000000000000000000006,WETH,,,,watch,18.91,0.0,21.42,0.0,0.0,normal_watch
+2026-05-03T10:36:49+00:00,optimism,0x4200000000000000000000000000000000000042,OP,,,,watch,1.77,6.25,10.36,0.0,25.0,risk:mintable
