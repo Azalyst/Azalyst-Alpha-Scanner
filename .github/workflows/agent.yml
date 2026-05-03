@@ -58,6 +58,8 @@ jobs:
         env:
           NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
           HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
+          NIM_PRIMARY_MODEL: "deepseek-ai/deepseek-v4-pro"
+          NIM_FALLBACK_MODEL: "qwen/qwen2.5-coder-32b-instruct"
         run: |
           if [ "${{ github.event_name }}" = "schedule" ]; then
             python agent.py "run daily_scan and save results to reports/daily_scan.md"

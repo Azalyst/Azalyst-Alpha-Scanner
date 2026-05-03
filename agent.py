@@ -11,8 +11,8 @@ from tools import execute_tool, TOOLS
 from agent.explain_mode import format_explain_response
 
 NIM_API_KEY = os.environ.get("NIM_API_KEY")
-PRIMARY_MODEL = "deepseek-ai/deepseek-v4-pro"
-FALLBACK_MODEL = "qwen/qwen2.5-coder-32b-instruct"
+PRIMARY_MODEL = os.environ.get("NIM_PRIMARY_MODEL", "deepseek-ai/deepseek-v4-pro")
+FALLBACK_MODEL = os.environ.get("NIM_FALLBACK_MODEL", "qwen/qwen2.5-coder-32b-instruct")
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 
 client = OpenAI(api_key=NIM_API_KEY, base_url=BASE_URL)
