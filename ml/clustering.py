@@ -174,6 +174,6 @@ def _iso_delta_min(a: str, b: str) -> float:
 
 if __name__ == "__main__":
     import sys
-    counts = rebuild_clusters(sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db")
+    counts = rebuild_clusters(sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db")
     for c, n in sorted(counts.items(), key=lambda x: -x[1]):
         print(f"{c:15s} {n}")

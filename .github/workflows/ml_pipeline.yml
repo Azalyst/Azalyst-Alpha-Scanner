@@ -56,7 +56,7 @@ jobs:
 
       - name: Run ML pipeline (${{ steps.mode.outputs.mode }})
         run: |
-          if [ ! -f data/birdeye_quant.db ]; then
+          if [ ! -f data/azalyst_quant.db ]; then
             echo "No quant DB yet — skipping."
             exit 0
           fi
@@ -66,7 +66,7 @@ jobs:
         run: |
           git config user.name "Azalyst ML Bot"
           git config user.email "actions@github.com"
-          git add -f data/birdeye_quant.db || true
+          git add -f data/azalyst_quant.db || true
           git add -f ml/model.pkl ml/metrics.json reports/ 2>/dev/null || true
           if git diff --staged --quiet; then
             echo "No ML artifacts changed."

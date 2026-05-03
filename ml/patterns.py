@@ -167,5 +167,5 @@ def mine_patterns(db_path: Path | str, horizon_min: int = 60) -> int:
 
 if __name__ == "__main__":
     import sys
-    n = mine_patterns(sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db")
+    n = mine_patterns(sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db")
     print(f"Stored {n} patterns.")

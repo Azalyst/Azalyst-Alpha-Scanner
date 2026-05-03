@@ -32,7 +32,7 @@ Azalyst Alpha Scanner is a **three-engine signal platform** that continuously sc
 2. **NIM Qwen Agent** — a ReAct LLM agent (NVIDIA NIM / Qwen 2.5-Coder 32B) that autonomously invokes scanner tools and writes narrative reports on-demand or on schedule.
 3. **Behavioral ML Pipeline** — wallet clustering + frequent-subsequence mining (PrefixSpan) + supervised LightGBM classifier that learns sequences like `whale_buy → anonymous_buy × N → pump` and scores each fresh signal with a calibrated probability.
 
-All three write to the same SQLite database (`data/birdeye_quant.db`) and report directory (`reports/`) which is committed back to the repo after each run, so the **dashboard is a static page** that reads directly from the GitHub API.
+All three write to the same SQLite database (`data/Azalyst_quant.db`) and report directory (`reports/`) which is committed back to the repo after each run, so the **dashboard is a static page** that reads directly from the GitHub API.
 
 ---
 
@@ -228,7 +228,7 @@ A from-scratch ReAct loop (no LangChain, no framework) wired to 21 tools coverin
 
 ### Database Schema
 
-SQLite in WAL mode at `data/birdeye_quant.db`. Core tables:
+SQLite in WAL mode at `data/Azalyst_quant.db`. Core tables:
 
 | Table | Purpose |
 |---|---|
@@ -324,7 +324,7 @@ Azalyst-Alpha-Scanner/
 ├── README.md
 │
 ├── data/
-│   └── birdeye_quant.db          # SQLite (WAL) — committed, read by dashboard
+│   └── Azalyst_quant.db          # SQLite (WAL) — committed, read by dashboard
 └── reports/                      # JSON/CSV/MD exports (committed by workflows)
 ```
 
@@ -339,7 +339,7 @@ Azalyst-Alpha-Scanner/
 | **Data sources** | DexScreener · GeckoTerminal · GoPlus · Helius (all free) |
 | **HTTP client** | `requests` with 3-retry on 5xx + network errors, 1.5s jittered backoff |
 | **Rate limiting** | Serial calls, 0.05s min delay between requests |
-| **Storage** | SQLite with WAL, committed to repo as `data/birdeye_quant.db` |
+| **Storage** | SQLite with WAL, committed to repo as `data/Azalyst_quant.db` |
 | **LLM** | NVIDIA NIM Qwen 2.5-Coder 32B, temperature 0.1 |
 | **ML primary** | LightGBM 4.1+ |
 | **ML fallback** | sklearn GradientBoostingClassifier |
@@ -399,9 +399,9 @@ Free GitHub Actions minutes on public repos are unlimited — the whole stack is
 
 | Version | Date | Key Changes |
 |---|---|---|
-| **v0.x** | Q1 2026 | Initial multi-chain tracker — NIM Qwen agent + rule-based signals (Birdeye API) |
+| **v0.x** | Q1 2026 | Initial multi-chain tracker — NIM Qwen agent + rule-based signals (Helius API) |
 | **v1.0** | Apr 2026 | Behavioral ML pipeline, dashboard ML tab, schedule guard fix, concurrency-grouped workflows |
-| **v2.0** | Apr 2026 | **Current** — Full rebuild on free APIs (DexScreener + GeckoTerminal + GoPlus + Helius); renamed to Azalyst Alpha Scanner; dropped paid Birdeye dependency |
+| **v2.0** | Apr 2026 | **Current** — Full rebuild on free APIs (DexScreener + GeckoTerminal + GoPlus + Helius); renamed to Azalyst Alpha Scanner; dropped paid Azalyst dependency |
 
 ---
 

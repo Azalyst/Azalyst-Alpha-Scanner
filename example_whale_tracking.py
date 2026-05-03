@@ -11,7 +11,7 @@ from birdeye_tracker import WhaleTracker, track_whale, find_pumps, analyze_token
 
 def main():
     # Set your API key (optional but recommended)
-    api_key = os.environ.get("BIRDEYE_API_KEY", None)
+    api_key = os.environ.get("HELIUS_API_KEY", None)
     
     if len(sys.argv) < 2:
         print("Usage: python example_whale_tracking.py <command> [args]")

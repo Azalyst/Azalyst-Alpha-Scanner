@@ -108,5 +108,5 @@ def export(db_path: Path | str) -> Dict[str, Any]:
 
 if __name__ == "__main__":
     import sys
-    db = sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db"
+    db = sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db"
     print(json.dumps(export(db), indent=2))

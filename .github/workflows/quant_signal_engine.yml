@@ -106,7 +106,7 @@ jobs:
             --qwen-brief \
             --show 25
 
-          if [ -f data/birdeye_quant.db ]; then
+          if [ -f data/azalyst_quant.db ]; then
             python -m ml schema
             python -m ml cluster
             python -m ml events
@@ -114,12 +114,15 @@ jobs:
             python -m ml export
           fi
 
+      - name: Run paper trader
+        run: python paper_trader.py
+
       - name: Commit dashboard data
         run: |
           git config user.name "Azalyst Signal Bot"
           git config user.email "actions@github.com"
 
-          git add -f data/birdeye_quant.db || true
+          git add -f data/azalyst_quant.db || true
           git add -f reports/latest_ml_scores.json || true
           git add -f reports/latest_quant_signals.json reports/latest_quant_signals.csv || true
           git add -f reports/latest_quant_outcomes.json reports/latest_quant_outcomes.csv || true
@@ -127,6 +130,7 @@ jobs:
           git add -f reports/quant_signals_*.json reports/quant_signals_*.csv || true
           git add -f reports/quant_outcomes_*.json reports/quant_outcomes_*.csv || true
           git add -f reports/quant_brief_*.md || true
+          git add -f portfolio.json || true
 
           git diff --staged --quiet && exit 0
           SNAP=$(python -c "import json; d=json.load(open('reports/latest_quant_signals.json')); print(d.get('snapshot_count',0))" 2>/dev/null || echo 0)
@@ -138,5 +142,6 @@ jobs:
         continue-on-error: true
         env:
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python scripts/discord_report.py --run-url "$RUN_URL"

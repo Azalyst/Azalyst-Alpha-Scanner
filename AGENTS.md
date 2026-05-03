@@ -99,9 +99,9 @@ You have access to the following tools. Call them using this exact JSON format i
 - **list_dir(path: str)** — List files in a directory.
 - **search(pattern: str, path: str = ".")** — grep -r for a pattern in path.
 
-### Birdeye / On-Chain
+### Azalyst / On-Chain
 
-All Birdeye tools accept an optional `chain` parameter. Default is `solana`. Supported chains: solana, ethereum, base, arbitrum, bsc, avalanche, polygon, optimism, zksync.
+All Azalyst tools accept an optional `chain` parameter. Default is `solana`. Supported chains: solana, ethereum, base, arbitrum, bsc, avalanche, polygon, optimism, zksync.
 
 | Tool | Key Args | Output | Endpoint |
 |---|---|---|---|
@@ -122,11 +122,11 @@ All Birdeye tools accept an optional `chain` parameter. Default is `solana`. Sup
 | `get_wallet_token_list` | `wallet_address`, `chain` | Current holdings with USD values | `/v1/wallet/token_list` |
 | `get_wallet_tx_list` | `wallet_address`, `chain` | Full transaction history | `/v1/wallet/tx_list` |
 
-**Note:** Birdeye tools require `BIRDEYE_API_KEY` environment variable or pass api_key parameter.
+**Note:** Azalyst tools require `HELIUS_API_KEY` environment variable or pass api_key parameter.
 
 ---
 
-## 9. Birdeye Workflow Quick Reference
+## 9. Azalyst Workflow Quick Reference
 
 ### Finding Whales
 ```tool_call

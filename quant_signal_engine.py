@@ -1,8 +1,8 @@
 """
-Birdeye Quant Signal Engine
+Azalyst Quant Signal Engine
 
 Live-data pipeline for token discovery, snapshot storage, and pump/dump
-signal scoring. It uses Birdeye's public API instead of scraping pages.
+signal scoring. It uses Azalyst's public API instead of scraping pages.
 """
 
 from __future__ import annotations
@@ -28,7 +28,7 @@ import requests
 
 # AzalystClient uses DexScreener + GeckoTerminal + GoPlus + Helius
 BINANCE_FUTURES_EXCHANGE_INFO_URL = "https://fapi.binance.com/fapi/v1/exchangeInfo"  # kept for BinanceFuturesUniverse
-DEFAULT_DB = Path("data") / "birdeye_quant.db"
+DEFAULT_DB = Path("data") / "azalyst_quant.db"
 DEFAULT_REPORT_DIR = Path("reports")
 DEFAULT_BINANCE_CACHE = Path("data") / "binance_usdt_futures_cache.json"
 
@@ -2211,7 +2211,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     def add_common(p: argparse.ArgumentParser) -> None:
         p.add_argument("--db", default=str(DEFAULT_DB), help="SQLite database path")
-        p.add_argument("--api-key", default=os.getenv("HELIUS_API_KEY"), help="Birdeye API key")
+        p.add_argument("--api-key", default=os.getenv("HELIUS_API_KEY"), help="Helius API key")
         p.add_argument("--chains", default="all", help="Comma-separated chains or 'all'")
         p.add_argument("--limit", type=int, default=40, help="Token universe size per chain")
         p.add_argument("--trade-limit", type=int, default=100, help="Recent token trades to aggregate")
@@ -2245,7 +2245,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     evaluate = sub.add_parser("evaluate", help="Evaluate older signals as true or false")
     evaluate.add_argument("--db", default=str(DEFAULT_DB), help="SQLite database path")
-    evaluate.add_argument("--api-key", default=os.getenv("HELIUS_API_KEY"), help="Birdeye API key")
+    evaluate.add_argument("--api-key", default=os.getenv("HELIUS_API_KEY"), help="Helius API key")
     evaluate.add_argument("--min-delay", type=float, default=0.12, help="Minimum seconds between API calls")
     evaluate.add_argument("--horizon-min", type=int, default=60, help="Minutes after signal to check")
     evaluate.add_argument("--target-pct", type=float, default=10.0, help="Return threshold for true outcome")

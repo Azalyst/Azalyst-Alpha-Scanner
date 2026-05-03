@@ -1,7 +1,7 @@
-# Complete GitHub Setup Instructions for Birdeye Whale Tracking Agent
+# Complete GitHub Setup Instructions for Azalyst Whale Tracking Agent
 
 ## OBJECTIVE
-Push the NIM Qwen Agent with Birdeye whale tracking to GitHub and configure all necessary GitHub Actions, secrets, and workflows.
+Push the NIM Qwen Agent with Azalyst whale tracking to GitHub and configure all necessary GitHub Actions, secrets, and workflows.
 
 ---
 
@@ -9,7 +9,7 @@ Push the NIM Qwen Agent with Birdeye whale tracking to GitHub and configure all 
 
 **Required API Keys:**
 1. **NIM_API_KEY** - Get from https://build.nvidia.com (REQUIRED)
-2. **BIRDEYE_API_KEY** - Get from https://birdeye.so (Optional but recommended)
+2. **HELIUS_API_KEY** - Get from https://Azalyst.so (Optional but recommended)
 
 **Repository:**
 - GitHub repository URL: `<YOUR_REPO_URL>`
@@ -30,9 +30,9 @@ repo/
 ├── agent/
 │   ├── agent.py
 │   ├── tools.py
-│   └── birdeye_tracker.py
+│   └── Azalyst_tracker.py
 ├── AGENTS.md
-├── BIRDEYE_USAGE.md
+├── Azalyst_USAGE.md
 ├── README.md
 ├── example_whale_tracking.py
 └── requirements.txt
@@ -57,8 +57,8 @@ cp D:\files\outputs\AGENTS_updated.md D:\files\AGENTS.md
 
 ```bash
 # Copy new files to appropriate locations
-cp D:\files\outputs\birdeye_tracker.py D:\files\agent\birdeye_tracker.py
-cp D:\files\outputs\BIRDEYE_USAGE.md D:\files\BIRDEYE_USAGE.md
+cp D:\files\outputs\Azalyst_tracker.py D:\files\agent\Azalyst_tracker.py
+cp D:\files\outputs\Azalyst_USAGE.md D:\files\Azalyst_USAGE.md
 cp D:\files\outputs\whale_tracking_workflow.yml D:\files\.github\workflows\whale_tracking.yml
 cp D:\files\outputs\example_whale_tracking.py D:\files\example_whale_tracking.py
 ```
@@ -67,7 +67,7 @@ cp D:\files\outputs\example_whale_tracking.py D:\files\example_whale_tracking.py
 
 ```bash
 # Use the new comprehensive README
-cp D:\files\outputs\README_BIRDEYE.md D:\files\README.md
+cp D:\files\outputs\README_Azalyst.md D:\files\README.md
 ```
 
 ---
@@ -115,7 +115,7 @@ jobs:
       - name: Run agent
         env:
           NIM_API_KEY: ${{ secrets.NIM_API_KEY }}
-          BIRDEYE_API_KEY: ${{ secrets.BIRDEYE_API_KEY }}
+          HELIUS_API_KEY: ${{ secrets.HELIUS_API_KEY }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             python agent/agent.py "${{ inputs.task }}"
@@ -167,7 +167,7 @@ git remote add origin <YOUR_GITHUB_REPO_URL>
 git add .
 
 # Commit
-git commit -m "Add Birdeye whale tracking to NIM Qwen Agent"
+git commit -m "Add Azalyst whale tracking to NIM Qwen Agent"
 
 # Push to GitHub
 git push -u origin main
@@ -187,9 +187,9 @@ Add these secrets:
 - **Value:** Your NVIDIA NIM API key from https://build.nvidia.com
 - **Required:** YES
 
-### Secret 2: BIRDEYE_API_KEY
-- **Name:** `BIRDEYE_API_KEY`
-- **Value:** Your Birdeye API key from https://birdeye.so
+### Secret 2: HELIUS_API_KEY
+- **Name:** `HELIUS_API_KEY`
+- **Value:** Your Helius API key from https://Azalyst.so
 - **Required:** NO (but recommended for higher rate limits)
 
 **Steps to add secrets:**
@@ -240,7 +240,7 @@ This allows the agent to commit changes back to the repository.
 ### Test 3: Whale Tracking Workflow
 
 1. Go to `Actions` tab
-2. Check if `Birdeye Whale Tracking Scan` workflow is listed
+2. Check if `Azalyst Whale Tracking Scan` workflow is listed
 3. Click `Run workflow` button
 4. Select scan type: `daily`
 5. Click `Run workflow`
@@ -289,7 +289,7 @@ Example tasks:
 ```bash
 cd D:\files
 export NIM_API_KEY=your_key
-export BIRDEYE_API_KEY=your_key
+export HELIUS_API_KEY=your_key
 python agent/agent.py "find_pumps"
 ```
 
@@ -301,10 +301,10 @@ After completing all steps, verify:
 
 - [ ] All files pushed to GitHub
 - [ ] `.github/workflows/` directory exists with 2 workflow files
-- [ ] `agent/` directory has 3 Python files (agent.py, tools.py, birdeye_tracker.py)
-- [ ] README.md is updated with Birdeye documentation
+- [ ] `agent/` directory has 3 Python files (agent.py, tools.py, Azalyst_tracker.py)
+- [ ] README.md is updated with Azalyst documentation
 - [ ] NIM_API_KEY secret is set
-- [ ] BIRDEYE_API_KEY secret is set (optional)
+- [ ] HELIUS_API_KEY secret is set (optional)
 - [ ] Workflow permissions set to "Read and write"
 - [ ] Manual workflow trigger works
 - [ ] Issue comment trigger works (`/agent` command)
@@ -320,9 +320,9 @@ After completing all steps, verify:
 ### Issue: "NIM_API_KEY not found"
 **Solution:** Check Step 5 - ensure secret is named exactly `NIM_API_KEY`
 
-### Issue: Birdeye tools not working
+### Issue: Azalyst tools not working
 **Solution:** 
-1. Check if birdeye_tracker.py is in agent/ directory
+1. Check if Azalyst_tracker.py is in agent/ directory
 2. Verify requirements.txt includes `requests>=2.31.0`
 3. Run `pip install -r requirements.txt`
 
@@ -375,7 +375,7 @@ After successful setup:
 
 1. **Test the agent:**
    - Run a few manual workflows
-   - Try different Birdeye commands
+   - Try different Azalyst commands
    - Verify output quality
 
 2. **Monitor automated scans:**
@@ -384,13 +384,13 @@ After successful setup:
    - Track whale movements
 
 3. **Customize as needed:**
-   - Adjust filters in birdeye_tracker.py
+   - Adjust filters in Azalyst_tracker.py
    - Modify scan frequency
    - Add custom workflows
 
 4. **Share with team:**
    - Show them how to use `/agent` commands
-   - Share BIRDEYE_USAGE.md documentation
+   - Share Azalyst_USAGE.md documentation
    - Train on signal interpretation
 
 ---
@@ -411,7 +411,7 @@ After successful setup:
 After setup, refer to these files:
 
 - **README.md** - Overview and quick start
-- **BIRDEYE_USAGE.md** - Complete Birdeye feature guide
+- **Azalyst_USAGE.md** - Complete Azalyst feature guide
 - **AGENTS.md** - Agent behavior and guidelines
 - **example_whale_tracking.py** - Local testing examples
 

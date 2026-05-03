@@ -164,5 +164,5 @@ def _row_features(r, cluster_counts: Dict[str, int], matched: set, pattern_ids: 
 
 if __name__ == "__main__":
     import sys
-    df, y, ids, names = build_matrix(sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db")
+    df, y, ids, names = build_matrix(sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db")
     print(f"rows={len(df)} cols={len(names)} labeled={sum(1 for v in y if v != -1)}")

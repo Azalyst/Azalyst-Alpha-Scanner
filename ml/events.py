@@ -141,5 +141,5 @@ def rebuild_events(db_path: Path | str, since_ts: str | None = None) -> int:
 
 if __name__ == "__main__":
     import sys
-    n = rebuild_events(sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db")
+    n = rebuild_events(sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db")
     print(f"Wrote {n} wallet events.")

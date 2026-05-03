@@ -1,6 +1,6 @@
-# Birdeye Quant Signal Engine
+# Azalyst Quant Signal Engine
 
-This is a direct Birdeye API scanner and ML-style signal engine for live token intelligence.
+This is a direct Helius API scanner and ML-style signal engine for live token intelligence.
 It records raw market snapshots into SQLite, aggregates trade behavior, and scores:
 
 - sudden price and volume expansion
@@ -10,21 +10,21 @@ It records raw market snapshots into SQLite, aggregates trade behavior, and scor
 - token security/rug-risk penalties
 - anomaly watch using IsolationForest when `scikit-learn` is installed
 
-It does not scrape Birdeye web pages. Use the official API with `BIRDEYE_API_KEY`.
+It does not scrape Azalyst web pages. Use the official API with `HELIUS_API_KEY`.
 For tradeable monitoring, use `--binance-usdt-only` to keep only tokens whose symbols match the live Binance USDT futures universe. The scanner also applies a minimum on-chain liquidity floor so same-symbol dust tokens do not flood the board.
 
 ## Install
 
 ```bash
-cd birdeye.so-main
+cd Azalyst.so-main
 pip install -r requirements.txt
-set BIRDEYE_API_KEY=your_key_here
+set HELIUS_API_KEY=your_key_here
 ```
 
 PowerShell:
 
 ```powershell
-$env:BIRDEYE_API_KEY="your_key_here"
+$env:HELIUS_API_KEY="your_key_here"
 ```
 
 ## Run One Scan
@@ -35,7 +35,7 @@ python quant_signal_engine.py scan --chains all --limit 40 --binance-usdt-only
 
 Outputs:
 
-- SQLite database: `data/birdeye_quant.db`
+- SQLite database: `data/Azalyst_quant.db`
 - JSON report: `reports/quant_signals_YYYYMMDD_HHMMSS.json`
 - CSV report: `reports/quant_signals_YYYYMMDD_HHMMSS.csv`
 
@@ -80,7 +80,7 @@ The repository includes `.github/workflows/quant_signal_engine.yml`.
 
 Required secret:
 
-- `BIRDEYE_API_KEY`
+- `HELIUS_API_KEY`
 
 Optional secret:
 
@@ -176,4 +176,4 @@ Anomaly score:
 - Run it for a few days before trusting thresholds.
 - Low-cap token data can be noisy or manipulated.
 - A high pump score with high risk should be treated as a danger signal, not an entry.
-- For production, run with an API key and choose intervals that respect your Birdeye plan.
+- For production, run with an API key and choose intervals that respect your Azalyst plan.

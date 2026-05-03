@@ -109,5 +109,5 @@ def score(db_path: Path | str, mode: str = "recent", hours: int = DEFAULT_RECENT
 if __name__ == "__main__":
     import sys
     mode = sys.argv[1] if len(sys.argv) > 1 else "recent"
-    db = sys.argv[2] if len(sys.argv) > 2 else "data/birdeye_quant.db"
+    db = sys.argv[2] if len(sys.argv) > 2 else "data/azalyst_quant.db"
     print(json.dumps(score(db, mode=mode), indent=2))

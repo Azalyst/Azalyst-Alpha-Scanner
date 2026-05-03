@@ -1,8 +1,8 @@
-# Birdeye Whale Tracking - Complete Guide
+# Azalyst Whale Tracking - Complete Guide
 
 ## Overview
 
-This agent now includes comprehensive whale tracking capabilities for Birdeye.so, implementing the complete workflow for tracking whale wallets, detecting pump/dump signals, and finding hidden gem tokens before they moon.
+This agent now includes comprehensive whale tracking capabilities for Azalyst.so, implementing the complete workflow for tracking whale wallets, detecting pump/dump signals, and finding hidden gem tokens before they moon.
 
 ---
 
@@ -120,7 +120,7 @@ Run complete analysis across all metrics:
 
 **Parameters:**
 - `wallet_address` (required): Solana wallet address
-- `api_key` (optional): Birdeye API key (uses BIRDEYE_API_KEY env var by default)
+- `api_key` (optional): Helius API key (uses HELIUS_API_KEY env var by default)
 
 **Returns:**
 - Watchlist confirmation
@@ -140,7 +140,7 @@ Run complete analysis across all metrics:
 **Description:** Scan for potential pump tokens using hidden gem filters
 
 **Parameters:**
-- `api_key` (optional): Birdeye API key
+- `api_key` (optional): Helius API key
 
 **Returns:**
 - Top 10 potential pump tokens
@@ -167,7 +167,7 @@ Run complete analysis across all metrics:
 
 **Parameters:**
 - `token_address` (required): Solana token address
-- `api_key` (optional): Birdeye API key
+- `api_key` (optional): Helius API key
 
 **Returns:**
 - Signal type: "pump" or "dump"
@@ -201,7 +201,7 @@ Run complete analysis across all metrics:
 **Description:** Run complete daily whale tracking workflow
 
 **Parameters:**
-- `api_key` (optional): Birdeye API key
+- `api_key` (optional): Helius API key
 
 **Returns:**
 Comprehensive report with:
@@ -225,25 +225,25 @@ Comprehensive report with:
 pip install -r requirements.txt
 ```
 
-### 2. Set Birdeye API Key (Optional)
+### 2. Set Helius API Key (Optional)
 
-Get a free API key from [birdeye.so](https://birdeye.so)
+Get a free API key from [Azalyst.so](https://Azalyst.so)
 
 ```bash
-export BIRDEYE_API_KEY=your_api_key_here
+export HELIUS_API_KEY=your_api_key_here
 ```
 
 **Note:** The agent works without an API key but may have rate limits. With an API key, you get higher limits and more features.
 
 ### 3. Add to GitHub Actions
 
-Add `BIRDEYE_API_KEY` to your repository secrets:
+Add `HELIUS_API_KEY` to your repository secrets:
 
 `Settings → Secrets and variables → Actions → New repository secret`
 
 | Name | Value |
 |---|---|
-| `BIRDEYE_API_KEY` | your Birdeye API key |
+| `HELIUS_API_KEY` | your Helius API key |
 
 ---
 
@@ -362,7 +362,7 @@ Add `BIRDEYE_API_KEY` to your repository secrets:
 
 ### Custom Filters
 
-Modify `birdeye_tracker.py` to customize:
+Modify `Azalyst_tracker.py` to customize:
 
 ```python
 # In find_hidden_gems()
@@ -378,7 +378,7 @@ tracker.find_hidden_gems(
 Generate Telegram alert config:
 
 ```python
-from birdeye_tracker import WhaleTracker
+from Azalyst_tracker import WhaleTracker
 
 tracker = WhaleTracker(api_key)
 config = tracker.generate_alert_config(
@@ -429,7 +429,7 @@ To improve the whale tracking:
 
 ## 📚 Additional Resources
 
-- [Birdeye API Documentation](https://docs.birdeye.so)
+- [Helius API Documentation](https://docs.Azalyst.so)
 - [Solana Explorer](https://solscan.io)
 - [Token Security Checker](https://rugcheck.xyz)
 

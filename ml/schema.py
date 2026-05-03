@@ -110,5 +110,5 @@ def _add_column_if_missing(conn: sqlite3.Connection, table: str, col: str, decl:
 
 if __name__ == "__main__":
     import sys
-    ensure_schema(sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db")
+    ensure_schema(sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db")
     print("Schema ready.")

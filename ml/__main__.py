@@ -12,7 +12,7 @@ Usage:
     python -m ml all      [db]        # schema → cluster → events → mine → train → score(full) → export
     python -m ml refresh  [db]        # cluster → events → mine → score(recent) → export   (cheap cron)
 
-`db` defaults to `data/birdeye_quant.db`.
+`db` defaults to `data/azalyst_quant.db`.
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ import json
 import sys
 from pathlib import Path
 
-DEFAULT_DB = "data/birdeye_quant.db"
+DEFAULT_DB = "data/azalyst_quant.db"
 
 
 def _db_from(argv: list[str], idx: int = 2) -> str:

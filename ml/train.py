@@ -182,5 +182,5 @@ def _top_features(model, names, k: int):
 
 if __name__ == "__main__":
     import sys
-    m = train(sys.argv[1] if len(sys.argv) > 1 else "data/birdeye_quant.db")
+    m = train(sys.argv[1] if len(sys.argv) > 1 else "data/azalyst_quant.db")
     print(json.dumps(m, indent=2))
