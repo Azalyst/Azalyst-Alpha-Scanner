@@ -28,11 +28,11 @@ An institutional-style on-chain signal platform for discovering and validating p
 
 Azalyst Alpha Scanner is a **three-engine signal platform** that continuously scans Solana + EVM DEX activity for actionable patterns using 100% free, open public APIs:
 
-1. **Quant Signal Engine** — rule-based + anomaly scoring over trending tokens, top traders, holder distribution, and trade aggregates. Commits a structured report every 15 minutes.
-2. **NIM Qwen Agent** — a ReAct LLM agent (NVIDIA NIM / Qwen 2.5-Coder 32B) that autonomously invokes scanner tools and writes narrative reports on-demand or on schedule.
-3. **Behavioral ML Pipeline** — wallet clustering + frequent-subsequence mining (PrefixSpan) + supervised LightGBM classifier that learns sequences like `whale_buy → anonymous_buy × N → pump` and scores each fresh signal with a calibrated probability.
+1. **Quant Signal Engine** — rule-based + anomaly scoring over trending tokens, top traders, holder distribution, and trade aggregates. Includes a **Paper Trader** that simulates fixed-risk entries and tracks performance.
+2. **Dual-Model Intelligence Agent** — a ReAct LLM agent powered by NVIDIA NIM (**DeepSeek-V4-Pro** primary, **Qwen-2.5-Coder** fallback) that autonomously invokes scanner tools and writes narrative reports.
+3. **Behavioral ML Pipeline** — wallet clustering + frequent-subsequence mining (PrefixSpan) + supervised LightGBM classifier that scores each signal with a calibrated probability.
 
-All three write to the same SQLite database (`data/Azalyst_quant.db`) and report directory (`reports/`) which is committed back to the repo after each run, so the **dashboard is a static page** that reads directly from the GitHub API.
+All three write to a unified SQLite database (`data/azalyst_quant.db`) and report directory (`reports/`) which is committed back to the repo after each run.
 
 ---
 
@@ -64,40 +64,37 @@ All three write to the same SQLite database (`data/Azalyst_quant.db`) and report
 ## Architecture
 
 ```
-              AZALYST ALPHA SCANNER — v2.0 SIGNAL STACK
+               AZALYST ALPHA SCANNER — v2.1 SIGNAL STACK
 
-  DATA SOURCES             INGESTION                 STORAGE
- DexScreener (free)    AzalystClient (retry 5xx)   SQLite (WAL)
- GeckoTerminal (free)  Token + pair + trade aggs   6 base tables
- GoPlus (free)         3-level retry, 1.5s jitter  5 ML tables
- Helius (optional)     Rate-limited serial writes  Committed in repo
+   DATA SOURCES             INGESTION                 STORAGE
+  DexScreener (free)    AzalystClient (Helius)      SQLite (WAL)
+  GeckoTerminal (free)  Token + pair + trade aggs   azalyst_quant.db
+  GoPlus (free)         3-level retry, 1.5s jitter  Committed in repo
+  Helius (RPC)          Rate-limited serial writes  Reports & Portfolio
 
-  QUANT ENGINE            LLM AGENT                 ML PIPELINE
- Rule + anomaly score   NIM Qwen 2.5-Coder 32B      Wallet clustering
- Pump / dump / risk     ReAct loop (15 iter cap)    PrefixSpan mining
- Smart-money detection  Tool dispatch via JSON      LightGBM classifier
- 9-chain universe       Reports to markdown         ml_prob per snapshot
+   QUANT ENGINE            LLM AGENT                 ML PIPELINE
+  Rule + anomaly score   DeepSeek-V4-Pro (Primary)   Wallet clustering
+  Paper Trading (Sim)    Qwen-2.5-Coder (Fallback)   PrefixSpan mining
+  Smart-money detection  Tool dispatch via JSON      LightGBM classifier
+  9-chain universe       Narrative briefs            ml_prob per snapshot
 
-  LABELING                SCHEDULER                DASHBOARD
- signal_outcomes table  GitHub Actions cron        dashboard.html (static)
- 60-min horizon         Quant:  */15 min           Reads GH API directly
- 10% target move        Agent:  */15 min           8 tabs incl. ML
- Evaluated per scan     ML:     */2h + daily       Live feed + pattern lib
-                        Concurrency-grouped        Ops-rate excludes skips
+   LABELING                SCHEDULER                REPORTING
+  signal_outcomes table  GitHub Actions cron        dashboard.html (static)
+  60-min horizon         Quant:  */15 min           Discord Webhook
+  10% target move        Agent:  */15 min           GitHub Pages
+  Evaluated per scan     ML:     */2h + daily       Auto-run URL linking
 ```
 
 ---
 
 ## Operating Cadence
 
-| Workflow | Schedule | Purpose |
-|---|---|---|
-| `quant_signal_engine.yml` | `*/15 * * * *` (every 15 min) | Rotating 3-chain scan with live trade/top-trader data; manual dispatch can run the full 9-chain universe |
-| `agent.yml` | `*/15 * * * *` | NIM Qwen ReAct agent runs `daily_scan` + writes markdown reports |
-| `ml_pipeline.yml` | `17 */2 * * *` + `13 3 * * *` | 2-hourly **refresh** (cluster→events→mine→score→export); daily **retrain** at 03:13 UTC |
+| `quant_signal_engine.yml` | `*/15 * * * *` (every 15 min) | Rotating 3-chain scan + Paper Trading + Discord reporting. |
+| `agent.yml` | `*/15 * * * *` | DeepSeek/Qwen ReAct agent runs `daily_scan` + writes narrative reports |
+| `ml_pipeline.yml` | `17 */2 * * *` + `13 3 * * *` | 2-hourly **refresh** (cluster→events→mine→score→export); daily **retrain** |
 | Dashboard | static | GitHub Pages — redeploys on every commit to `main` |
 
-All write workflows share the `azalyst-signal-engine` concurrency group so DB/report writes are serialized end-to-end.
+All write workflows share the `azalyst-signal-engine` concurrency group so DB/report writes are serialized end-to-end. Discord reports include the direct GitHub Run URL for auditing.
 
 ---
 
@@ -205,13 +202,14 @@ This `is_true` column is what the LightGBM classifier consumes as its training l
 
 ---
 
-## NIM Qwen Agent
+## Dual-Model Intelligence Agent
 
 A from-scratch ReAct loop (no LangChain, no framework) wired to 21 tools covering file I/O, shell, and 15 Azalyst scanner endpoints.
 
 | Parameter | Value |
 |---|---|
-| **Model** | `qwen/qwen2.5-coder-32b-instruct` via NVIDIA NIM |
+| **Primary Model** | `deepseek-ai/deepseek-v4-pro` via NVIDIA NIM |
+| **Fallback Model** | `qwen/qwen2.5-coder-32b-instruct` via NVIDIA NIM |
 | **Loop** | Think → Tool → Observe → Repeat |
 | **Iteration cap** | 15 |
 | **Temperature** | 0.1 |
@@ -228,7 +226,7 @@ A from-scratch ReAct loop (no LangChain, no framework) wired to 21 tools coverin
 
 ### Database Schema
 
-SQLite in WAL mode at `data/Azalyst_quant.db`. Core tables:
+SQLite in WAL mode at `data/azalyst_quant.db`. Core tables:
 
 | Table | Purpose |
 |---|---|
@@ -324,7 +322,7 @@ Azalyst-Alpha-Scanner/
 ├── README.md
 │
 ├── data/
-│   └── Azalyst_quant.db          # SQLite (WAL) — committed, read by dashboard
+│   └── azalyst_quant.db          # SQLite (WAL) — committed, read by dashboard
 └── reports/                      # JSON/CSV/MD exports (committed by workflows)
 ```
 
@@ -339,8 +337,8 @@ Azalyst-Alpha-Scanner/
 | **Data sources** | DexScreener · GeckoTerminal · GoPlus · Helius (all free) |
 | **HTTP client** | `requests` with 3-retry on 5xx + network errors, 1.5s jittered backoff |
 | **Rate limiting** | Serial calls, 0.05s min delay between requests |
-| **Storage** | SQLite with WAL, committed to repo as `data/Azalyst_quant.db` |
-| **LLM** | NVIDIA NIM Qwen 2.5-Coder 32B, temperature 0.1 |
+| **Storage** | SQLite with WAL, committed to repo as `data/azalyst_quant.db` |
+| **LLM** | DeepSeek-V4-Pro (Primary) / Qwen 2.5-Coder (Fallback) |
 | **ML primary** | LightGBM 4.1+ |
 | **ML fallback** | sklearn GradientBoostingClassifier |
 | **Sequence mining** | `prefixspan` 0.5+, bigram fallback |
@@ -358,8 +356,9 @@ Azalyst-Alpha-Scanner/
 
 | Secret | Purpose | Where to get | Required |
 |---|---|---|---|
-| `NIM_API_KEY` | NIM Qwen agent | [build.nvidia.com](https://build.nvidia.com) — free tier | Yes (agent only) |
-| `HELIUS_API_KEY` | Solana RPC enhancements | [helius.dev](https://helius.dev) — free tier | No |
+| `NIM_API_KEY` | DeepSeek/Qwen agent | [build.nvidia.com](https://build.nvidia.com) | Yes |
+| `HELIUS_API_KEY` | Solana RPC & Metadata | [helius.dev](https://helius.dev) | Yes |
+| `DISCORD_WEBHOOK_URL` | Automated Reporting | Discord Channel | Optional |
 
 The quant scanner and ML pipeline run with **zero API keys**. Only the NIM Qwen agent requires a key.
 
@@ -401,7 +400,8 @@ Free GitHub Actions minutes on public repos are unlimited — the whole stack is
 |---|---|---|
 | **v0.x** | Q1 2026 | Initial multi-chain tracker — NIM Qwen agent + rule-based signals (Helius API) |
 | **v1.0** | Apr 2026 | Behavioral ML pipeline, dashboard ML tab, schedule guard fix, concurrency-grouped workflows |
-| **v2.0** | Apr 2026 | **Current** — Full rebuild on free APIs (DexScreener + GeckoTerminal + GoPlus + Helius); renamed to Azalyst Alpha Scanner; dropped paid Azalyst dependency |
+| **v2.0** | Apr 2026 | Full rebuild on free APIs (DexScreener + GeckoTerminal + GoPlus + Helius); renamed to Azalyst Alpha Scanner; dropped paid Azalyst dependency |
+| **v2.1** | May 2026 | **Current** — Integrated DeepSeek-V4-Pro with Qwen fallback; enabled Paper Trader and Discord reporting; automated run-URL audit logs |
 
 ---
 
