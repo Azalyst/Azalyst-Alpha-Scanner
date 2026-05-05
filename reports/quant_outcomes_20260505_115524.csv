@@ -1,0 +1,7 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-05T11:55:24+00:00,ethereum,0x582d872a1b094fc48f5de31d3b73f2d9be47def1,TONCOIN,anomaly_watch,down,1.84,1.8,-2.1739,10.0,60,False,predicted_down;return_-2.17pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T11:55:24+00:00,ethereum,0xc0c17dd08263c16f6b64e772fb9b723bf1344ddf,iREET,anomaly_watch,up,0.6554,0.6554,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T11:55:24+00:00,ethereum,0x829f4b62eebe12af653b4dd4ffc480966f7d7f09,sato,anomaly_watch,down,0.2262,0.1774,-21.5738,10.0,60,True,predicted_down;return_-21.57pct;target_10.00pct;label_anomaly_watch;dump_confirmed
+2026-05-05T11:55:24+00:00,solana,HxosTEFP89WHspo8VeJSAVoDzc2uohArbDgKPmQahDES,小丫头,anomaly_watch,up,0.0001282,0.001062,728.3931,10.0,60,True,predicted_up;return_728.39pct;target_10.00pct;label_anomaly_watch;pump_confirmed
+2026-05-05T11:55:24+00:00,solana,GriwC1YJNVtjExRJN7wHHbeLEpApCoEUn1Kd9SEwpump,greg,anomaly_watch,up,7.129e-06,5.059e-07,-92.9036,10.0,60,False,predicted_up;return_-92.90pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T11:55:24+00:00,solana,8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn,ZEREBRO,anomaly_watch,up,0.03514,0.02934,-16.5054,10.0,60,False,predicted_up;return_-16.51pct;target_10.00pct;label_anomaly_watch;not_confirmed
