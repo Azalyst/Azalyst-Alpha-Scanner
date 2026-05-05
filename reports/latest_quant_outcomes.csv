@@ -1,7 +1,4 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-05-05T17:02:11+00:00,solana,DHUdZ3MUwyFNTx4oWHpTqfm5QuTTANpR8krm44i6pump,TARZAN,anomaly_watch,up,2.373e-06,2.373e-06,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-05T17:02:12+00:00,solana,9KFsuNEhGtQswPQsN5gmeScgCpyELieaaMDks3Qepump,Flowa,watch,up,3.584e-06,5.186e-07,-85.5301,10.0,60,False,predicted_up;return_-85.53pct;target_10.00pct;label_watch;not_confirmed
-2026-05-05T17:02:12+00:00,solana,4KJxYPaExHGJmCDLqPWC4enPm2ZWMdh5mgjQMpntpump,runr,watch,up,6.781e-06,3.082e-06,-54.5495,10.0,60,False,predicted_up;return_-54.55pct;target_10.00pct;label_watch;not_confirmed
-2026-05-05T17:02:12+00:00,solana,DMXCwxQdhizu4cvpn4GocMv6CK5Z7NnrsXMWZW5AX9hJ,CORAJEWOC,anomaly_watch,up,0.03163,0.009736,-69.2191,10.0,60,False,predicted_up;return_-69.22pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-05T17:02:12+00:00,solana,8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn,ZEREBRO,anomaly_watch,up,0.02913,0.03081,5.7673,10.0,60,False,predicted_up;return_5.77pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-05T17:02:12+00:00,solana,73edX6xoGY4v5y2hzuKdrUbJXLntqgmo74au1Ki1pump,Staccana,anomaly_watch,up,0.0002895,0.0002234,-22.8325,10.0,60,False,predicted_up;return_-22.83pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T18:23:52+00:00,solana,7iy1nive3XssUFyn4Zz67gCy3bXatbgDXCse45HwwhZv,GME,anomaly_watch,up,0.0002747,0.0002736,-0.4004,10.0,60,False,predicted_up;return_-0.40pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T18:23:53+00:00,solana,CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp,CARDS,anomaly_watch,down,0.1509,0.1526,1.1266,10.0,60,False,predicted_down;return_1.13pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T18:23:53+00:00,solana,Aw5SxKyYhXFdZj2BHCqs11UaV5ohwpFQjauB9jFhpump,Apple,anomaly_watch,up,0.00135,0.0008318,-38.3852,10.0,60,False,predicted_up;return_-38.39pct;target_10.00pct;label_anomaly_watch;not_confirmed
