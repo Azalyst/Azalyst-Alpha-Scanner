@@ -1,0 +1,7 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-05T10:47:35+00:00,base,0xbd892db74ba304abfdc4da12a11ebaf53d9b3b07,SpaceX,anomaly_watch,up,1e-05,1e-05,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T10:47:36+00:00,base,0x23292361e98639dca6103ffd0641280018910927,TRH,watch,up,7.654e-05,7.654e-05,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T10:47:36+00:00,base,0xa96097cd350e314d8bb136fde28593c0b621dc68,TACOCAT,anomaly_watch,up,0.0001169,0.0001144,-2.1386,10.0,60,False,predicted_up;return_-2.14pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T10:47:36+00:00,base,0x825b8f8d87b7b188c67753659f65b631148f44bf,BALL,watch,up,1.291e-06,1.909e-12,-99.9999,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T10:47:36+00:00,solana,3q4bUHRRWohEALdZfnRfz58FATFBa4Dcs7dFrv3pCwk9,WIZ,watch,up,0.03756,7.259e-10,-100.0,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T10:47:36+00:00,solana,4TKYts6M7Y1RzW6xbHo92anF2LBrRMiFFsANoTr9pump,WOWS,watch,up,5.984e-05,0.0001244,107.8877,10.0,60,True,predicted_up;return_107.89pct;target_10.00pct;label_watch;pump_confirmed
