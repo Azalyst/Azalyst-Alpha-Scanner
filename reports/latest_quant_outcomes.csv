@@ -1,2 +1,7 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-05-05T07:15:53+00:00,arbitrum,0xaf88d065e77c8cc2239327c5edb3a432268e5831,USDC,dump_risk,down,0.9999,0.9999,0.0,10.0,60,False,predicted_down;return_0.00pct;target_10.00pct;label_dump_risk;not_confirmed
+2026-05-05T09:00:26+00:00,base,0x6d13253c51c03564e8f4e25de49c5cc6f1c77785,tAbc,anomaly_watch,down,5.009e-06,5.009e-06,0.0,10.0,60,False,predicted_down;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T09:00:26+00:00,base,0xfd12521862582c6547c91677577d23ab64e5a77d,NPC,anomaly_watch,down,3.184e-08,3.184e-08,0.0,10.0,60,False,predicted_down;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T09:00:27+00:00,base,0x3f00dd4d36136ad7612a31fa292014345574c27e,Mikki,watch,up,7.39e-05,0.000106,43.4371,10.0,60,True,predicted_up;return_43.44pct;target_10.00pct;label_watch;pump_confirmed
+2026-05-05T09:00:27+00:00,solana,BHLrP9zu57aCTcphj1v2WFuGQdXcLvhaKw7vf13qDJyo,MOMO,anomaly_watch,up,0.0001215,0.0002859,135.3086,10.0,60,True,predicted_up;return_135.31pct;target_10.00pct;label_anomaly_watch;pump_confirmed
+2026-05-05T09:00:27+00:00,solana,BGFBbrRZN25k15CXjb4BHsT6guwTzx4eDjSs34ffpump,ABB,watch,up,4.564e-06,4.564e-06,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T09:00:27+00:00,solana,5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2,TROLL,anomaly_watch,down,0.04613,0.04863,5.4195,10.0,60,False,predicted_down;return_5.42pct;target_10.00pct;label_anomaly_watch;not_confirmed
