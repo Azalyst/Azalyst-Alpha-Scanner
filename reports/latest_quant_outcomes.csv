@@ -1,1 +1,10 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-05T21:54:03+00:00,ethereum,0x086ab19689df6a46f43ddbeac1b9ded6155620f1,🐸IFG,anomaly_watch,up,9.339e-14,9.339e-14,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T21:54:03+00:00,ethereum,0x9a97187fb7a5d2aec8d364fb92feca4d3a9d1332,💎DHG,watch,up,5.556e-06,3.02e-10,-99.9946,10.0,60,False,predicted_up;return_-99.99pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T21:54:03+00:00,ethereum,0xfe63f68e743ec794da6ddb518c4fad4d85f627c2,NICE,watch,up,3.406e-06,2.383e-06,-30.0352,10.0,60,False,predicted_up;return_-30.04pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T21:54:03+00:00,ethereum,0x6bc78d199ecc728a42491b8b13e214a05ac302a9,NICE,anomaly_watch,up,3.733e-05,1.802e-10,-99.9995,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T21:54:03+00:00,ethereum,0x6e62d685efef62dbbe30bbeadf5365bc3bfa4ac7,NICE,watch,up,8.838e-06,5.846e-07,-93.3854,10.0,60,False,predicted_up;return_-93.39pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T21:54:03+00:00,solana,Hy1x9nXHPXCFfNo5Cjmfru4KxSvSZuFekpcagQAcpump,Athena ,anomaly_watch,up,2.441e-06,2.424e-06,-0.6964,10.0,60,False,predicted_up;return_-0.70pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T21:54:03+00:00,solana,6LZnJyt7a6xWBiDzNSjj42HRK83tCJkWsd8pLw86YFG,AI,watch,up,0.0001057,3.83e-10,-99.9996,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T21:54:03+00:00,solana,3KHMZhpthXuiCcgfTv7vVu9PpEz64KAEURFwi6Lopump,Goblin,anomaly_watch,up,0.004859,0.005695,17.2052,10.0,60,True,predicted_up;return_17.21pct;target_10.00pct;label_anomaly_watch;pump_confirmed
+2026-05-05T21:54:03+00:00,solana,Aw5SxKyYhXFdZj2BHCqs11UaV5ohwpFQjauB9jFhpump,Apple,anomaly_watch,up,0.001127,0.002704,139.929,10.0,60,True,predicted_up;return_139.93pct;target_10.00pct;label_anomaly_watch;pump_confirmed
