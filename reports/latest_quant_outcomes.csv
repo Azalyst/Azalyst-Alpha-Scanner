@@ -1,4 +1,1 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-05-05T18:23:52+00:00,solana,7iy1nive3XssUFyn4Zz67gCy3bXatbgDXCse45HwwhZv,GME,anomaly_watch,up,0.0002747,0.0002736,-0.4004,10.0,60,False,predicted_up;return_-0.40pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-05T18:23:53+00:00,solana,CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp,CARDS,anomaly_watch,down,0.1509,0.1526,1.1266,10.0,60,False,predicted_down;return_1.13pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-05T18:23:53+00:00,solana,Aw5SxKyYhXFdZj2BHCqs11UaV5ohwpFQjauB9jFhpump,Apple,anomaly_watch,up,0.00135,0.0008318,-38.3852,10.0,60,False,predicted_up;return_-38.39pct;target_10.00pct;label_anomaly_watch;not_confirmed
