@@ -1,0 +1,7 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-05T22:45:58+00:00,base,0xaac7e3d2a66f228a985a82c0160752a92b68bf97,Judahweston,watch,up,4.448e-06,2.142e-06,-51.8435,10.0,60,False,predicted_up;return_-51.84pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T22:45:58+00:00,base,0x397f866291e10ec57059347f8f517d510f22bb62,1KTO100M,watch,up,1.314e-06,6.315e-14,-100.0,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T22:45:58+00:00,base,0xb1078d98e985c07fc9424c09211eeab256a37eb0,MCSAPE,anomaly_watch,up,2.431e-07,1e-07,-58.8647,10.0,60,False,predicted_up;return_-58.86pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T22:45:58+00:00,base,0x5d39ab112e8b60537536f8d3018be0bf2f31635b,KAI,watch,up,1.294e-06,2.345e-10,-99.9819,10.0,60,False,predicted_up;return_-99.98pct;target_10.00pct;label_watch;not_confirmed
+2026-05-05T22:45:58+00:00,solana,8MhTsgSMbUBat9rTP5wZDTTmJj22A7LdAWRYZNiHiyoF,NLB,anomaly_watch,up,0.0001264,2.825e-09,-99.9978,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-05T22:45:59+00:00,solana,3KHMZhpthXuiCcgfTv7vVu9PpEz64KAEURFwi6Lopump,Goblin,anomaly_watch,up,0.006972,0.00495,-29.0017,10.0,60,False,predicted_up;return_-29.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
