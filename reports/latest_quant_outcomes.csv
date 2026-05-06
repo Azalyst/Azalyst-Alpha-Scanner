@@ -1,1 +1,4 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-06T07:30:38+00:00,solana,FaxZbwnBi1RKhe5gPGQyxB2Yuaak21sHnBviZnyMGs6i,Samalisa,watch,up,0.000108,0.0002263,109.537,10.0,60,True,predicted_up;return_109.54pct;target_10.00pct;label_watch;pump_confirmed
+2026-05-06T07:30:38+00:00,solana,Gix6yciz7RSzEkMMZkdnjkyMUxnru7MgHVsieSknpump,PVE,watch,up,6.176e-06,2.436e-06,-60.557,10.0,60,False,predicted_up;return_-60.56pct;target_10.00pct;label_watch;not_confirmed
+2026-05-06T07:30:38+00:00,solana,CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp,CARDS,dump_risk,down,0.1727,0.1621,-6.1378,10.0,60,False,predicted_down;return_-6.14pct;target_10.00pct;label_dump_risk;not_confirmed
