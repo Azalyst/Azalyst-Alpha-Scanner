@@ -1,0 +1,3 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-06T13:14:39+00:00,arbitrum,0xd6cd943bfc0711125bc01cff7b7dfb87be1d10c8,YUPP,watch,up,0.01129,0.0265,134.721,10.0,60,True,predicted_up;return_134.72pct;target_10.00pct;label_watch;pump_confirmed
+2026-05-06T13:14:39+00:00,arbitrum,0xaf88d065e77c8cc2239327c5edb3a432268e5831,USDC,whale_accumulation,up,0.9999,0.9999,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_whale_accumulation;not_confirmed
