@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T07:31:30.831778+00:00",
+  "generated_at": "2026-05-06T09:44:28.153937+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -113,7 +113,7 @@
   },
   "cluster_counts": {},
   "totals": {
-    "snapshots": 1298,
+    "snapshots": 1305,
     "wallet_events": 0,
     "labeled_outcomes": 243
   },
@@ -189,6 +189,20 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 1300,
+      "ts": "2026-05-06T09:43:02+00:00",
+      "chain": "optimism",
+      "address": "0x0b2c639c533813f4aa9d7837caf62653d097ff85",
+      "symbol": "USDC",
+      "ml_prob": 0.0008390169573064654,
+      "ml_direction": "down",
+      "ml_edge": 0.998321966085387,
+      "pump_score": 30.1,
+      "dump_score": 0.0,
+      "anomaly_score": 30.56,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 1123,
       "ts": "2026-05-05T18:23:26+00:00",
       "chain": "arbitrum",
@@ -200,6 +214,20 @@
       "pump_score": 5.66,
       "dump_score": 0.0,
       "anomaly_score": 6.83,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1301,
+      "ts": "2026-05-06T09:43:02+00:00",
+      "chain": "optimism",
+      "address": "0x4200000000000000000000000000000000000006",
+      "symbol": "WETH",
+      "ml_prob": 0.0009142218479485923,
+      "ml_direction": "down",
+      "ml_edge": 0.9981715563041028,
+      "pump_score": 31.2,
+      "dump_score": 0.0,
+      "anomaly_score": 32.14,
       "label": "watch"
     },
     {
@@ -385,20 +413,6 @@
       "label": "anomaly_watch"
     },
     {
-      "snapshot_id": 1023,
-      "ts": "2026-05-05T08:59:11+00:00",
-      "chain": "solana",
-      "address": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
-      "symbol": "CARDS",
-      "ml_prob": 0.0011674512176913989,
-      "ml_direction": "down",
-      "ml_edge": 0.9976650975646172,
-      "pump_score": 6.02,
-      "dump_score": 0.0,
-      "anomaly_score": 8.74,
-      "label": "watch"
-    },
-    {
       "snapshot_id": 1287,
       "ts": "2026-05-06T04:49:05+00:00",
       "chain": "solana",
@@ -452,20 +466,6 @@
       "pump_score": 4.91,
       "dump_score": 0.0,
       "anomaly_score": 11.62,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1256,
-      "ts": "2026-05-05T23:56:35+00:00",
-      "chain": "ethereum",
-      "address": "0xb79cc5645056762890f47b477f34690b93d57416",
-      "symbol": "$RTD",
-      "ml_prob": 0.0014484152448109191,
-      "ml_direction": "down",
-      "ml_edge": 0.9971031695103781,
-      "pump_score": 66.0,
-      "dump_score": 0.0,
-      "anomaly_score": 65.0,
       "label": "watch"
     }
   ],
