@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T23:08:11.469368+00:00",
+  "generated_at": "2026-05-06T23:28:26.220424+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -113,7 +113,7 @@
   },
   "cluster_counts": {},
   "totals": {
-    "snapshots": 1453,
+    "snapshots": 1474,
     "wallet_events": 0,
     "labeled_outcomes": 273
   },
@@ -301,6 +301,20 @@
       "label": "watch"
     },
     {
+      "snapshot_id": 1457,
+      "ts": "2026-05-06T23:26:50+00:00",
+      "chain": "arbitrum",
+      "address": "0x2f2a2543b76a4166549f7aab2e75bef0aefc5b0f",
+      "symbol": "WBTC",
+      "ml_prob": 0.0009111723131420473,
+      "ml_direction": "down",
+      "ml_edge": 0.9981776553737159,
+      "pump_score": 1.72,
+      "dump_score": 0.04,
+      "anomaly_score": 44.1,
+      "label": "watch"
+    },
+    {
       "snapshot_id": 1447,
       "ts": "2026-05-06T22:29:36+00:00",
       "chain": "arbitrum",
@@ -326,6 +340,20 @@
       "pump_score": 7.57,
       "dump_score": 0.52,
       "anomaly_score": 9.03,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1458,
+      "ts": "2026-05-06T23:26:50+00:00",
+      "chain": "arbitrum",
+      "address": "0x82af49447d8a07e3bd95bd0d56f35241523fbab1",
+      "symbol": "WETH",
+      "ml_prob": 0.0009142218479485923,
+      "ml_direction": "down",
+      "ml_edge": 0.9981715563041028,
+      "pump_score": 3.86,
+      "dump_score": 0.0,
+      "anomaly_score": 43.67,
       "label": "watch"
     },
     {
@@ -438,34 +466,6 @@
       "pump_score": 54.65,
       "dump_score": 0.0,
       "anomaly_score": 65.0,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1373,
-      "ts": "2026-05-06T17:11:31+00:00",
-      "chain": "solana",
-      "address": "6teGyEFf4agLT3qQkHXrJ22MtqNxqhG5iBWBVvnJpump",
-      "symbol": "MILF",
-      "ml_prob": 0.0010068603316300527,
-      "ml_direction": "down",
-      "ml_edge": 0.9979862793367399,
-      "pump_score": 62.41,
-      "dump_score": 0.0,
-      "anomaly_score": 65.0,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1387,
-      "ts": "2026-05-06T17:11:31+00:00",
-      "chain": "base",
-      "address": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
-      "symbol": "NOCK",
-      "ml_prob": 0.0010197996171185557,
-      "ml_direction": "down",
-      "ml_edge": 0.9979604007657629,
-      "pump_score": 11.27,
-      "dump_score": 0.0,
-      "anomaly_score": 14.86,
       "label": "watch"
     }
   ],
