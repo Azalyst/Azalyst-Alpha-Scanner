@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T04:07:41.358765+00:00",
+  "generated_at": "2026-05-06T04:50:58.629359+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -113,7 +113,7 @@
   },
   "cluster_counts": {},
   "totals": {
-    "snapshots": 1273,
+    "snapshots": 1291,
     "wallet_events": 0,
     "labeled_outcomes": 240
   },
@@ -144,6 +144,20 @@
       "pump_score": 56.77,
       "dump_score": 0.0,
       "anomaly_score": 65.0,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1287,
+      "ts": "2026-05-06T04:49:05+00:00",
+      "chain": "solana",
+      "address": "5UedvMdGDhAyuZMCVkcX3yoLRTvKBydx8MwpVMUrpump",
+      "symbol": "AIJAK",
+      "ml_prob": 0.000997449928474612,
+      "ml_direction": "down",
+      "ml_edge": 0.9980051001430508,
+      "pump_score": 49.48,
+      "dump_score": 0.0,
+      "anomaly_score": 60.3,
       "label": "watch"
     },
     {
@@ -452,20 +466,6 @@
       "pump_score": 31.79,
       "dump_score": 0.0,
       "anomaly_score": 32.79,
-      "label": "watch"
-    },
-    {
-      "snapshot_id": 1037,
-      "ts": "2026-05-05T08:59:11+00:00",
-      "chain": "solana",
-      "address": "F8t9qDAT6VQ3EKAtrrxZAWMVMvmYotCzJ9twQwpfpump",
-      "symbol": "ILHAM",
-      "ml_prob": 0.0010052363267680543,
-      "ml_direction": "down",
-      "ml_edge": 0.9979895273464638,
-      "pump_score": 30.0,
-      "dump_score": 0.0,
-      "anomaly_score": 30.0,
       "label": "watch"
     }
   ],
