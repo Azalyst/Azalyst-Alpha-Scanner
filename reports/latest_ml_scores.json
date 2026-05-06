@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-06T22:30:30.814005+00:00",
+  "generated_at": "2026-05-06T23:08:11.469368+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -131,20 +131,6 @@
       "dump_score": 17.38,
       "anomaly_score": 79.74,
       "label": "anomaly_watch"
-    },
-    {
-      "snapshot_id": 1217,
-      "ts": "2026-05-05T22:45:04+00:00",
-      "chain": "solana",
-      "address": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
-      "symbol": "CARDS",
-      "ml_prob": 0.0007484273177419342,
-      "ml_direction": "down",
-      "ml_edge": 0.9985031453645161,
-      "pump_score": 36.62,
-      "dump_score": 0.0,
-      "anomaly_score": 49.98,
-      "label": "watch"
     },
     {
       "snapshot_id": 1423,
@@ -466,6 +452,20 @@
       "pump_score": 62.41,
       "dump_score": 0.0,
       "anomaly_score": 65.0,
+      "label": "watch"
+    },
+    {
+      "snapshot_id": 1387,
+      "ts": "2026-05-06T17:11:31+00:00",
+      "chain": "base",
+      "address": "0x9b5e262cf9bb04869ab40b19af91d2dc85761722",
+      "symbol": "NOCK",
+      "ml_prob": 0.0010197996171185557,
+      "ml_direction": "down",
+      "ml_edge": 0.9979604007657629,
+      "pump_score": 11.27,
+      "dump_score": 0.0,
+      "anomaly_score": 14.86,
       "label": "watch"
     }
   ],
