@@ -1,12 +1,5 @@
 evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
-2026-05-07T09:26:44+00:00,base,0x052c81a7e72bf30dfeca1753673f81b048396cf3,VERSE,anomaly_watch,up,2.304e-07,2.304e-07,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-07T09:26:44+00:00,base,0xf246f8132e7584ad8855f5a9cd717f6a1e9757d5,RogueAI,watch,up,6.368e-06,6.554e-06,2.9209,10.0,60,False,predicted_up;return_2.92pct;target_10.00pct;label_watch;not_confirmed
-2026-05-07T09:26:45+00:00,base,0x1de7e02f67866555399503caa84297519202b29e,KIDSLOVELEARNING,watch,up,0.0001392,0.0001303,-6.3937,10.0,60,False,predicted_up;return_-6.39pct;target_10.00pct;label_watch;not_confirmed
-2026-05-07T09:26:45+00:00,base,0x760c84e42023dcc6a406d4b6f773822b596e23af,lunabasee,watch,up,1.234e-05,1.961e-05,58.9141,10.0,60,True,predicted_up;return_58.91pct;target_10.00pct;label_watch;pump_confirmed
-2026-05-07T09:26:45+00:00,base,0x49a0b2eeb4389b557c036caa646e45aef7c2d0de,joobi,anomaly_watch,up,2.33e-10,2.33e-10,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-07T09:26:45+00:00,base,0xf9b194d6b9ee07c42a87fd1e68e5531ba5147899,1,anomaly_watch,up,3.731e-07,9.469e-32,-100.0,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-07T09:26:45+00:00,base,0x1ef357cce2184efc6a1a12ec52f17835ec2c22b8,GCOIN,watch,up,5.167e-05,7.45e-05,44.1842,10.0,60,True,predicted_up;return_44.18pct;target_10.00pct;label_watch;pump_confirmed
-2026-05-07T09:26:45+00:00,solana,6zzjfpppy5Sg3jgBvnxMSr9uAYP9bq5tH8JMTQoRa73E,OBC,anomaly_watch,up,5.636e-05,0.15,266046.203,10.0,60,True,predicted_up;return_266046.20pct;target_10.00pct;label_anomaly_watch;pump_confirmed
-2026-05-07T09:26:45+00:00,solana,EYXGqGqA32FJ1nKV9zHpNSAY2Fm6WJKBV3vpcCPfpump,BRICK,watch,up,1.613e-05,2.051e-05,27.1544,10.0,60,True,predicted_up;return_27.15pct;target_10.00pct;label_watch;pump_confirmed
-2026-05-07T09:26:45+00:00,solana,2UZ2GtUJkbGQa1SLJ8zsQznCQvb2z4EJ2g9ZxCT3pump,YEP,anomaly_watch,up,0.002327,0.000656,-71.8092,10.0,60,False,predicted_up;return_-71.81pct;target_10.00pct;label_anomaly_watch;not_confirmed
-2026-05-07T09:26:46+00:00,solana,2tXpgu2DLTsPUf9zFmuZmA4xrYxXKBTpVq9wAM7hzs9y,HANTA,anomaly_watch,up,0.002005,0.002996,49.4264,10.0,60,True,predicted_up;return_49.43pct;target_10.00pct;label_anomaly_watch;pump_confirmed
+2026-05-07T11:24:53+00:00,bnb,0xd291aebfd941d5ecd80aaabce13a73a94ca34444,KIKI,anomaly_watch,up,7.991e-06,4.486e-06,-43.8618,10.0,60,False,predicted_up;return_-43.86pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T11:24:53+00:00,bnb,0x1d4ab895afddb0d3be82a7d1aa0a83743ca3146d,🐲LONG,anomaly_watch,up,2.225e-05,5.714e-09,-99.9743,10.0,60,False,predicted_up;return_-99.97pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T11:24:53+00:00,arbitrum,0x498bf2b1e120fed3ad3d42ea2165e9b73f99c1e5,crvUSD,anomaly_watch,up,0.9932,0.9932,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T11:24:53+00:00,arbitrum,0xaf88d065e77c8cc2239327c5edb3a432268e5831,USDC,whale_accumulation,up,0.9999,0.9999,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_whale_accumulation;not_confirmed

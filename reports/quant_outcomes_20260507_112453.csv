@@ -1,0 +1,5 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-07T11:24:53+00:00,bnb,0xd291aebfd941d5ecd80aaabce13a73a94ca34444,KIKI,anomaly_watch,up,7.991e-06,4.486e-06,-43.8618,10.0,60,False,predicted_up;return_-43.86pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T11:24:53+00:00,bnb,0x1d4ab895afddb0d3be82a7d1aa0a83743ca3146d,🐲LONG,anomaly_watch,up,2.225e-05,5.714e-09,-99.9743,10.0,60,False,predicted_up;return_-99.97pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T11:24:53+00:00,arbitrum,0x498bf2b1e120fed3ad3d42ea2165e9b73f99c1e5,crvUSD,anomaly_watch,up,0.9932,0.9932,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T11:24:53+00:00,arbitrum,0xaf88d065e77c8cc2239327c5edb3a432268e5831,USDC,whale_accumulation,up,0.9999,0.9999,0.0,10.0,60,False,predicted_up;return_0.00pct;target_10.00pct;label_whale_accumulation;not_confirmed
