@@ -1,0 +1,10 @@
+evaluated_ts,chain,address,symbol,label,predicted_direction,entry_price,current_price,return_pct,target_pct,horizon_min,is_true,reasons
+2026-05-07T06:52:15+00:00,base,0x23aa4f5f9c3aca4a1423bce72418298814b23f35,1KTO100M,watch,up,1.558e-06,8.926e-13,-99.9999,10.0,60,False,predicted_up;return_-100.00pct;target_10.00pct;label_watch;not_confirmed
+2026-05-07T06:52:15+00:00,base,0xe6fd877f7029bb8252ff83976b8f6409cf80a3d5,MHRD,watch,up,3.486e-05,5.467e-05,56.8273,10.0,60,True,predicted_up;return_56.83pct;target_10.00pct;label_watch;pump_confirmed
+2026-05-07T06:52:15+00:00,base,0xb3b32f9f8827d4634fe7d973fa1034ec9fddb3b3,B3,watch,up,0.001957,0.001466,-25.0894,10.0,60,False,predicted_up;return_-25.09pct;target_10.00pct;label_watch;not_confirmed
+2026-05-07T06:52:16+00:00,base,0xe6e230c5260abfdf6a1a88243807f4726e68a7e4,MAXI,anomaly_watch,up,3.669e-09,2.489e-07,6683.8648,10.0,60,True,predicted_up;return_6683.86pct;target_10.00pct;label_anomaly_watch;pump_confirmed
+2026-05-07T06:52:16+00:00,solana,F2qFGHkchG2jiSDer8EDV43VhtvSvrab6ufeoAWypump,BALUCIAGA,watch,up,2.453e-06,2.479e-06,1.0599,10.0,60,False,predicted_up;return_1.06pct;target_10.00pct;label_watch;not_confirmed
+2026-05-07T06:52:16+00:00,solana,DXAbYAnVdoT1zsM4PYkpmgWAiHs6BgH2qZnoGoRgpump,Larry,watch,up,1.606e-05,3.507e-06,-78.1631,10.0,60,False,predicted_up;return_-78.16pct;target_10.00pct;label_watch;not_confirmed
+2026-05-07T06:52:16+00:00,solana,FspzjuQcJFHmZrfVCfGPYRqfocwriwEMCQzgm4wzpump,NAC,watch,up,3.388e-06,4.714e-07,-86.0862,10.0,60,False,predicted_up;return_-86.09pct;target_10.00pct;label_watch;not_confirmed
+2026-05-07T06:52:17+00:00,solana,FuyduaggB3Z6cwsPTR33Pvd143jXcpG2HaTQ45HUpump,$OVERBRO,anomaly_watch,down,5.684e-07,5.663e-07,-0.3695,10.0,60,False,predicted_down;return_-0.37pct;target_10.00pct;label_anomaly_watch;not_confirmed
+2026-05-07T06:52:17+00:00,solana,2UZ2GtUJkbGQa1SLJ8zsQznCQvb2z4EJ2g9ZxCT3pump,YEP,watch,up,0.003743,0.002016,-46.1395,10.0,60,False,predicted_up;return_-46.14pct;target_10.00pct;label_watch;not_confirmed
