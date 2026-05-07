@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-07T09:32:55.192861+00:00",
+  "generated_at": "2026-05-07T10:35:36.288886+00:00",
   "model_metrics": {
     "status": "ok",
     "model": "lightgbm",
@@ -273,20 +273,6 @@
       "label": "watch"
     },
     {
-      "snapshot_id": 1304,
-      "ts": "2026-05-06T09:43:02+00:00",
-      "chain": "optimism",
-      "address": "0x6fd9d7ad17242c41f7131d257212c54a0e816691",
-      "symbol": "UNI",
-      "ml_prob": 0.0012011764669365573,
-      "ml_direction": "down",
-      "ml_edge": 0.9975976470661269,
-      "pump_score": 15.11,
-      "dump_score": 12.5,
-      "anomaly_score": 34.06,
-      "label": "watch"
-    },
-    {
       "snapshot_id": 1341,
       "ts": "2026-05-06T13:13:13+00:00",
       "chain": "solana",
@@ -466,6 +452,20 @@
       "pump_score": 47.31,
       "dump_score": 0.0,
       "anomaly_score": 97.18,
+      "label": "anomaly_watch"
+    },
+    {
+      "snapshot_id": 1477,
+      "ts": "2026-05-07T00:10:55+00:00",
+      "chain": "solana",
+      "address": "Hrzay8wre3MtiQm2RcDBn3UpuRa2rj9q6YBnKFupump",
+      "symbol": "BENEFITS",
+      "ml_prob": 0.0014986537854527083,
+      "ml_direction": "down",
+      "ml_edge": 0.9970026924290946,
+      "pump_score": 21.14,
+      "dump_score": 0.0,
+      "anomaly_score": 80.41,
       "label": "anomaly_watch"
     }
   ],
